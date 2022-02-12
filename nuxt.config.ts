@@ -1,15 +1,13 @@
-import { NuxtConfig } from '@nuxt/types';
+import {defineNuxtConfig} from '@nuxt/bridge'
 
-const config: NuxtConfig = ({
+export default defineNuxtConfig ({
+  target: 'static',
   modules: [
     '@nuxtjs/style-resources'
   ],
   buildModules: [
-    '@nuxt/typescript-build',
   ],
   styleResources: [
     
   ]
 })
-
-export default config
