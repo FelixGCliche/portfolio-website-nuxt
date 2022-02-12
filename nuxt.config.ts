@@ -1,9 +1,11 @@
 import { NuxtConfig } from '@nuxt/types';
 
 const config: NuxtConfig = ({
+  modules: [
+    '@nuxtjs/style-resources'
+  ],
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/style-resources'
   ],
   styleResources: [
     
