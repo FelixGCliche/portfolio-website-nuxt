@@ -1,9 +1,20 @@
-import { NuxtConfig } from '@nuxt/types';
+import {defineNuxtConfig} from '@nuxt/bridge'
 
-const config: NuxtConfig = ({
+export default defineNuxtConfig ({
+  target: 'static',
+  modules: [
+    '@nuxtjs/style-resources'
+  ],
   buildModules: [
-    '@nuxt/typescript-build'
-  ]
+    '@nuxtjs/strapi'
+  ],
+  styleResources: [
+    
+  ],
+  strapi: {
+    url: process.env.STRAPI_URL || 'http:localhost:1337',
+    prefix: '/api',
+    version: 'v4',
+    cookie: { },
+  }  
 })
-
-export default config
