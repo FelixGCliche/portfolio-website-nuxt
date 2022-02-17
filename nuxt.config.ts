@@ -12,7 +12,7 @@ export default defineNuxtConfig ({
     
   ],
   strapi: {
-    url: process.env.STRAPI_URL || 'https://strapi-production-hzyahori3a-nn.a.run.app',
+    url: process.env.STRAPI_URL || 'http:localhost:1337',
     prefix: '/api',
     version: 'v4',
     cookie: { },
