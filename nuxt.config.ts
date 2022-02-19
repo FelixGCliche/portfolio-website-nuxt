@@ -20,7 +20,7 @@ export default defineNuxtConfig ({
   ],
   styleResources: {
     scss: [
-      '@/assets/style/theme/*.scss'
+      '@/assets/style/modules/*.scss'
     ]
   },
 

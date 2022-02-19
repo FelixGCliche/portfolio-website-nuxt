@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use 'sass:list';
+
+$breakpoints: (
+  'large': 840px,
+  'medium': 600px,
+  'small': 0px,
+);
+$columns: (
+  'large': 12,
+  'medium': 8,
+  'small': 4,
+);
+$default-margin: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+);
+$default-gutter: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+);
+
+$min: breakpoint-min('large');
+$max: breakpoint-max('large');
+
+@function breakpoint-min($size) {
+  @if not map.has-key($columns, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  }
+  $min: map.get($breakpoints, $size);
+
+  @return if($min > 0, $min, null);
+}
+@function breakpoint-max($size) {
+  @if not map.has-key($columns, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  }
+  $names: map.keys($columns);
+  $n: list.index($names, $size);
+  $prev: if($n > 1, list.nth($names, $n - 1), null);
+
+  @return if($prev, (breakpoint-min($prev) - 1px), null);
+}
+
+@mixin global-size {
+  @each $size in map.keys($breakpoints) {
+    @include media-query_($size);
+    @debug $size;
+  }
+}
+
+@mixin media-query_($size) {
+  @if not map.has-key($columns, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  }
+
+  $min: breakpoint-min($size);
+  $max: breakpoint-max($size);
+
+  @debug 'min=#{$min},max=#{$max}';
+
+  @if $min == null and $max != null {
+    // Phone
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else if $min != null and $max != null {
+    // Tablet
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min != null and $max == null {
+    // Desktop
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    // Fallback - no breakpoints defined
+    @content;
+  }
+}
+
+@mixin layout-grid($size) {
+  display: grid;
+  grid-gap: map.get($default-gutter, $size);
+  grid-template-columns: repeat(
+    map.get($columns, $size),
+    minmax(0, 1fr)
+  );
+  margin: auto;
+}
