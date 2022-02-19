@@ -5,13 +5,12 @@ export default defineNuxtConfig ({
   target: 'static',
 
   alias: {
-    'style': resolve(__dirname, './assets/style')
+    'style': resolve(__dirname, './assets/style'),
+    'fonts': resolve(__dirname, './assets/fonts')
   },
 
-  modules: [
-    '@nuxtjs/style-resources'
-  ],
   buildModules: [
+    '@nuxtjs/style-resources',
     '@nuxtjs/strapi'
   ],
 
@@ -19,9 +18,11 @@ export default defineNuxtConfig ({
     '@/assets/style/main',
     '@/assets/style/reset'
   ],
-  styleResources: [
-    
-  ],
+  styleResources: {
+    scss: [
+      '@/assets/style/theme/*.scss'
+    ]
+  },
 
   strapi: {
     url: process.env.STRAPI_URL || 'http:localhost:1337',
