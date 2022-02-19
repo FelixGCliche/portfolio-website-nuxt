@@ -37,13 +37,40 @@
 
 
 @font-face {
-  font-family: 'PP Neue Machina', serif;
-  src: url();
+  font-family: 'PP Neue Machina';
+  src: url('style/fonts/PPNeueMachina/PPNeueMachina-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('style/fonts/PPNeueMachina/PPNeueMachina-Regular.otf')format('opentype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('style/fonts/PPNeueMachina/PPNeueMachina-Ultrabold.otf')format('opentype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'Lekton', serif;
-  src: url();
+  font-family: 'Lekton';
+  src: url('style/fonts/Lekton/Lekton-Regular.ttf')format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lekton';
+  src: url('style/fonts/Lekton/Lekton-Bold.ttf')format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
 }
 
 $font-size: (
