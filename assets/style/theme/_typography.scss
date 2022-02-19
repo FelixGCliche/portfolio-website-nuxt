@@ -1,0 +1,117 @@
+@mixin display-large {
+	font-size:3.562rem;
+	font-family:"PP Neue Machina";
+	font-weight:normal;
+	font-style:normal;
+	line-height:64px;
+	letter-spacing:-0.25px;
+	text-decoration:none;
+}
+@mixin display-medium {
+	font-size:2.812rem;
+	font-family:"PP Neue Machina";
+	font-weight:normal;
+	font-style:normal;
+	line-height:52px;
+	text-decoration:none;
+}
+@mixin display-small {
+	font-size:2.25rem;
+	font-family:"PP Neue Machina";
+	font-weight:normal;
+	font-style:normal;
+	line-height:44px;
+	text-decoration:none;
+}
+@mixin headline-large {
+	font-size:2rem;
+	font-family:"PP Neue Machina";
+	line-height:40px;
+	text-decoration:none;
+}
+@mixin headline-medium {
+	font-size:1.75rem;
+	font-family:"PP Neue Machina";
+	line-height:36px;
+	text-decoration:none;
+}
+@mixin headline-small {
+	font-size:1.5rem;
+	font-family:"PP Neue Machina";
+	line-height:32px;
+	text-decoration:none;
+}
+@mixin title-large {
+	font-size:1.375rem;
+	font-family:"Lekton";
+	font-weight:bolder;
+	font-style:normal;
+	line-height:28px;
+	text-decoration:none;
+}
+@mixin title-medium {
+	font-size:1rem;
+	font-family:"Lekton";
+	font-weight:bolder;
+	font-style:normal;
+	line-height:24px;
+	letter-spacing:0.1px;
+	text-decoration:none;
+}
+@mixin title-small {
+	font-size:0.875rem;
+	font-family:"Lekton";
+	font-weight:bolder;
+	font-style:normal;
+	line-height:20px;
+	letter-spacing:0.1px;
+	text-decoration:none;
+}
+@mixin label-large {
+	font-size:0.875rem;
+	font-family:"PP Neue Machina";
+	line-height:20px;
+	letter-spacing:0.1px;
+	text-decoration:none;
+}
+@mixin label-medium {
+	font-size:0.75rem;
+	font-family:"PP Neue Machina";
+	line-height:16px;
+	letter-spacing:0.5px;
+	text-decoration:none;
+}
+@mixin label-small {
+	font-size:0.688rem;
+	font-family:"PP Neue Machina";
+	line-height:16px;
+	letter-spacing:0.5px;
+	text-decoration:none;
+}
+@mixin body-large {
+	font-size:1rem;
+	font-family:"Lekton";
+	font-weight:normal;
+	font-style:normal;
+	line-height:24px;
+	letter-spacing:0.5px;
+	text-decoration:none;
+}
+@mixin body-medium {
+	font-size:0.875rem;
+	font-family:"Lekton";
+	font-weight:normal;
+	font-style:normal;
+	line-height:20px;
+	letter-spacing:0.25px;
+	text-decoration:none;
+}
+@mixin body-small {
+	font-size:0.75rem;
+	font-family:"Lekton";
+	font-weight:normal;
+	font-style:normal;
+	line-height:16px;
+	letter-spacing:0.4px;
+	text-decoration:none;
+}
