@@ -1,0 +1,82 @@
+@use 'sass:map';
+@use 'sass:list';
+
+$breakpoints: (
+  desktop: 840px,
+  tablet: 600px,
+  phone: 0px,
+);
+$columns: (
+  desktop: 12,
+  tablet: 8,
+  phone: 4,
+);
+$default-margin: (
+  desktop: 24px,
+  tablet: 24px,
+  phone: 16px,
+);
+
+$min: breakpoint-min("desktop");
+$max: breakpoint-max("desktop");
+
+@function breakpoint-min($size) {
+  @if not map.has-key($columns, $size) {
+    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+  }
+  $min: map.get($breakpoints, $size);
+
+  @return if($min > 0, $min, null);
+}
+@function breakpoint-max($size) {
+  @if not map.has-key($columns, $size) {
+    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+  }
+  $names: map.keys($columns);
+  $n: list.index($names, $size);
+  $prev: if($n > 1, list.nth($names, $n - 1), null);
+
+  @return if($prev, (breakpoint-min($prev) - 1px), null);
+}
+
+@mixin media-query_($size) {
+  @if not map.has-key($columns, $size) {
+    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+  }
+
+  $min: breakpoint-min($size);
+  $max: breakpoint-max($size);
+
+  @if $min == null and $max != null {
+    // small
+    @media (max-width: $max) {
+      @content;
+    }
+    :root {
+      --global-size: 'small';
+    }
+  } @else if $min != null and $max != null {
+    // medium
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+    :root {
+      --global-size: 'medium';
+    }
+  } @else if $min != null and $max == null {
+    // large
+    @media (min-width: $min) {
+      @content;
+    }
+    :root {
+      --global-size: 'large';
+    }
+  } @else {
+    // Fallback - no breakpoints defined
+    @content;
+  }
+}
+
+@each $size in map.keys($columns) {
+  @include media-query_($size);
+}

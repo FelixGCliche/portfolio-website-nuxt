@@ -6,7 +6,7 @@
 </script>
 
 <style lang="scss" scoped>
-// p {
-//   @include typography-body("large");
-// }
+p {
+  @include theme.typography-body("large");
+}
 </style>
