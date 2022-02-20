@@ -6,7 +6,13 @@
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:map';
+
 p {
-  @include theme.typography-body("large");
+  @each $size in map.keys(layout.$columns) {
+    @include layout.media-query_($size) {
+      @include theme.typography-body($size);
+    }
+  }
 }
 </style>

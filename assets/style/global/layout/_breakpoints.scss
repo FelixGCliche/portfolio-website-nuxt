@@ -17,12 +17,12 @@ $default-margin: (
   'small': 16px,
 );
 
-$min: breakpoint-min("'large'");
-$max: breakpoint-max("'large'");
+$min: breakpoint-min('large');
+$max: breakpoint-max('large');
 
 @function breakpoint-min($size) {
   @if not map.has-key($columns, $size) {
-    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
   }
   $min: map.get($breakpoints, $size);
 
@@ -30,7 +30,7 @@ $max: breakpoint-max("'large'");
 }
 @function breakpoint-max($size) {
   @if not map.has-key($columns, $size) {
-    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
   }
   $names: map.keys($columns);
   $n: list.index($names, $size);
@@ -41,7 +41,7 @@ $max: breakpoint-max("'large'");
 
 @mixin media-query_($size) {
   @if not map.has-key($columns, $size) {
-    @error "Invalid style specified! Choose one of #{map.keys($columns)}";
+    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
   }
 
   $min: breakpoint-min($size);
@@ -50,19 +50,19 @@ $max: breakpoint-max("'large'");
   @if $min == null and $max != null {
     // small
     @media (max-width: $max) {
-      :root {--device-size: 'small';}
+      :root {--device-size: #{$size};}
       @content;
     }
   } @else if $min != null and $max != null {
     // medium
     @media (min-width: $min) and (max-width: $max) {
-      :root {--device-size: 'medium';}
+      :root {--device-size: #{$size};}
       @content;
     }
   } @else if $min != null and $max == null {
     // large
     @media (min-width: $min) {
-      :root {--device-size: 'large';}
+      :root {--device-size: #{$size};}
       @content;
     }
   } @else {
