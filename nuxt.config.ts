@@ -21,8 +21,7 @@ export default defineNuxtConfig ({
   styleResources: {
     scss: [
       '@/assets/style/global/*.scss',
-    ],
-    hoistUseStatements: true
+    ]
   },
 
   strapi: {

@@ -6,33 +6,23 @@ $breakpoints: (
   'medium': 905px,
   'small': 0px,
 );
-$columns: (
-  'large': 12,
-  'medium': 8,
-  'small': 4,
-);
-$default-margin: (
-  'large': 24px,
-  'medium': 24px,
-  'small': 16px,
-);
 
 $min: breakpoint-min('large');
 $max: breakpoint-max('large');
 
 @function breakpoint-min($size) {
-  @if not map.has-key($columns, $size) {
-    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  @if not map.has-key($breakpoints, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
   }
   $min: map.get($breakpoints, $size);
 
   @return if($min > 0, $min, null);
 }
 @function breakpoint-max($size) {
-  @if not map.has-key($columns, $size) {
-    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  @if not map.has-key($breakpoints, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
   }
-  $names: map.keys($columns);
+  $names: map.keys($breakpoints);
   $n: list.index($names, $size);
   $prev: if($n > 1, list.nth($names, $n - 1), null);
 
@@ -40,8 +30,8 @@ $max: breakpoint-max('large');
 }
 
 @mixin media-query_($size) {
-  @if not map.has-key($columns, $size) {
-    @error 'Invalid style specified! Choose one of #{map.keys($columns)}';
+  @if not map.has-key($breakpoints, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
   }
 
   $min: breakpoint-min($size);
@@ -71,6 +61,6 @@ $max: breakpoint-max('large');
   }
 }
 
-@each $size in map.keys($columns) {
+@each $size in map.keys($breakpoints) {
   @include media-query_($size);
 }

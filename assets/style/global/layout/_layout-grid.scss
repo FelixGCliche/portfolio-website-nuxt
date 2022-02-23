@@ -1,0 +1,44 @@
+@use 'sass:map';
+
+
+$columns: (
+  'large': 12,
+  'medium': 8,
+  'small': 4,
+);
+$column-width: (
+  'large': 72px,
+  'medium': 72px,
+  'small': 72px,
+);
+$default-margin: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+);
+$default-gutter: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+);
+$default-span: 4;
+
+@mixin layout-grid($size) {
+  display: grid;
+  grid-gap: map.get($default-gutter, $size);
+  grid-template-columns: repeat(
+    map.get($columns, $size),
+    map.get($column-width, $size)
+  );
+  justify-content: center;
+  @content;
+}
+
+@mixin grid-cell($size, $span: $default-span) {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  grid-column: span $span;
+  @content;
+}
