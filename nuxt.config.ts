@@ -3,6 +3,7 @@ import { resolve} from 'path'
 
 export default defineNuxtConfig ({
   target: 'static',
+  components: true,
 
   alias: {
     'style': resolve(__dirname, './assets/style'),
@@ -10,6 +11,7 @@ export default defineNuxtConfig ({
   },
 
   buildModules: [
+    '@nuxt/components',
     '@nuxtjs/style-resources',
     '@nuxtjs/strapi'
   ],
