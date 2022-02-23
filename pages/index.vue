@@ -22,7 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-import Navbar from '../components/navigation/navbar.vue'
 </script>
 
 <style lang="scss" scoped>
