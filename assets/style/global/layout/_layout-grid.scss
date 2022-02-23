@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use '_breakpoints' as layout;
 
 
 $columns: (
@@ -23,22 +24,59 @@ $default-gutter: (
 );
 $default-span: 4;
 
-@mixin layout-grid($size) {
-  display: grid;
-  grid-gap: map.get($default-gutter, $size);
-  grid-template-columns: repeat(
-    map.get($columns, $size),
-    map.get($column-width, $size)
-  );
-  justify-content: center;
-  @content;
+// @mixin layout-grid($size) {
+//   display: grid;
+//   grid-gap: map.get($default-gutter, $size);
+//   grid-template-columns: repeat(
+//     map.get($columns, $size),
+//     map.get($column-width, $size)
+//   );
+//   justify-content: center;
+//   @content;
+// }
+
+// @mixin grid-cell($size, $span: $default-span) {
+//   display: flex;
+//   flex-flow: row wrap;
+//   align-items: center;
+//   justify-content: center;
+//   grid-column: span $span;
+//   @content;
+// }
+
+@mixin layout-grid {
+  @each $size in map.keys($columns) {
+    @include layout.media-query_($size) {    
+      display: grid;
+      grid-gap: map.get($default-gutter, $size);
+      grid-template-columns: repeat(
+        map.get($columns, $size),
+        map.get($column-width, $size)
+      );
+      justify-content: center;
+      @content; 
+    }
+  }
 }
 
-@mixin grid-cell($size, $span: $default-span) {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
-  grid-column: span $span;
-  @content;
+@mixin responsive-cell($span: $default-span) {
+  @each $size in map.keys($columns) {
+    @include layout.media-query_($size) {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
+      grid-column: span $span;
+      @content; 
+    }
+  }
+}
+
+@mixin grid-cell-full {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query_($size) {
+      grid-column: span map.get($columns, $size);
+      @content;
+    }
+  }
 }

@@ -32,26 +32,13 @@ p {
   color: theme.$on-background;
 }
 .grid {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query_($size) {
-      @include layout.layout-grid($size) {
-      }
-    }
-  }
+  @include layout.layout-grid;
 }
 
 .cell {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query_($size) {
-      @include layout.grid-cell($size) {
-        border: 4px solid theme.$secondary;
-        padding: 24px;
-      }
-
-      &-full {
-        $span: map.get(layout.$columns, $size);
-        grid-column: span $span;
-      }
+  @include layout.responsive-cell {
+    &-full {
+      @include layout.grid-cell-full;
     }
   }
 }
