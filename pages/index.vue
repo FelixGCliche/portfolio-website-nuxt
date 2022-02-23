@@ -1,25 +1,22 @@
 <template>
-  <div>
-    <Navbar />
-    <div class="grid">
-      <div class="cell cell-full">
-        <h1 class="display">Lorem Ipsum</h1>
-      </div>
-      <div class="cell">
-        <p
-          class="body"
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
-      </div>
-      <div class="cell">
-        <p
-          class="body"
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
-      </div>
-      <div class="cell">
-        <p
-          class="body"
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
-      </div>
+  <div class="grid">
+    <div class="cell cell-full">
+      <h1 class="display">Lorem Ipsum</h1>
+    </div>
+    <div class="cell">
+      <p
+        class="body"
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+    </div>
+    <div class="cell">
+      <p
+        class="body"
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+    </div>
+    <div class="cell">
+      <p
+        class="body"
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
     </div>
   </div>
 </template>
