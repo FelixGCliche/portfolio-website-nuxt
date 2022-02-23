@@ -1,27 +1,31 @@
 <template>
-  <div class="grid">
-    <div class="cell cell-full">
-      <h1 class="display">Lorem Ipsum</h1>
-    </div>
-    <div class="cell">
-      <p
-        class="body"
-      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
-    </div>
-    <div class="cell">
-      <p
-        class="body"
-      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
-    </div>
-    <div class="cell">
-      <p
-        class="body"
-      >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+  <div>
+    <Navbar />
+    <div class="grid">
+      <div class="cell cell-full">
+        <h1 class="display">Lorem Ipsum</h1>
+      </div>
+      <div class="cell">
+        <p
+          class="body"
+        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+      </div>
+      <div class="cell">
+        <p
+          class="body"
+        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+      </div>
+      <div class="cell">
+        <p
+          class="body"
+        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Navbar from '../components/navigation/navbar.vue'
 </script>
 
 <style lang="scss" scoped>
