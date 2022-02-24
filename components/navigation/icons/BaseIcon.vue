@@ -3,10 +3,10 @@
     xmlns="http://www.w3.org/2000/svg"
     :height="size"
     :width="size"
-    :aria-labelledby="name"
+    :aria-labelledby="iconName"
     viewBox="0 0 24 24"
   >
-    <title :id="name" lang="en">{{ name }} icon</title>
+    <title :id="iconName" lang="en">{{ iconName }} icon</title>
     <g :fill="color">
       <slot />
     </g>

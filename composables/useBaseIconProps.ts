@@ -1,4 +1,9 @@
-import { BaseIconProps } from '~~/types'
+// import { BaseIconProps } from '~~/@types'
+interface BaseIconProps {
+  iconName: String
+  size?: Number
+  color?: String
+}
 
 export const useBaseIconProps = (props: BaseIconProps) => ({
   iconName: {

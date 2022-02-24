@@ -18,7 +18,7 @@
         class="body"
       >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
 
-      <MenuIcon :size="48" color="red" />
+      <MenuIcon class="t" :size="48" color="#ff0000" />
     </div>
   </div>
 </template>
