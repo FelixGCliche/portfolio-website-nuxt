@@ -7,7 +7,8 @@ export default defineNuxtConfig ({
 
   alias: {
     'style': resolve(__dirname, './assets/style'),
-    'fonts': resolve(__dirname, './assets/fonts')
+    'fonts': resolve(__dirname, './assets/fonts'),
+    'composables': resolve(__dirname, './composables')
   },
 
   buildModules: [
