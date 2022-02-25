@@ -46,8 +46,7 @@
 
   &:hover,
   &:active {
-    color: theme.$secondary;
-    cursor: pointer;
+    @include theme.pressed(theme.$secondary);
   }
 }
 </style>

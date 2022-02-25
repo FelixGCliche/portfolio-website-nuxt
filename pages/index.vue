@@ -17,6 +17,9 @@
       <p
         class="body"
       >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+
+      <PrimaryButton label="Button Label" />
+      <MenuIcon class="t" />
     </div>
   </div>
 </template>
@@ -27,13 +30,6 @@
 <style lang="scss" scoped>
 @use 'sass:map';
 
-// h1,
-// p {
-//   color: theme.$on-background;
-// }
-// .t {
-//   @include theme.typography-label("large");
-// }
 .grid {
   @include layout.layout-grid;
 }

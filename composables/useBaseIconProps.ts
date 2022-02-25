@@ -1,4 +1,3 @@
-// import { BaseIconProps } from '~~/@types'
 interface BaseIconProps {
   iconName: String
   size?: Number
@@ -17,6 +16,6 @@ export const useBaseIconProps = (props?: BaseIconProps) => ({
   },
   color: {
     type: String,
-    default: props.color
+    default: 'currentColor'
   }
 })

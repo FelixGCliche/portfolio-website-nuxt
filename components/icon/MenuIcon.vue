@@ -5,13 +5,13 @@
   </BaseIcon>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { useBaseIconProps } from 'composables/useBaseIconProps'
 
 
-export default defineComponent({
-  props: { ...useBaseIconProps({ iconName: 'icon' }) },
-  setup() {
-  }
+const props = defineProps({
+  ...useBaseIconProps({
+    iconName: 'icon'
+  })
 })
 </script>
