@@ -40,19 +40,19 @@ $max: breakpoint-max('large');
   @if $min == null and $max != null {
     // small
     @media (max-width: $max) {
-      :root {--device-size: #{$size};}
+      // :root {--device-size: #{$size};}
       @content;
     }
   } @else if $min != null and $max != null {
     // medium
     @media (min-width: $min) and (max-width: $max) {
-      :root {--device-size: #{$size};}
+      // :root {--device-size: #{$size};}
       @content;
     }
   } @else if $min != null and $max == null {
     // large
     @media (min-width: $min) {
-      :root {--device-size: #{$size};}
+      // :root {--device-size: #{$size};}
       @content;
     }
   } @else {

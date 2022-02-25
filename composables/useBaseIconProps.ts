@@ -5,7 +5,7 @@ interface BaseIconProps {
   color?: String
 }
 
-export const useBaseIconProps = (props: BaseIconProps) => ({
+export const useBaseIconProps = (props?: BaseIconProps) => ({
   iconName: {
     type: String,
     required: true,
