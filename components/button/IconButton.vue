@@ -1,7 +1,7 @@
 <template>
-  <component :is="buttonType" class="button-base" :href="url" @click="handleClick">
+  <component :is="buttonType" class="button-icon" :href="url" @click="handleClick">
     <slot />
-    <span class="button-label">{{ label }}</span>
+    <span v-if="label" class="button-label">{{ label }}</span>
   </component>
 </template>
 
@@ -17,32 +17,33 @@ const props = defineProps({
 
 const emit = defineEmits(['click'])
 
-const buttonType = useButtonType(props.url)
-
 function handleClick(event: Event) {
   console.log('click: ', event)
   emit('click', event)
 }
+
+const buttonType = useButtonType(props.url)
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
-
-.button-base {
+.button-icon {
   display: inline-flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-width: 4rem;
-  background: transparent;
+  background: none;
   padding: 0.25rem 1rem;
   color: theme.$on-background;
   border: none;
 
+  [dir="rtl"] & {
+    flex-flow: row-reverse nowrap;
+  }
   &:hover {
-    @include theme.hover(theme.$on-background) {
-      border-color: theme.$secondary;
-    }
+    @include theme.hover(theme.$primary);
   }
   &:active {
     @include theme.pressed(theme.$secondary);

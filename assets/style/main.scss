@@ -10,3 +10,11 @@ body,
   color: theme.$text-light;
 }
 
+a,
+button {
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+}
+
