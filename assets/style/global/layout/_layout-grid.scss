@@ -24,26 +24,6 @@ $default-gutter: (
 );
 $default-span: 4;
 
-// @mixin layout-grid($size) {
-//   display: grid;
-//   grid-gap: map.get($default-gutter, $size);
-//   grid-template-columns: repeat(
-//     map.get($columns, $size),
-//     map.get($column-width, $size)
-//   );
-//   justify-content: center;
-//   @content;
-// }
-
-// @mixin grid-cell($size, $span: $default-span) {
-//   display: flex;
-//   flex-flow: row wrap;
-//   align-items: center;
-//   justify-content: center;
-//   grid-column: span $span;
-//   @content;
-// }
-
 @mixin layout-grid {
   @each $size in map.keys($columns) {
     @include layout.media-query_($size) {    
