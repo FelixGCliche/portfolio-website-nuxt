@@ -22,12 +22,17 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    gap: 32px;
   }
 }
 .navlink {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query_($size) {
-      @include theme.typography-label($size);
+      @if not $size == 'small' {
+        @include theme.typography-label($size);
+      } @else {
+        @include theme.typography-headline($size);
+      }
     }
   }
   color: theme.$primary;
