@@ -18,8 +18,8 @@
         class="body"
       >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
 
-      <primary-button url="studiosdynamite.ca" label="Button Label" />
-      <icon-button url="studiosdynamite.ca">
+      <primary-button label="Button Label" />
+      <icon-button>
         <menu-icon :size="24" />
       </icon-button>
     </div>

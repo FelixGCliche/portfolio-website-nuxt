@@ -7,7 +7,6 @@ interface BaseIconProps {
 export const useBaseIconProps = (props?: BaseIconProps) => ({
   iconName: {
     type: String,
-    required: true,
     default: props.iconName
   },
   size: {

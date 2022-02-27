@@ -1,11 +1,20 @@
 <template>
   <nav class="sidebar-container">
-    <icon-button dir="rtl" label="menu" @click="toggle">
-      <menu-icon :size="24" />
-    </icon-button>
-    <div class="sidebar" v-if="opened" @click="toggle">
-      <NavigationLinks />
+    <div class="sidebar-header">
+      <icon-button dir="rtl" label="menu" @click="toggle">
+        <menu-icon :size="24" />
+      </icon-button>
     </div>
+    <transition name="slide-in">
+      <div v-if="opened" class="sidebar-content"> 
+        <div class="sidebar-header">
+          <icon-button dir="rtl" label="close" @click="toggle">
+            <menu-icon :size="24" />
+          </icon-button>
+        </div>
+        <NavigationLinks />
+      </div>
+    </transition>
   </nav>
 </template>
 
@@ -24,24 +33,31 @@ function toggle(event: Event) {
 
 <style lang="scss" scoped>
 
-$sidebar-height: 56px;
-
-.sidebar-container {
+.sidebar-header {
   display: flex;
-  flex-flow: row wrap;
   justify-content: flex-end;
   padding: 16px;
-  width: 100%;
 }
-.sidebar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.sidebar-content {
+  display: grid;
+  grid-template-rows: auto 1fr;
   position: absolute;
-  top: $sidebar-height;
+  top: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - $sidebar-height);
-  background: theme.$background;
+  height: 100%;
+  // height: calc(100% - $sidebar-height);
+  background: theme.$surface;
+  // background: red;
 }
+
+.slide-in-enter-active, .slide-in-leave-active {
+    // transition: opacity 300ms ease-out, 
+    transition: transform 300ms ease-out;
+  }
+  .slide-in-enter, .slide-in-leave-to {
+    transform: translateY(100%);
+    // opacity: 0;
+  }
+
 </style>

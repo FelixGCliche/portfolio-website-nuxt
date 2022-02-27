@@ -10,7 +10,6 @@ export const useBaseButtonProps = (props?: BaseButtonProps) => ({
   },
   label: {
     type: String,
-    required: true,
     default: props.label
   }
 })

@@ -1,11 +1,11 @@
 <template>
-  <div class="navlinks">
+  <nav class="navlinks">
     <NuxtLink class="navlink" to="/">Home</NuxtLink>
     <NuxtLink class="navlink" to="/skills">Skills</NuxtLink>
     <NuxtLink class="navlink" to="/experiences">Experiences</NuxtLink>
     <NuxtLink class="navlink" to="/portfolio">Portfolio</NuxtLink>
     <NuxtLink class="navlink" to="/contact">Contact</NuxtLink>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts" setup>
