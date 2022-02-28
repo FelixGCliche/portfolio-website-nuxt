@@ -10,7 +10,7 @@
 }
 
 @mixin pressed($color) {
-  &:hover {
+  &:active {
     cursor: pointer;
     color: $color;
 

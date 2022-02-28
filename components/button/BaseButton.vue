@@ -20,7 +20,6 @@ const emit = defineEmits(['click'])
 const buttonType = useButtonType(props.url)
 
 function handleClick(event: Event) {
-  console.log('click: ', event)
   emit('click', event)
 }
 </script>
@@ -50,7 +49,7 @@ function handleClick(event: Event) {
 }
 .button-label {
   @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query_($size) {
+    @include layout.media-query($size) {
       @include theme.typography-label($size);
     }
   }
