@@ -2,8 +2,8 @@
 @use 'sass:list';
 
 $breakpoints: (
-  'large': 1240px,
-  'medium': 905px,
+  'large': 840px,
+  'medium': 600px,
   'small': 0px,
 );
 
@@ -29,7 +29,7 @@ $max: breakpoint-max('large');
   @return if($prev, (breakpoint-min($prev) - 1px), null);
 }
 
-@mixin media-query_($size) {
+@mixin media-query($size) {
   @if not map.has-key($breakpoints, $size) {
     @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
   }
@@ -62,5 +62,5 @@ $max: breakpoint-max('large');
 }
 
 @each $size in map.keys($breakpoints) {
-  @include media-query_($size);
+  @include media-query($size);
 }

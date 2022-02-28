@@ -120,7 +120,7 @@ $line-height: (
 @mixin typography-display($size) {
   font-family: 'PP Neue Machina', sans-serif;
   font-size: get-font-size('display', $size);
-  font-size: get-line-height('display', $size);
+  line-height: get-line-height('display', $size);
   font-weight: 400;
   text-decoration: none;
 }
@@ -128,7 +128,7 @@ $line-height: (
 @mixin typography-headline($size) {
   font-family: 'PP Neue Machina', sans-serif;
   font-size: get-font-size('headline', $size);
-  font-size: get-line-height('headline', $size);
+  line-height: get-line-height('headline', $size);
   font-weight: 800;
   text-decoration: none;
 }
@@ -136,7 +136,7 @@ $line-height: (
 @mixin typography-title($size) {
   font-family: 'Lekton', sans-serif;
   font-size: get-font-size('title', $size);
-  font-size: get-line-height('title', $size);
+  line-height: get-line-height('title', $size);
   font-weight: 700;
   text-decoration: none;
 }
@@ -144,7 +144,7 @@ $line-height: (
 @mixin typography-label($size) {
   font-family: 'PP Neue Machina', sans-serif;
   font-size: get-font-size('label', $size);
-  font-size: get-line-height('label', $size);
+  line-height: get-line-height('label', $size);
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
@@ -153,7 +153,7 @@ $line-height: (
 @mixin typography-body($size) {
   font-family: 'Lekton', sans-serif;
   font-size: get-font-size('body', $size);
-  font-size: get-line-height('body', $size);
+  line-height: get-line-height('body', $size);
   font-weight: 400;
   text-decoration: none;
 }

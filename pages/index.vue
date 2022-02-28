@@ -17,24 +17,29 @@
       <p
         class="body"
       >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.</p>
+
+      <primary-button label="Button Label" />
+      <icon-button :label="device">
+        <menu-icon :size="24" />
+      </icon-button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const device = ref('large')
+
+onBeforeMount(() => {
+  device.value = getComputedStyle(document.documentElement).getPropertyValue('--device-size')
+})
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
 
-h1,
-p {
-  color: theme.$on-background;
-}
 .grid {
   @include layout.layout-grid;
 }
-
 .cell {
   @include layout.responsive-cell {
     &-full {
@@ -42,17 +47,16 @@ p {
     }
   }
 }
-
 .display {
   @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query_($size) {
+    @include layout.media-query($size) {
       @include theme.typography-display($size);
     }
   }
 }
 .body {
   @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query_($size) {
+    @include layout.media-query($size) {
       @include theme.typography-body($size);
     }
   }
