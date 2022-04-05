@@ -1,7 +1,7 @@
-import {defineNuxtConfig} from '@nuxt/bridge'
-import { resolve} from 'path'
+import { resolve } from 'path'
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default defineNuxtConfig ({
+export default defineNuxtConfig({
   target: 'static',
 
   head: {
@@ -21,9 +21,9 @@ export default defineNuxtConfig ({
   },
 
   alias: {
-    'style': resolve(__dirname, './assets/style'),
-    'fonts': resolve(__dirname, './assets/fonts'),
-    'composables': resolve(__dirname, './composables')
+    style: resolve(__dirname, './assets/style'),
+    fonts: resolve(__dirname, './assets/fonts'),
+    composables: resolve(__dirname, './composables')
   },
 
   buildModules: [
@@ -35,8 +35,8 @@ export default defineNuxtConfig ({
   components: [
     {
       path: '@/components',
-      pathPrefix: false,
-    },
+      pathPrefix: false
+    }
   ],
 
   css: [
@@ -45,7 +45,7 @@ export default defineNuxtConfig ({
   ],
   styleResources: {
     scss: [
-      '@/assets/style/global/*.scss',
+      '@/assets/style/global/*.scss'
     ]
   },
 
@@ -53,6 +53,6 @@ export default defineNuxtConfig ({
     url: process.env.STRAPI_URL || 'http:localhost:1337',
     prefix: '/api',
     version: 'v4',
-    cookie: { },
-  }  
+    cookie: { }
+  }
 })

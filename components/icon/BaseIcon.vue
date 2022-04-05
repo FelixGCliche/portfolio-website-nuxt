@@ -16,10 +16,9 @@
 <script lang="ts">
 import { useBaseIconProps } from 'composables/useBaseIconProps'
 
-
 export default defineComponent({
   props: { ...useBaseIconProps({ iconName: 'icon' }) },
-  setup() {
+  setup () {
   }
 })
 </script>

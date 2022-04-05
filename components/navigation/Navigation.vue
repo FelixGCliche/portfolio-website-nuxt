@@ -1,15 +1,20 @@
 <template>
   <nav class="navbar-container">
     <div class="navbar-header">
-      <IconButton v-if="device == 'small'" dir="rtl" label="menu" @click="open">
+      <IconButton
+        v-if="device == 'small'"
+        dir="rtl"
+        label="menu"
+        @click="toggleOn"
+      >
         <MenuIcon :size="24" />
       </IconButton>
       <NavigationLinks v-else />
     </div>
     <Transition name="slide-in">
-      <div class="navbar-content" v-if="opened" @click.prevent="close">
+      <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
         <div class="navbar-header">
-          <IconButton dir="rtl" label="menu" @click.prevent="close">
+          <IconButton dir="rtl" label="menu" @click.prevent="toggleOff">
             <ClearIcon :size="24" />
           </IconButton>
         </div>
@@ -20,31 +25,36 @@
 </template>
 
 <script lang="ts" setup>
+import { useToggle } from "composables/useToggle";
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
+const device = ref("large");
 
 onBeforeMount(() => {
-  device.value = getComputedStyle(document.documentElement).getPropertyValue('--device-size')
-})
+  device.value = getComputedStyle(document.documentElement).getPropertyValue(
+    "--device-size"
+  );
+});
 
-const close = (event: Event) => {
-  opened.value = false
-  emit('click', event)
-  console.log('closed:', event)
-}
+const { toggled, toggleOn, toggleOff } = useToggle();
 
-const open = (event: Event) => {
-  opened.value = true
-  emit('click', event)
-  console.log('opened:', event)
-}
+// const close = (event: Event) => {
+//   opened.value = false
+//   emit('click', event)
+//   console.log('closed:', event)
+// }
 
-const opened = ref(false)
-const device = ref('large')
+// const open = (event: Event) => {
+//   opened.value = true
+//   emit('click', event)
+//   console.log('opened:', event)
+// }
+
+// const opened = ref(false)
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:map';
+@use "sass:map";
 
 .navbar-header {
   display: flex;

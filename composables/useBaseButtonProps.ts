@@ -15,7 +15,7 @@ export const useBaseButtonProps = (props?: BaseButtonProps) => ({
 })
 
 export const useButtonType = (url: string) => {
-  if(!url) {
+  if (!url) {
     return 'button'
   }
 

@@ -8,7 +8,6 @@
 <script lang="ts" setup>
 import { useBaseButtonProps, useButtonType } from 'composables/useBaseButtonProps'
 
-
 const props = defineProps({
   ...useBaseButtonProps({
     label: 'button'
@@ -17,7 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(['click'])
 
-function handleClick(event: Event) {
+function handleClick (event: Event) {
   emit('click', event)
 }
 
