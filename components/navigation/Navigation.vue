@@ -7,7 +7,7 @@
       <NavigationLinks v-else />
     </div>
     <Transition name="slide-in">
-      <div class="navbar-content" v-if="opened" @click.prevent="close">
+      <div v-if="toggled" class="navbar-content" @click.prevent="close">
         <div class="navbar-header">
           <IconButton dir="rtl" label="menu" @click.prevent="close">
             <ClearIcon :size="24" />
@@ -20,31 +20,29 @@
 </template>
 
 <script lang="ts" setup>
-
-const emit = defineEmits(['click'])
+const emit = defineEmits(["click"]);
+const { toggled, toggleOn, toggleOff } = useToggle();
 
 onBeforeMount(() => {
-  device.value = getComputedStyle(document.documentElement).getPropertyValue('--device-size')
-})
+  device.value = getComputedStyle(document.documentElement).getPropertyValue(
+    "--device-size"
+  );
+});
 
 const close = (event: Event) => {
-  opened.value = false
-  emit('click', event)
-  console.log('closed:', event)
-}
+  emit("click", event);
+  toggleOff();
+};
 
 const open = (event: Event) => {
-  opened.value = true
-  emit('click', event)
-  console.log('opened:', event)
-}
-
-const opened = ref(false)
-const device = ref('large')
+  emit("click", event);
+  toggleOn();
+};
+const device = ref("large");
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:map';
+@use "sass:map";
 
 .navbar-header {
   display: flex;
