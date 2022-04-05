@@ -3,15 +3,15 @@ import { ref } from "vue";
 export const useToggle = () => {
   const toggled = ref(false);
 
-  const toggle = (event: Event) => {
+  const toggle = () => {
     toggled.value = !toggled.value;
   };
 
-  const toggleOn = (event: Event) => {
+  const toggleOn = () => {
     toggled.value = true;
   };
 
-  const toggleOff = (event: Event) => {
+  const toggleOff = () => {
     toggled.value = false;
   };
 

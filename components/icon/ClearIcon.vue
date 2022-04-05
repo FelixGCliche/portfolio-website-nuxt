@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseIconProps } from 'composables/useBaseIconProps'
+import { useBaseIconProps } from "types/BaseIconProps";
 
 defineProps({
   ...useBaseIconProps({
-    iconName: 'icon'
-  })
-})
+    iconName: "icon",
+  }),
+});
 </script>

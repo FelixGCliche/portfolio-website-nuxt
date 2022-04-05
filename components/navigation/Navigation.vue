@@ -1,20 +1,15 @@
 <template>
   <nav class="navbar-container">
     <div class="navbar-header">
-      <IconButton
-        v-if="device == 'small'"
-        dir="rtl"
-        label="menu"
-        @click="toggleOn"
-      >
+      <IconButton v-if="device == 'small'" dir="rtl" label="menu" @click="open">
         <MenuIcon :size="24" />
       </IconButton>
       <NavigationLinks v-else />
     </div>
     <Transition name="slide-in">
-      <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
+      <div v-if="toggled" class="navbar-content" @click.prevent="close">
         <div class="navbar-header">
-          <IconButton dir="rtl" label="menu" @click.prevent="toggleOff">
+          <IconButton dir="rtl" label="menu" @click.prevent="close">
             <ClearIcon :size="24" />
           </IconButton>
         </div>
@@ -25,10 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useToggle } from "composables/useToggle";
-
 const emit = defineEmits(["click"]);
-const device = ref("large");
+const { toggled, toggleOn, toggleOff } = useToggle();
 
 onBeforeMount(() => {
   device.value = getComputedStyle(document.documentElement).getPropertyValue(
@@ -36,21 +29,16 @@ onBeforeMount(() => {
   );
 });
 
-const { toggled, toggleOn, toggleOff } = useToggle();
+const close = (event: Event) => {
+  emit("click", event);
+  toggleOff();
+};
 
-// const close = (event: Event) => {
-//   opened.value = false
-//   emit('click', event)
-//   console.log('closed:', event)
-// }
-
-// const open = (event: Event) => {
-//   opened.value = true
-//   emit('click', event)
-//   console.log('opened:', event)
-// }
-
-// const opened = ref(false)
+const open = (event: Event) => {
+  emit("click", event);
+  toggleOn();
+};
+const device = ref("large");
 </script>
 
 <style lang="scss" scoped>
