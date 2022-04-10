@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi generate",
-    "lint": "eslint --ext .ts,.tsx,.js,.vue .",
-    "lint:fix": "yarn lint --fix"
+    "lint": "eslint --ext .ts,.tsx,.js,.vue ."
   },
   "dependencies": {
     "core-js": "^3.19.3",
