@@ -6,7 +6,12 @@
     :aria-labelledby="iconName"
     viewBox="0 0 24 24"
   >
-    <title :id="iconName" lang="en">{{ iconName }} icon</title>
+    <title
+      :id="iconName"
+      lang="en"
+    >
+      {{ iconName }} icon
+    </title>
     <g :fill="color">
       <slot />
     </g>
@@ -14,10 +19,10 @@
 </template>
 
 <script lang="ts">
-import { useBaseIconProps } from "types/BaseIconProps";
+import { useBaseIconProps } from 'types/BaseIconProps'
 
 export default defineComponent({
-  props: { ...useBaseIconProps({ iconName: "icon" }) },
-  setup() {},
-});
+  props: { ...useBaseIconProps({ iconName: 'icon' }) },
+  setup() {}
+})
 </script>

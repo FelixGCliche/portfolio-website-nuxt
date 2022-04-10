@@ -1,6 +1,5 @@
 @use 'sass:map';
 
-
 @mixin hover($color) {
   &:hover {
     cursor: pointer;

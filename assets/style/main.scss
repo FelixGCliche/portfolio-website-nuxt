@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 
-html, 
-body, 
-#__nuxt, 
+html,
+body,
+#__nuxt,
 #__layout {
   height: 100%;
   background-color: theme.$background;
@@ -20,4 +20,3 @@ button {
     outline: none;
   }
 }
-

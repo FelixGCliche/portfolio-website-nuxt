@@ -10,26 +10,32 @@
   </component>
 </template>
 
-<script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from "types/BaseButtonProps";
+<script
+  lang="ts"
+  setup
+>
+import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
 
 const props = defineProps({
   ...useBaseButtonProps({
-    label: "button",
-  }),
-});
+    label: 'button'
+  })
+})
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
-const buttonType = useButtonType(props.url);
+const buttonType = useButtonType(props.url)
 
 function handleClick(event: Event) {
-  emit("click", event);
+  emit('click', event)
 }
 </script>
 
-<style lang="scss" scoped>
-@use "sass:map";
+<style
+  lang="scss"
+  scoped
+>
+@use 'sass:map';
 
 .button-base {
   display: inline-flex;
