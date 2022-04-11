@@ -1,23 +1,23 @@
 export interface BaseButtonProps {
-  url?: string
-  label: string
+  url?: string;
+  label: string;
 }
 
 export const useBaseButtonProps = (props?: BaseButtonProps) => ({
   url: {
     type: String,
-    default: props.url
+    default: props.url,
   },
   label: {
     type: String,
-    default: props.label
-  }
-})
+    default: props.label,
+  },
+});
 
 export const useButtonType = (url: string) => {
   if (!url) {
-    return 'button'
+    return "button";
   }
 
-  return 'a'
-}
+  return "a";
+};

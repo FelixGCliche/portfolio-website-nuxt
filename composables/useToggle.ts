@@ -1,24 +1,24 @@
-import { ref } from 'vue'
+import { ref } from "vue";
 
 export const useToggle = () => {
-  const toggled = ref(false)
+  const toggled = ref(false);
 
   const toggle = () => {
-    toggled.value = !toggled.value
-  }
+    toggled.value = !toggled.value;
+  };
 
   const toggleOn = () => {
-    toggled.value = true
-  }
+    toggled.value = true;
+  };
 
   const toggleOff = () => {
-    toggled.value = false
-  }
+    toggled.value = false;
+  };
 
   return {
     toggled,
     toggle,
     toggleOn,
-    toggleOff
-  }
-}
+    toggleOff,
+  };
+};

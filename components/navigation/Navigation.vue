@@ -1,30 +1,17 @@
 <template>
   <nav class="navbar-container">
     <div class="navbar-header">
-      <IconButton
-        v-if="device == 'small'"
-        dir="rtl"
-        label="menu"
-        @click="open"
-      >
+      <IconButton v-if="device == 'small'" dir="rtl" label="menu" @click="open">
         <MenuIcon :size="24" />
       </IconButton>
       <NavigationLinks v-else />
     </div>
     <Transition name="slide-in">
-      <div
-        v-if="toggled"
-        class="navbar-content"
-        @click.prevent="close"
-      >
+      <div v-if="toggled" class="navbar-content" @click.prevent="close">
         <div class="navbar-header">
-          <IconButton
-            dir="rtl"
-            label="menu"
-            @click.prevent="close"
-          >
+          <ButtonIcon dir="rtl" label="menu" @click.prevent="close">
             <ClearIcon :size="24" />
-          </IconButton>
+          </ButtonIcon>
         </div>
         <NavigationLinks />
       </div>
@@ -32,36 +19,30 @@
   </nav>
 </template>
 
-<script
-  lang="ts"
-  setup
->
-const emit = defineEmits(['click'])
-const { toggled, toggleOn, toggleOff } = useToggle()
+<script lang="ts" setup>
+const emit = defineEmits(["click"]);
+const { toggled, toggleOn, toggleOff } = useToggle();
 
 onBeforeMount(() => {
   device.value = getComputedStyle(document.documentElement).getPropertyValue(
-    '--device-size'
-  )
-})
+    "--device-size"
+  );
+});
 
 const close = (event: Event) => {
-  emit('click', event)
-  toggleOff()
-}
+  emit("click", event);
+  toggleOff();
+};
 
 const open = (event: Event) => {
-  emit('click', event)
-  toggleOn()
-}
-const device = ref('large')
+  emit("click", event);
+  toggleOn();
+};
+const device = ref("large");
 </script>
 
-<style
-  lang="scss"
-  scoped
->
-@use 'sass:map';
+<style lang="scss" scoped>
+@use "sass:map";
 
 .navbar-header {
   display: flex;
@@ -69,7 +50,7 @@ const device = ref('large')
   align-items: center;
   padding: 16px;
 
-  @include layout.media-query('large') {
+  @include layout.media-query("large") {
     padding: 16px 156px;
   }
 }
