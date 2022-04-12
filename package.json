@@ -8,7 +8,7 @@
     "start": "node .output/server/index.mjs",
     "lint": "eslint --ext .ts,.tsx,.js,.vue .",
     "lint:fix": "yarn eslint --fix",
-    "format": "prettier --config .eslintrc.js --write ."
+    "format": "prettier --config .prettierrc --write ."
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "latest",
@@ -16,6 +16,7 @@
     "@nuxtjs/style-resources": "^1.2.1",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.6.2",
     "sass": "^1.49.7",
     "sass-loader": "^10.2.1",

@@ -11,25 +11,25 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from "types/BaseButtonProps";
+import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
 
 const props = defineProps({
   ...useBaseButtonProps({
-    label: "button",
-  }),
-});
+    label: 'button'
+  })
+})
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 function handleClick(event: Event) {
-  emit("click", event);
+  emit('click', event)
 }
 
-const buttonType = useButtonType(props.url);
+const buttonType = useButtonType(props.url)
 </script>
 
 <style lang="scss" scoped>
-@use "sass:map";
+@use 'sass:map';
 .button-icon {
   display: inline-flex;
   flex-flow: row nowrap;
@@ -42,7 +42,7 @@ const buttonType = useButtonType(props.url);
   color: theme.$on-background;
   border: none;
 
-  [dir="rtl"] & {
+  [dir='rtl'] & {
     flex-flow: row-reverse nowrap;
   }
   &:hover {
