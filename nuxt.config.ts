@@ -3,13 +3,6 @@ import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
   target: 'static',
-  components: [
-    {
-      global: true,
-      path: '@/components',
-      pathPrefix: false
-    }
-  ],
 
   alias: {
     style: resolve(__dirname, './assets/style'),

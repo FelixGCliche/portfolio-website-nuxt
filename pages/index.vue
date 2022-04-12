@@ -21,10 +21,10 @@
         condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
 
-      <primary-button label="Button Label" />
-      <icon-button :label="device">
-        <menu-icon :size="24" />
-      </icon-button>
+      <ButtonPrimary label="Button Label" />
+      <ButtonIcon :label="device">
+        <IconMenu :size="24" />
+      </ButtonIcon>
     </div>
   </div>
 </template>
