@@ -30,17 +30,17 @@
 </template>
 
 <script lang="ts" setup>
-const device = ref("large");
+const device = ref('large')
 
 onBeforeMount(() => {
   device.value = getComputedStyle(document.documentElement).getPropertyValue(
-    "--device-size"
-  );
-});
+    '--device-size'
+  )
+})
 </script>
 
 <style lang="scss" scoped>
-@use "sass:map";
+@use 'sass:map';
 
 .grid {
   @include layout.layout-grid;

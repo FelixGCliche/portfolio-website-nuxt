@@ -11,14 +11,14 @@
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-@use "sass:map";
+@use 'sass:map';
 
 .navlinks {
   display: flex;
   flex-flow: row nowrap;
   gap: 24px;
 
-  @include layout.media-query("small") {
+  @include layout.media-query('small') {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@
 .navlink {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
-      @if $size != "small" {
+      @if $size != 'small' {
         @include theme.typography-label($size);
       } @else {
         @include theme.typography-headline($size);

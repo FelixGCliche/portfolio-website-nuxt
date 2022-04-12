@@ -1,14 +1,14 @@
-@use "sass:map";
-@use "sass:list";
+@use 'sass:map';
+@use 'sass:list';
 
 $breakpoints: (
-  "large": 840px,
-  "medium": 600px,
-  "small": 0px,
+  'large': 840px,
+  'medium': 600px,
+  'small': 0px
 );
 
-$min: breakpoint-min("large");
-$max: breakpoint-max("large");
+$min: breakpoint-min('large');
+$max: breakpoint-max('large');
 
 @function breakpoint-min($size) {
   @if not map.has-key($breakpoints, $size) {

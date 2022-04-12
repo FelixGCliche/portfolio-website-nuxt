@@ -20,29 +20,29 @@
 </template>
 
 <script lang="ts" setup>
-const emit = defineEmits(["click"]);
-const { toggled, toggleOn, toggleOff } = useToggle();
+const emit = defineEmits(['click'])
+const { toggled, toggleOn, toggleOff } = useToggle()
 
 onBeforeMount(() => {
   device.value = getComputedStyle(document.documentElement).getPropertyValue(
-    "--device-size"
-  );
-});
+    '--device-size'
+  )
+})
 
 const close = (event: Event) => {
-  emit("click", event);
-  toggleOff();
-};
+  emit('click', event)
+  toggleOff()
+}
 
 const open = (event: Event) => {
-  emit("click", event);
-  toggleOn();
-};
-const device = ref("large");
+  emit('click', event)
+  toggleOn()
+}
+const device = ref('large')
 </script>
 
 <style lang="scss" scoped>
-@use "sass:map";
+@use 'sass:map';
 
 .navbar-header {
   display: flex;
@@ -50,7 +50,7 @@ const device = ref("large");
   align-items: center;
   padding: 16px;
 
-  @include layout.media-query("large") {
+  @include layout.media-query('large') {
     padding: 16px 156px;
   }
 }
