@@ -9,9 +9,9 @@
     <Transition name="slide-in">
       <div v-if="toggled" class="navbar-content" @click.prevent="close">
         <div class="navbar-header">
-          <IconButton dir="rtl" label="menu" @click.prevent="close">
+          <ButtonIcon dir="rtl" label="menu" @click.prevent="close">
             <ClearIcon :size="24" />
-          </IconButton>
+          </ButtonIcon>
         </div>
         <NavigationLinks />
       </div>

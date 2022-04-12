@@ -1,14 +1,14 @@
-@use 'sass:map';
-@use 'sass:list';
+@use "sass:map";
+@use "sass:list";
 
 $breakpoints: (
-  'large': 840px,
-  'medium': 600px,
-  'small': 0px,
+  "large": 840px,
+  "medium": 600px,
+  "small": 0px,
 );
 
-$min: breakpoint-min('large');
-$max: breakpoint-max('large');
+$min: breakpoint-min("large");
+$max: breakpoint-max("large");
 
 @function breakpoint-min($size) {
   @if not map.has-key($breakpoints, $size) {
@@ -40,19 +40,25 @@ $max: breakpoint-max('large');
   @if $min == null and $max != null {
     // small
     @media (max-width: $max) {
-      :root {--device-size: #{$size};}
+      :root {
+        --device-size: #{$size};
+      }
       @content;
     }
   } @else if $min != null and $max != null {
     // medium
     @media (min-width: $min) and (max-width: $max) {
-      :root {--device-size: #{$size};}
+      :root {
+        --device-size: #{$size};
+      }
       @content;
     }
   } @else if $min != null and $max == null {
     // large
     @media (min-width: $min) {
-      :root {--device-size: #{$size};}
+      :root {
+        --device-size: #{$size};
+      }
       @content;
     }
   } @else {

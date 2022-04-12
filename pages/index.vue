@@ -1,29 +1,24 @@
 <template>
   <div class="grid">
     <div class="cell cell-full">
-      <h1 class="display">
-        Lorem Ipsum
-      </h1>
+      <h1 class="display">Lorem Ipsum</h1>
     </div>
     <div class="cell">
-      <p
-        class="body"
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.
+      <p class="body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
+        condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
     </div>
     <div class="cell">
-      <p
-        class="body"
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.
+      <p class="body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
+        condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
     </div>
     <div class="cell">
-      <p
-        class="body"
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat condimentum congue nulla nulla netus amet pulvinar faucibus.
+      <p class="body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
+        condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
 
       <primary-button label="Button Label" />
@@ -35,15 +30,17 @@
 </template>
 
 <script lang="ts" setup>
-const device = ref('large')
+const device = ref("large");
 
 onBeforeMount(() => {
-  device.value = getComputedStyle(document.documentElement).getPropertyValue('--device-size')
-})
+  device.value = getComputedStyle(document.documentElement).getPropertyValue(
+    "--device-size"
+  );
+});
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:map';
+@use "sass:map";
 
 .grid {
   @include layout.layout-grid;
