@@ -1,10 +1,16 @@
 <template>
   <nav class="navbar-container">
     <div class="navbar-header">
-      <IconButton v-if="device == 'small'" dir="rtl" label="menu" @click="open">
-        <MenuIcon :size="24" />
-      </IconButton>
-      <NavigationLinks v-else />
+      <NavigationLinks class="navbar-links" />
+
+      <ButtonIcon
+        class="navbar-button"
+        label="menu"
+        dir="rtl"
+        @click.prevent="open"
+      >
+        <IconMenu :size="24" />
+      </ButtonIcon>
     </div>
     <Transition name="slide-in">
       <div v-if="toggled" class="navbar-content" @click.prevent="close">
@@ -23,12 +29,6 @@
 const emit = defineEmits(['click'])
 const { toggled, toggleOn, toggleOff } = useToggle()
 
-onBeforeMount(() => {
-  device.value = getComputedStyle(document.documentElement).getPropertyValue(
-    '--device-size'
-  )
-})
-
 const close = (event: Event) => {
   emit('click', event)
   toggleOff()
@@ -38,7 +38,6 @@ const open = (event: Event) => {
   emit('click', event)
   toggleOn()
 }
-const device = ref('large')
 </script>
 
 <style lang="scss" scoped>
@@ -65,11 +64,24 @@ const device = ref('large')
   background: theme.$surface;
 }
 
+.navbar-button {
+  display: none;
+}
+
+@include layout.media-query('small') {
+  .navbar-button {
+    display: flex;
+  }
+  .navbar-links {
+    display: none;
+  }
+}
+
 .slide-in-enter-active,
 .slide-in-leave-active {
   transition: opacity 100ms ease-out, transform 200ms ease-out;
 }
-.slide-in-enter,
+.slide-in-enter-from,
 .slide-in-leave-to {
   transform: translateY(100%);
   opacity: 0;

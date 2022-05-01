@@ -6,7 +6,7 @@
     @click="handleClick"
   >
     <slot />
-    <span class="button-label">{{ label }}</span>
+    <span class="label">{{ label }}</span>
   </component>
 </template>
 

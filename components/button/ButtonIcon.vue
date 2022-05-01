@@ -6,7 +6,7 @@
     @click="handleClick"
   >
     <slot />
-    <span v-if="label" class="button-label">{{ label }}</span>
+    <span v-if="label" class="label">{{ label }}</span>
   </component>
 </template>
 
@@ -50,13 +50,6 @@ const buttonType = useButtonType(props.url)
   }
   &:active {
     @include theme.pressed(theme.$secondary);
-  }
-}
-.button-label {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-label($size);
-    }
   }
 }
 </style>

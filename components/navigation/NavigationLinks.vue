@@ -37,7 +37,9 @@
   }
   color: theme.$primary;
 
-  &:hover,
+  &:hover {
+    @include theme.hover(theme.$secondary);
+  }
   &:active {
     @include theme.pressed(theme.$secondary);
   }

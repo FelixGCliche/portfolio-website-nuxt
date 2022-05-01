@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
     "lint": "eslint --ext .ts,.tsx,.js,.vue .",
     "lint:fix": "yarn eslint --fix",
@@ -17,12 +19,11 @@
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "nuxt": "3.0.0-rc.1",
+    "nuxt3": "^3.0.0-rc.1-27520989.22954d0",
     "prettier": "^2.6.2",
     "sass": "^1.49.7",
     "sass-loader": "^10.2.1",
     "typescript": "~4.2"
-  },
-  "dependencies": {
-    "nuxt3": "^3.0.0-27491748.3186841"
   }
 }
