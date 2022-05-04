@@ -20,24 +20,11 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
         condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
-
-      <ButtonPrimary label="Button Label" />
-      <ButtonIcon :label="device">
-        <IconMenu :size="24" />
-      </ButtonIcon>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup>
-const device = ref('large')
-
-onBeforeMount(() => {
-  device.value = getComputedStyle(document.documentElement).getPropertyValue(
-    '--device-size'
-  )
-})
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 @use 'sass:map';

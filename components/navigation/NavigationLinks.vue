@@ -1,15 +1,24 @@
 <template>
   <nav class="navlinks">
-    <NuxtLink class="navlink" to="/"> Home </NuxtLink>
-    <NuxtLink class="navlink" to="/skills"> Skills </NuxtLink>
-    <NuxtLink class="navlink" to="/experiences"> Experiences </NuxtLink>
-    <NuxtLink class="navlink" to="/portfolio"> Portfolio </NuxtLink>
-    <NuxtLink class="navlink" to="/contact"> Contact </NuxtLink>
+    <NuxtLink
+      v-for="link in links.data"
+      :key="link.id"
+      class="navlink"
+      :to="link.attributes.url"
+    >
+      {{ link.attributes.label }}
+    </NuxtLink>
   </nav>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const locale = useLocale()
+const config = useRuntimeConfig()
 
+const { data: links } = await useFetch(
+  `${config.strapiURL}/navigation-links?locale=${locale.value}`
+)
+</script>
 <style lang="scss" scoped>
 @use 'sass:map';
 
