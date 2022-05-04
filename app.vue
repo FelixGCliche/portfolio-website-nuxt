@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Title>Félix Gagné Cliche {{ locale }}</Title>
+    <Title>Félix Gagné Cliche</Title>
 
     <NuxtLayout>
       <NuxtPage />
@@ -9,8 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-const locale = useLocale()
-
 useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8'
