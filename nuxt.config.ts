@@ -3,11 +3,17 @@ import { defineNuxtConfig } from 'nuxt3'
 
 export default defineNuxtConfig({
   target: 'static',
+  ssr: false,
 
   alias: {
     style: resolve(__dirname, './assets/style'),
     fonts: resolve(__dirname, './assets/fonts'),
     types: resolve(__dirname, './types')
+  },
+
+  filenames: {
+    chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].[contenthash].js'),
+    font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
   },
 
   publicRuntimeConfig: {

@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
     "start": "node .output/server/index.mjs",
     "lint": "eslint --ext .ts,.tsx,.js,.vue .",
     "lint:fix": "yarn eslint --fix",
