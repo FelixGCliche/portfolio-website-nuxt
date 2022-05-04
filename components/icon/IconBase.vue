@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts">
-import { useBaseIconProps } from "types/BaseIconProps";
+import { useBaseIconProps } from 'types/BaseIconProps'
 
 export default defineComponent({
-  props: { ...useBaseIconProps({ iconName: "icon" }) },
-  setup() {},
-});
+  props: { ...useBaseIconProps({ iconName: 'icon' }) },
+  setup() {}
+})
 </script>

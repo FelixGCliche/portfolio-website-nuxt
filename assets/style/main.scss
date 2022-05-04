@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 * {
   box-sizing: border-box;
@@ -18,5 +18,41 @@ button {
   text-decoration: none;
   &:focus {
     outline: none;
+  }
+}
+
+.display {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-display($size);
+    }
+  }
+}
+.headline {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-headline($size);
+    }
+  }
+}
+.title {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-title($size);
+    }
+  }
+}
+.label {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-label($size);
+    }
+  }
+}
+.body {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-body($size);
+    }
   }
 }

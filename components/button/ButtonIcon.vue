@@ -6,30 +6,30 @@
     @click="handleClick"
   >
     <slot />
-    <span v-if="label" class="button-label">{{ label }}</span>
+    <span v-if="label" class="label">{{ label }}</span>
   </component>
 </template>
 
 <script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from "types/BaseButtonProps";
+import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
 
 const props = defineProps({
   ...useBaseButtonProps({
-    label: "button",
-  }),
-});
+    label: 'button'
+  })
+})
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 function handleClick(event: Event) {
-  emit("click", event);
+  emit('click', event)
 }
 
-const buttonType = useButtonType(props.url);
+const buttonType = useButtonType(props.url)
 </script>
 
 <style lang="scss" scoped>
-@use "sass:map";
+@use 'sass:map';
 .button-icon {
   display: inline-flex;
   flex-flow: row nowrap;
@@ -42,7 +42,7 @@ const buttonType = useButtonType(props.url);
   color: theme.$on-background;
   border: none;
 
-  [dir="rtl"] & {
+  [dir='rtl'] & {
     flex-flow: row-reverse nowrap;
   }
   &:hover {
@@ -50,13 +50,6 @@ const buttonType = useButtonType(props.url);
   }
   &:active {
     @include theme.pressed(theme.$secondary);
-  }
-}
-.button-label {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-label($size);
-    }
   }
 }
 </style>

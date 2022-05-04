@@ -1,25 +1,25 @@
-@use "sass:map";
-@use "_breakpoints" as layout;
+@use 'sass:map';
+@use '_breakpoints' as layout;
 
 $columns: (
-  "large": 12,
-  "medium": 8,
-  "small": 4,
+  'large': 12,
+  'medium': 8,
+  'small': 4
 );
 $column-width: (
-  "large": 72px,
-  "medium": 72px,
-  "small": 72px,
+  'large': 72px,
+  'medium': 72px,
+  'small': 72px
 );
 $default-margin: (
-  "large": 24px,
-  "medium": 24px,
-  "small": 16px,
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px
 );
 $default-gutter: (
-  "large": 24px,
-  "medium": 24px,
-  "small": 16px,
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px
 );
 $default-span: 4;
 
