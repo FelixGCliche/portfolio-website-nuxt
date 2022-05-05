@@ -37,24 +37,21 @@
 
 @font-face {
   font-family: 'PP Neue Machina';
-  src: url('~assetsd/fonts/PPNeueMachina/PPNeueMachina-Light.otf')
-    format('opentype');
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Light.otf') format('opentype');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'PP Neue Machina';
-  src: url('../assets/fonts/PPNeueMachina/PPNeueMachina-Regular.otf')
-    format('opentype');
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Regular.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'PP Neue Machina';
-  src: url('../assets/fonts/PPNeueMachina/PPNeueMachina-Ultrabold.otf')
-    format('opentype');
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Ultrabold.otf') format('opentype');
   font-weight: 800;
   font-display: swap;
   font-style: normal;
@@ -62,14 +59,14 @@
 
 @font-face {
   font-family: 'Lekton';
-  src: url('../assets/fonts/Lekton/Lekton-Regular.ttf') format('truetype');
+  src: url('fonts/Lekton/Lekton-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: 'Lekton';
-  src: url('../assets/fonts/Lekton/Lekton-Bold.ttf') format('truetype');
+  src: url('fonts/Lekton/Lekton-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
   font-style: normal;
@@ -120,7 +117,7 @@ $line-height: (
 );
 
 @mixin typography-display($size) {
-  font-family: 'PP Neue Machina', sans-serif;
+  font-family: PP Neue Machina, sans-serif;
   font-size: get-font-size('display', $size);
   line-height: get-line-height('display', $size);
   font-weight: 400;
@@ -128,7 +125,7 @@ $line-height: (
 }
 
 @mixin typography-headline($size) {
-  font-family: 'PP Neue Machina', sans-serif;
+  font-family: PP Neue Machina, sans-serif;
   font-size: get-font-size('headline', $size);
   line-height: get-line-height('headline', $size);
   font-weight: 800;
@@ -136,7 +133,7 @@ $line-height: (
 }
 
 @mixin typography-title($size) {
-  font-family: 'Lekton', sans-serif;
+  font-family: Lekton, sans-serif;
   font-size: get-font-size('title', $size);
   line-height: get-line-height('title', $size);
   font-weight: 700;
@@ -144,7 +141,7 @@ $line-height: (
 }
 
 @mixin typography-label($size) {
-  font-family: 'PP Neue Machina', sans-serif;
+  font-family: PP Neue Machina, sans-serif;
   font-size: get-font-size('label', $size);
   line-height: get-line-height('label', $size);
   font-weight: 800;
@@ -153,7 +150,7 @@ $line-height: (
 }
 
 @mixin typography-body($size) {
-  font-family: 'Lekton', sans-serif;
+  font-family: Lekton, sans-serif;
   font-size: get-font-size('body', $size);
   line-height: get-line-height('body', $size);
   font-weight: 400;

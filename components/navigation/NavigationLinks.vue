@@ -15,7 +15,7 @@
 const locale = useLocale()
 const config = useRuntimeConfig()
 
-const { data: links } = await useFetch(
+const { data: links } = await useLazyFetch(
   `${config.strapiURL}/navigation-links?locale=${locale.value}`
 )
 </script>

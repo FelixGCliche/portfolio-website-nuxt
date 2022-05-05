@@ -16,7 +16,7 @@
       <div v-if="toggled" class="navbar-content" @click.prevent="close">
         <div class="navbar-header">
           <ButtonIcon dir="rtl" label="menu" @click.prevent="close">
-            <ClearIcon :size="24" />
+            <IconClear :size="24" />
           </ButtonIcon>
         </div>
         <NavigationLinks />

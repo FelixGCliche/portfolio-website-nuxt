@@ -1,7 +1,7 @@
 [build]
 base = "/"
 publish = "dist"
-command = "yarn generate"
+command = "yarn generate --fail-on-error"
 
 [context.production]
   [context.production.environment]
