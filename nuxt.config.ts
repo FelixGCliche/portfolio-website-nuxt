@@ -11,9 +11,10 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  filenames: {
-    font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
-  },
+  // filenames: {
+  //   chunk: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]'),
+  //   font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
+  // },
 
   publicRuntimeConfig: {
     strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'

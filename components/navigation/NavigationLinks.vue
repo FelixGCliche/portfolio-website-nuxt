@@ -1,23 +1,23 @@
 <template>
   <nav class="navlinks">
-    <NuxtLink
+    <!-- <NuxtLink
       v-for="link in links.data"
       :key="link.id"
       class="navlink"
       :to="link.attributes.url"
     >
       {{ link.attributes.label }}
-    </NuxtLink>
+    </NuxtLink> -->
   </nav>
 </template>
-
 <script lang="ts" setup>
-const locale = useLocale()
-const config = useRuntimeConfig()
+import type { Home } from 'composables/useStrapi'
+const { fetch } = useStrapi()
 
-const { data: links } = await useLazyFetch(
-  `${config.strapiURL}/navigation-links?locale=${locale.value}`
-)
+// const home = ref<Home>()
+
+const data = await fetch('home')
+// console.table(data.value.data)
 </script>
 <style lang="scss" scoped>
 @use 'sass:map';
