@@ -1,23 +1,25 @@
 <template>
   <nav class="navlinks">
-    <!-- <NuxtLink
+    <NuxtLink
       v-for="link in links.data"
       :key="link.id"
       class="navlink"
       :to="link.attributes.url"
     >
       {{ link.attributes.label }}
-    </NuxtLink> -->
+    </NuxtLink>
   </nav>
 </template>
 <script lang="ts" setup>
-import type { Home } from 'composables/useStrapi'
+import type { NavigationLink } from 'types/Strapi'
+
 const { fetch } = useStrapi()
-
-// const home = ref<Home>()
-
-const data = await fetch('home')
-// console.table(data.value.data)
+const links = ref()
+try {
+  links.value = await fetch<NavigationLink>('navigation-links')
+} catch (error) {
+  console.log(error.message)
+}
 </script>
 <style lang="scss" scoped>
 @use 'sass:map';

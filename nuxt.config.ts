@@ -11,17 +11,20 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  // filenames: {
-  //   chunk: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]'),
-  //   font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
-  // },
-
   publicRuntimeConfig: {
     strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
+  typescript: {
+    shim: false
+  },
 
+  build: {
+    filenames: {
+      font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {
