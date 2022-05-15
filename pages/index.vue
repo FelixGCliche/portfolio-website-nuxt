@@ -21,6 +21,9 @@
         condimentum congue nulla nulla netus amet pulvinar faucibus.
       </p>
     </div>
+    <div class="cell cell-full">
+      <SectionAbout />
+    </div>
   </div>
 </template>
 
