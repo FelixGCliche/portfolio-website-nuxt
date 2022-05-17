@@ -17,6 +17,7 @@ export const useStrapi = () => {
   const locale = useLocale()
 
   const fetch = async <T>(route: string) => {
+    const locale = useLocale()
     const fetchUrl = `${url}/api/${route}?locale=${locale.value}`
     const { data: response, error } = await useFetch<StrapiResonse<T>>(fetchUrl)
     if (error.value)
@@ -29,8 +30,19 @@ export const useStrapi = () => {
       }
   }
 
-  const lazyFetch = async (route: string) => {
-    return await useLazyFetch(`${url}/${route}?locale=${locale.value}`)
+  const lazyFetch = async <T>(route: string) => {
+    const fetchUrl = `${url}/api/${route}?locale=${locale.value}`
+    const { data: response, error } = await useLazyFetch<StrapiResonse<T>>(
+      fetchUrl
+    )
+    if (error.value)
+      throw new Error(`Error while lazy fetching Strapi API at url ${fetchUrl}`)
+    else
+      return {
+        data: response.value.data,
+        error: error.value,
+        meta: response.value.meta
+      }
   }
 
   return {

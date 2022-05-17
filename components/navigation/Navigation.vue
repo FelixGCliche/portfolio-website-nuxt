@@ -7,15 +7,15 @@
         class="navbar-button"
         label="menu"
         dir="rtl"
-        @click.prevent="open"
+        @button-click.prevent="toggleOn"
       >
         <IconMenu :size="24" />
       </ButtonIcon>
     </div>
     <Transition name="slide-in">
-      <div v-if="toggled" class="navbar-content" @click.prevent="close">
+      <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
         <div class="navbar-header">
-          <ButtonIcon dir="rtl" label="menu" @click.prevent="close">
+          <ButtonIcon dir="rtl" label="menu" @button-click.prevent="toggleOff">
             <IconClear :size="24" />
           </ButtonIcon>
         </div>
@@ -26,31 +26,33 @@
 </template>
 
 <script lang="ts" setup>
-const emit = defineEmits(['click'])
 const { toggled, toggleOn, toggleOff } = useToggle()
-
-const close = (event: Event) => {
-  emit('click', event)
-  toggleOff()
-}
-
-const open = (event: Event) => {
-  emit('click', event)
-  toggleOn()
-}
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
-
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 24;
+}
 .navbar-header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 16px;
+  padding: 2rem;
 
   @include layout.media-query('large') {
-    padding: 16px 156px;
+    padding: 2rem 9.75rem;
+  }
+  @include layout.media-query('medium') {
+    padding: 2rem 6rem;
+  }
+  @include layout.media-query('small') {
+    padding: 1rem 4rem;
+  }
+  @include layout.media-query('xsmall') {
+    padding: 1rem 4rem;
   }
 }
 .navbar-content {
@@ -60,15 +62,16 @@ const open = (event: Event) => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: theme.$surface;
+  z-index: 24;
 }
 
 .navbar-button {
   display: none;
 }
 
-@include layout.media-query('small') {
+@include layout.media-query('xsmall') {
   .navbar-button {
     display: flex;
   }

@@ -1,30 +1,20 @@
 <template>
-  <div class="grid">
-    <div class="cell cell-full">
-      <h1 class="display">Lorem Ipsum</h1>
+  <main class="home-main">
+    <div class="section">
+      <HomeAboutSection />
     </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
+    <div class="profile">
+      <img
+        class="img-responsive"
+        src="~img/profile.png"
+        alt="profile picture"
+      />
     </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
+    <div class="logo-container">
+      <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
     </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
-    </div>
-    <div class="cell cell-full">
-      <SectionAbout />
-    </div>
-  </div>
+    <img class="home-bg" src="~img/bg_image.png" alt="home background" />
+  </main>
 </template>
 
 <script lang="ts" setup></script>
@@ -32,27 +22,91 @@
 <style lang="scss" scoped>
 @use 'sass:map';
 
-.grid {
+@function get-overlap-start($size) {
+  $base: calc(map.get(layout.$columns, $size) + 1);
+  @return calc($base * -1);
+}
+
+@function get-profile-overlap($size) {
+  $base: calc(map.get(layout.$columns, $size) / 2);
+  @return calc($base + 1);
+}
+.home-main {
   @include layout.layout-grid;
+  grid-template-rows: 1fr auto auto 1fr;
+  height: 100%;
 }
-.cell {
-  @include layout.responsive-cell {
-    &-full {
-      @include layout.grid-cell-full;
-    }
+.section {
+  @include layout.responsive-cell-base {
+    grid-row: 3;
+    z-index: 3;
   }
 }
-.display {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-display($size);
-    }
+.profile {
+  @include layout.responsive-cell-base {
+    grid-row-start: 2;
+    grid-row-end: span 3;
+    align-self: start;
+    z-index: 2;
   }
 }
-.body {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-body($size);
+.logo-container {
+  grid-row: 2;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  align-self: end;
+}
+.home-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+@each $size in map.keys(layout.$breakpoints) {
+  @include layout.media-query($size) {
+    $columns: map.get(layout.$columns, $size);
+
+    .section {
+      grid-column-start: get-overlap-start($size);
+      @if $size == 'xsmall' {
+        grid-column-end: span $columns;
+      } @else if $size == 'large' {
+        grid-column-end: span calc($columns / 2);
+      } @else {
+        grid-column-end: span calc(($columns / 2) + 1);
+      }
+    }
+    .logo-container {
+      grid-column-start: get-overlap-start($size);
+      @if $size == 'xsmall' {
+        grid-column-end: span calc($columns / 2);
+      } @else if $size == 'large' {
+        grid-column-end: span calc($columns / 2) + 2;
+      } @else {
+        grid-column-end: span calc(($columns / 2) + 1);
+      }
+    }
+    .profile {
+      grid-column-start: span get-profile-overlap($size);
+      grid-column-end: -1;
+    }
+
+    .home-bg {
+      @if $size != 'xsmall' {
+        mask-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 66%
+        );
+      } @else {
+        mask-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 95%
+        );
+      }
     }
   }
 }

@@ -6,8 +6,9 @@ export default defineNuxtConfig({
   ssr: ({ isDev }) => !isDev,
 
   alias: {
-    style: fileURLToPath(new URL('./assets/style', import.meta.url)),
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
+    img: fileURLToPath(new URL('./assets/img', import.meta.url)),
+    style: fileURLToPath(new URL('./assets/style', import.meta.url)),
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
