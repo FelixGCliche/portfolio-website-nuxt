@@ -1,29 +1,9 @@
 <template>
   <div class="grid">
-    <div class="cell cell-full">
-      <h1 class="display">Lorem Ipsum</h1>
-    </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
-    </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
-    </div>
-    <div class="cell">
-      <p class="body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat
-        condimentum congue nulla nulla netus amet pulvinar faucibus.
-      </p>
-    </div>
-    <div class="cell cell-full">
+    <div class="cell cell-half">
       <SectionAbout />
     </div>
+    <div class="profile"></div>
   </div>
 </template>
 
@@ -34,25 +14,15 @@
 
 .grid {
   @include layout.layout-grid;
+  height: 100%;
 }
 .cell {
   @include layout.responsive-cell {
     &-full {
-      @include layout.grid-cell-full;
+      @include layout.responsive-cell-full;
     }
-  }
-}
-.display {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-display($size);
-    }
-  }
-}
-.body {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-body($size);
+    &-half {
+      @include layout.responsive-cell-half;
     }
   }
 }

@@ -5,6 +5,7 @@
       :key="link.id"
       class="navlink"
       :to="link.attributes.url"
+      @click.prevent="scrollToTop"
     >
       {{ link.attributes.label }}
     </NuxtLink>
@@ -20,6 +21,8 @@ try {
 } catch (error) {
   console.log(error.message)
 }
+
+const scrollToTop = () => window.scrollTo(0, 0)
 </script>
 <style lang="scss" scoped>
 @use 'sass:map';
@@ -29,7 +32,7 @@ try {
   flex-flow: row nowrap;
   gap: 24px;
 
-  @include layout.media-query('small') {
+  @include layout.media-query('xsmall') {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -39,7 +42,7 @@ try {
 .navlink {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
-      @if $size != 'small' {
+      @if $size != 'xsmall' {
         @include theme.typography-label($size);
       } @else {
         @include theme.typography-headline($size);
@@ -52,7 +55,7 @@ try {
     @include theme.hover(theme.$secondary);
   }
   &:active {
-    @include theme.pressed(theme.$secondary);
+    @include theme.pressed(theme.$tertiary);
   }
 }
 </style>

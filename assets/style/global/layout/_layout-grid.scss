@@ -4,22 +4,21 @@
 $columns: (
   'large': 12,
   'medium': 8,
-  'small': 4
+  'small': 8,
+  'xsmall': 4
 );
-$column-width: (
-  'large': 72px,
-  'medium': 72px,
-  'small': 72px
-);
+$column-width: 72px;
 $default-margin: (
   'large': 24px,
   'medium': 24px,
-  'small': 16px
+  'small': 16px,
+  'xsmall': 16px
 );
 $default-gutter: (
   'large': 24px,
   'medium': 24px,
-  'small': 16px
+  'small': 16px,
+  'xsmall': 16px
 );
 $default-span: 4;
 
@@ -28,10 +27,7 @@ $default-span: 4;
     @include layout.media-query($size) {
       display: grid;
       grid-gap: map.get($default-gutter, $size);
-      grid-template-columns: repeat(
-        map.get($columns, $size),
-        map.get($column-width, $size)
-      );
+      grid-template-columns: repeat(map.get($columns, $size), $column-width);
       justify-content: center;
       @content;
     }
@@ -51,10 +47,19 @@ $default-span: 4;
   }
 }
 
-@mixin grid-cell-full {
+@mixin responsive-cell-full {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
       grid-column: span map.get($columns, $size);
+      @content;
+    }
+  }
+}
+
+@mixin responsive-cell-half {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      grid-column: span clamp(4, calc(map.get($columns, $size) / 2), 6);
       @content;
     }
   }
