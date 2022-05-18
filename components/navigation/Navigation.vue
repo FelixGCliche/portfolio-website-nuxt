@@ -65,6 +65,7 @@ const { toggled, toggleOn, toggleOff } = useToggle()
   width: 100%;
   height: 100vh;
   background: theme.$surface;
+  z-index: 24;
 }
 
 .navbar-button {
