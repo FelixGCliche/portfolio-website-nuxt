@@ -30,8 +30,20 @@ $default-span: 4;
       grid-template-columns: repeat(map.get($columns, $size), $column-width);
       justify-content: center;
       @content;
+      @if $size == 'xsmall' {
+        grid-template-columns: repeat(map.get($columns, $size), 1fr);
+        margin: 0 map.get($default-margin, $size);
+      }
     }
   }
+}
+
+@mixin responsive-cell-base {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  @content;
 }
 
 @mixin responsive-cell($span: $default-span) {

@@ -38,18 +38,19 @@ const { toggled, toggleOn, toggleOff } = useToggle()
 .navbar-container {
   position: sticky;
   top: 0;
+  z-index: 24;
 }
 .navbar-header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
 
   @include layout.media-query('large') {
-    padding: 1rem 9.75rem;
+    padding: 2rem 9.75rem;
   }
   @include layout.media-query('medium') {
-    padding: 1rem 6rem;
+    padding: 2rem 6rem;
   }
   @include layout.media-query('small') {
     padding: 1rem 4rem;

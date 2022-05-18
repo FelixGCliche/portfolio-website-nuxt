@@ -25,6 +25,11 @@ button {
   }
 }
 
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
 .display {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
