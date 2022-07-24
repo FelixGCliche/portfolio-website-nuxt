@@ -1,8 +1,6 @@
 <template>
   <section class="section-about">
-    <h1 class="headline">
-      <span>{{ home.attributes.title }}</span>
-    </h1>
+    <h1 class="headline">{{ home.attributes.title }}</h1>
     <h2 class="title">{{ home.attributes.headline }}</h2>
     <p class="body biography">{{ home.attributes.biography }}</p>
     <ButtonPrimary class="button-contact" label="Contact Me" />

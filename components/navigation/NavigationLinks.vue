@@ -31,6 +31,7 @@ const scrollToTop = () => window.scrollTo(0, 0)
   display: flex;
   flex-flow: row nowrap;
   gap: 24px;
+  text-transform: uppercase;
 
   @include layout.media-query('xsmall') {
     flex-flow: column nowrap;

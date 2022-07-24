@@ -13,11 +13,7 @@
       </ButtonIcon>
     </div>
     <Transition name="slide-in">
-      <div
-        v-if="toggled"
-        class="navbar-content"
-        @button-click.prevent="toggleOff"
-      >
+      <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
         <div class="navbar-header">
           <ButtonIcon dir="rtl" label="menu" @button-click.prevent="toggleOff">
             <IconClear :size="24" />
