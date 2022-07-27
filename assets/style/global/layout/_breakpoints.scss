@@ -2,9 +2,10 @@
 @use 'sass:list';
 
 $breakpoints: (
-  'large': 840px,
-  'medium': 600px,
-  'small': 0px
+  'large': 1240px,
+  'medium': 905px,
+  'small': 736px,
+  'xsmall': 0px
 );
 
 $min: breakpoint-min('large');

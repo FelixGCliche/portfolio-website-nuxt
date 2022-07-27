@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 #__nuxt,
@@ -19,6 +23,11 @@ button {
   &:focus {
     outline: none;
   }
+}
+
+.img-responsive {
+  width: 100%;
+  height: auto;
 }
 
 .display {

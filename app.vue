@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <Title>Félix Gagné Cliche</Title>
+  <Title>Félix Gagné Cliche</Title>
 
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

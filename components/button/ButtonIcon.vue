@@ -19,10 +19,10 @@ const props = defineProps({
   })
 })
 
-const emit = defineEmits(['click'])
+const emit = defineEmits(['button-click'])
 
 function handleClick(event: Event) {
-  emit('click', event)
+  emit('button-click', event)
 }
 
 const buttonType = useButtonType(props.url)

@@ -1,19 +1,15 @@
-import { resolve } from 'pathe'
-import { defineNuxtConfig } from 'nuxt3'
+import { fileURLToPath } from 'url'
+import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
-  ssr: false,
+  ssr: ({ isDev }) => !isDev,
 
   alias: {
-    style: resolve(__dirname, './assets/style'),
-    fonts: resolve(__dirname, './assets/fonts'),
-    types: resolve(__dirname, './types')
-  },
-
-  filenames: {
-    chunk: ({ isDev }) => (isDev ? '[name].js' : '[id].[contenthash].js'),
-    font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
+    fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
+    img: fileURLToPath(new URL('./assets/img', import.meta.url)),
+    style: fileURLToPath(new URL('./assets/style', import.meta.url)),
+    types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
   publicRuntimeConfig: {
@@ -21,14 +17,15 @@ export default defineNuxtConfig({
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
-
-  strapi: {
-    url: process.env.STRAPI_URL || 'http:localhost:1337',
-    prefix: '/api',
-    version: 'v4',
-    cookie: {}
+  typescript: {
+    shim: false
   },
 
+  build: {
+    filenames: {
+      font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
+    }
+  },
   vite: {
     css: {
       preprocessorOptions: {
