@@ -1,12 +1,12 @@
 [build]
 base = "/"
 publish = "dist"
-command = "yarn generate"
+command = "yarn generate --fail-on-error"
 
 [context.production]
   [context.production.environment]
-    STRAPI_URL = "https://strapi.gagnecliche.dev/api"
+    STRAPI_URL = "https://strapi.gagnecliche.dev"
 
 [context.deploy-preview]
   [context.deploy-preview.environment]
-    STRAPI_URL = "http://localhost:1337"
+    STRAPI_URL = "https://strapi.gagnecliche.dev"

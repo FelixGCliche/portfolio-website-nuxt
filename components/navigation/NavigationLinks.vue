@@ -5,19 +5,24 @@
       :key="link.id"
       class="navlink"
       :to="link.attributes.url"
+      @click.prevent="scrollToTop"
     >
       {{ link.attributes.label }}
     </NuxtLink>
   </nav>
 </template>
-
 <script lang="ts" setup>
-const locale = useLocale()
-const config = useRuntimeConfig()
+import type { NavigationLink } from 'types/Strapi'
 
-const { data: links } = await useFetch(
-  `${config.strapiURL}/navigation-links?locale=${locale.value}`
-)
+const { fetch } = useStrapi()
+const links = ref()
+try {
+  links.value = await fetch<NavigationLink>('navigation-links')
+} catch (error) {
+  console.log(error.message)
+}
+
+const scrollToTop = () => window.scrollTo(0, 0)
 </script>
 <style lang="scss" scoped>
 @use 'sass:map';
@@ -26,8 +31,9 @@ const { data: links } = await useFetch(
   display: flex;
   flex-flow: row nowrap;
   gap: 24px;
+  text-transform: uppercase;
 
-  @include layout.media-query('small') {
+  @include layout.media-query('xsmall') {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
@@ -37,7 +43,7 @@ const { data: links } = await useFetch(
 .navlink {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
-      @if $size != 'small' {
+      @if $size != 'xsmall' {
         @include theme.typography-label($size);
       } @else {
         @include theme.typography-headline($size);
@@ -50,7 +56,7 @@ const { data: links } = await useFetch(
     @include theme.hover(theme.$secondary);
   }
   &:active {
-    @include theme.pressed(theme.$secondary);
+    @include theme.pressed(theme.$tertiary);
   }
 }
 </style>
