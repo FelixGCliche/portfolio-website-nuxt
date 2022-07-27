@@ -22,6 +22,15 @@ $default-gutter: (
 );
 $default-span: 4;
 
+@function get-width($size, $span) {
+  $gutters: calc(map.get($default-gutter, $size) * ($span - 1));
+  $columns: calc($column-width * $span);
+  @return calc($gutters + $columns);
+}
+
+@function get-margin($size) {
+}
+
 @mixin layout-grid {
   @each $size in map.keys($columns) {
     @include layout.media-query($size) {
