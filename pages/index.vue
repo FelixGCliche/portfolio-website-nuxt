@@ -1,26 +1,19 @@
 <template>
   <main class="home-main">
-    <div class="grid">
-      <div class="section">
-        <HomeAboutSection />
-      </div>
-      <div class="profile">
-        <img
-          class="img-responsive"
-          src="~img/profile.png"
-          alt="profile picture"
-        />
-      </div>
-      <div class="logo-container">
-        <img src="~img/portfolio_logo.svg" alt="logo" />
-      </div>
+    <div class="section">
+      <HomeAboutSection />
     </div>
-    <img
-      class="home-bg"
-      src="~img/bg_image.png"
-      alt="home background"
-      mask="url(#flat)"
-    />
+    <div class="profile">
+      <img
+        class="img-responsive"
+        src="~img/profile.png"
+        alt="profile picture"
+      />
+    </div>
+    <div class="logo-container">
+      <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
+    </div>
+    <img class="home-bg" src="~img/bg_image.png" alt="home background" />
   </main>
 </template>
 
@@ -38,7 +31,7 @@
   $base: calc(map.get(layout.$columns, $size) / 2);
   @return calc($base + 1);
 }
-.grid {
+.home-main {
   @include layout.layout-grid;
   grid-template-rows: 1fr auto auto 1fr;
   height: 100%;
@@ -69,6 +62,8 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 @each $size in map.keys(layout.$breakpoints) {
