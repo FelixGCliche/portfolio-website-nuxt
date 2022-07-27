@@ -51,6 +51,9 @@ const { toggled, toggleOn, toggleOff } = useToggle()
   @include layout.media-query('small') {
     padding: 1rem 4rem;
   }
+  @include layout.media-query('xsmall') {
+    padding: 1rem 4rem;
+  }
 }
 .navbar-content {
   display: grid;

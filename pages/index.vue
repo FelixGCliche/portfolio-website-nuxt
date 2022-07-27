@@ -69,11 +69,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  mask-image: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0) 66%
-  );
 }
 
 @each $size in map.keys(layout.$breakpoints) {
@@ -93,7 +88,7 @@
     .logo-container {
       grid-column-start: get-overlap-start($size);
       @if $size == 'xsmall' {
-        grid-column-end: span $columns - 1;
+        grid-column-end: span calc($columns / 2);
       } @else if $size == 'large' {
         grid-column-end: span calc($columns / 2) + 2;
       } @else {
@@ -103,6 +98,22 @@
     .profile {
       grid-column-start: span get-profile-overlap($size);
       grid-column-end: -1;
+    }
+
+    .home-bg {
+      @if $size != 'xsmall' {
+        mask-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 66%
+        );
+      } @else {
+        mask-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0) 95%
+        );
+      }
     }
   }
 }
