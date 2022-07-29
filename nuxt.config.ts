@@ -12,6 +12,12 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
+  modules: ['@nuxt/content'],
+  content: {
+    watch: false,
+    locales: ['fr', 'en']
+  }
+
   publicRuntimeConfig: {
     strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'
   },
