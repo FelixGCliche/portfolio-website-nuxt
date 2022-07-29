@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
+  // @ts-ignores
   ssr: ({ isDev }) => !isDev,
 
   alias: {
@@ -13,10 +14,11 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/content'],
+  // @ts-ignore
   content: {
     watch: false,
     locales: ['fr', 'en']
-  }
+  },
 
   publicRuntimeConfig: {
     strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'

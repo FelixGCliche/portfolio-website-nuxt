@@ -1,19 +1,19 @@
 <template>
   <main class="home-main">
     <div class="section">
-      <HomeAboutSection />
+      <SectionAbout />
     </div>
     <div class="profile">
       <img
         class="img-responsive"
-        src="~img/profile.png"
+        src="~img/profile.webp"
         alt="profile picture"
       />
     </div>
     <div class="logo-container">
       <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
     </div>
-    <img class="home-bg" src="~img/bg_image.png" alt="home background" />
+    <img class="home-bg" src="~img/bg_image.webp" alt="home background" />
   </main>
 </template>
 
