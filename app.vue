@@ -1,9 +1,10 @@
 <template>
   <Title>Félix Gagné Cliche</Title>
 
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div class="page-grid" id="home">
+    <Navigation />
+    <PageHome />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -12,3 +13,11 @@ useHead({
   charset: 'utf-8'
 })
 </script>
+
+<style lang="scss" scoped>
+.page-grid {
+  display: grid;
+  height: 100%;
+  grid-template-rows: min-content 1fr;
+}
+</style>

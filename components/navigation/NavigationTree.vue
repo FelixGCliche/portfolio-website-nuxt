@@ -1,29 +1,23 @@
 <template>
   <nav class="navlinks">
-    <NuxtLink
-      v-for="link in links.data"
-      :key="link.id"
-      class="navlink"
-      :to="link.attributes.url"
-      @click.prevent="scrollToTop"
-    >
-      {{ link.attributes.label }}
-    </NuxtLink>
+    <div v-for="link of navigation" :key="link._path">
+      <a class="navlink" :href="getSelector(link.title)">{{
+        link.description
+      }}</a>
+    </div>
   </nav>
 </template>
 <script lang="ts" setup>
-import type { NavigationLink } from 'types/Strapi'
+const { data: navigation } = await useAsyncData('navigation', () =>
+  queryContent('/navigation').locale(useLocale().value).find()
+)
 
-const { fetch } = useStrapi()
-const links = ref()
-try {
-  links.value = await fetch<NavigationLink>('navigation-links')
-} catch (error) {
-  console.log(error.message)
+const getSelector = (path: string) => {
+  const selector = path.toLowerCase()
+  return `#${selector}`
 }
-
-const scrollToTop = () => window.scrollTo(0, 0)
 </script>
+
 <style lang="scss" scoped>
 @use 'sass:map';
 

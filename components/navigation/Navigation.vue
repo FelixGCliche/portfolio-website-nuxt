@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar-container">
+  <header class="navbar-container">
     <div class="navbar-header">
-      <NavigationLinks class="navbar-links" />
+      <NavigationTree class="navbar-links" />
 
       <ButtonIcon
         class="navbar-button"
@@ -19,10 +19,10 @@
             <IconClear :size="24" />
           </ButtonIcon>
         </div>
-        <NavigationLinks />
+        <LazyNavigationTree />
       </div>
     </Transition>
-  </nav>
+  </header>
 </template>
 
 <script lang="ts" setup>
