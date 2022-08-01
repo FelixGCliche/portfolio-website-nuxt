@@ -1,10 +1,13 @@
 <template>
   <Title>Félix Gagné Cliche</Title>
 
-  <div class="page-grid" id="home">
+  <span id="home" />
+  <main class="page-grid">
     <Navigation />
     <PageHome />
-  </div>
+    <span id="contact" />
+    <PageContact />
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -21,6 +24,5 @@ setLocale('fr')
 <style lang="scss" scoped>
 .page-grid {
   display: grid;
-  height: 100%;
 }
 </style>

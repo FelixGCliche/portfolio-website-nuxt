@@ -1,5 +1,5 @@
 <template>
-  <main class="home-main">
+  <div class="page-home">
     <div class="section">
       <SectionAbout />
     </div>
@@ -18,7 +18,7 @@
       src="~img/bg_image.webp"
       alt="home background"
     />
-  </main>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
@@ -35,7 +35,7 @@
   $base: calc(map.get(layout.$columns, $size) / 2);
   @return calc($base + 1);
 }
-.home-main {
+.page-home {
   @include layout.layout-grid;
   grid-template-rows: 1fr auto auto 1fr;
   height: 100%;
