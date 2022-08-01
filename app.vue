@@ -4,7 +4,6 @@
   <div class="page-grid" id="home">
     <Navigation />
     <PageHome />
-    <div class="page" id="contact">contact</div>
   </div>
 </template>
 
@@ -23,10 +22,5 @@ setLocale('fr')
 .page-grid {
   display: grid;
   height: 100%;
-}
-
-.page {
-  background-color: red;
-  height: 100vh;
 }
 </style>
