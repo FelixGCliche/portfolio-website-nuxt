@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
+  // @ts-ignores
   ssr: ({ isDev }) => !isDev,
 
   alias: {
@@ -10,6 +11,13 @@ export default defineNuxtConfig({
     img: fileURLToPath(new URL('./assets/img', import.meta.url)),
     style: fileURLToPath(new URL('./assets/style', import.meta.url)),
     types: fileURLToPath(new URL('./types', import.meta.url))
+  },
+
+  modules: ['@nuxt/content'],
+  // @ts-ignore
+  content: {
+    watch: false,
+    locales: ['fr', 'en']
   },
 
   publicRuntimeConfig: {

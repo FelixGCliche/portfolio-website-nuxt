@@ -1,7 +1,12 @@
 export const useLocale = () => {
   return useState<string>('locale', () => useDefaultLocale().value)
 }
-const useDefaultLocale = (fallback = 'en') => {
+export const setLocale = (locale: string) => {
+  if (locale === 'fr' || locale === 'en')
+    return useState<string>('locale', () => locale)
+  else console.log(`Locale ${locale} is not available`)
+}
+const useDefaultLocale = (fallback = 'fr') => {
   const locale = ref(fallback)
 
   if (process.server) {
