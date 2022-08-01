@@ -1,9 +1,9 @@
 <template>
   <component
-    :is="buttonType"
+    :is="useButtonType($props.url)"
     class="button-base"
     :href="url"
-    @click="handleClick"
+    @button-click="handleClick"
   >
     <slot />
     <span class="label">{{ label }}</span>
@@ -19,12 +19,10 @@ const props = defineProps({
   })
 })
 
-const emit = defineEmits(['click'])
-
-const buttonType = useButtonType(props.url)
+const emit = defineEmits(['button-click'])
 
 function handleClick(event: Event) {
-  emit('click', event)
+  emit('button-click', event)
 }
 </script>
 

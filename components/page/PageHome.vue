@@ -13,7 +13,11 @@
     <div class="logo-container">
       <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
     </div>
-    <img class="home-bg" src="~img/bg_image.webp" alt="home background" />
+    <img
+      class="img-responsive home-bg"
+      src="~img/bg_image.webp"
+      alt="home background"
+    />
   </main>
 </template>
 
@@ -61,9 +65,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
 @each $size in map.keys(layout.$breakpoints) {

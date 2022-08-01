@@ -7,7 +7,7 @@
       <ButtonPrimary
         class="button-contact"
         :label="about.contactLabel"
-        url="/contact"
+        url="#contact"
       />
     </ContentRenderer>
   </section>
