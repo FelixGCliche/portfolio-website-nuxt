@@ -13,11 +13,12 @@
   </svg>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { useBaseIconProps } from 'types/BaseIconProps'
 
-export default defineComponent({
-  props: { ...useBaseIconProps({ iconName: 'icon' }) },
-  setup() {}
+defineProps({
+  ...useBaseIconProps({
+    iconName: 'icon'
+  })
 })
 </script>

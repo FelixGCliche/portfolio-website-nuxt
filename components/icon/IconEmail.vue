@@ -1,15 +1,14 @@
 <template>
   <IconBase
-    class="icon-clear"
+    class="icon-email"
     v-bind="{
       iconName: iconName,
       size: size,
       color: color
     }"
   >
-    <path d="M0 0h24v24H0V0z" fill="none" />
     <path
-      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"
     />
   </IconBase>
 </template>
@@ -19,7 +18,7 @@ import { useBaseIconProps } from 'types/BaseIconProps'
 
 defineProps({
   ...useBaseIconProps({
-    iconName: 'clear'
+    iconName: 'email'
   })
 })
 </script>

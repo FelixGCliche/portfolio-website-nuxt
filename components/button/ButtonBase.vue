@@ -12,8 +12,7 @@
 
 <script lang="ts" setup>
 import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
-
-const props = defineProps({
+defineProps({
   ...useBaseButtonProps({
     label: 'button'
   })

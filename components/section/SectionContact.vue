@@ -4,6 +4,22 @@
       <h2 class="headline">{{ sectionContact.headline }}</h2>
       <p class="body">{{ sectionContact.body }}</p>
     </ContentRenderer>
+    <div class="contact-buttons">
+      <ButtonIcon
+        class="button-email"
+        url="mailto: felix@gagnecliche.dev"
+        label="felix@gagnecliche.dev"
+      >
+        <IconEmail :size="32" />
+      </ButtonIcon>
+      <ButtonIcon
+        class="button-sms"
+        url="tel: 418-805-6251"
+        label="(418) 805-6251"
+      >
+        <IconSMS :size="32" />
+      </ButtonIcon>
+    </div>
   </section>
 </template>
 
@@ -21,5 +37,18 @@ const { data: sectionContact } = await useAsyncData('sectionContact', () =>
 }
 .headline {
   color: theme.$secondary;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.button-email,
+.button-sms {
+  width: fit-content;
+  padding: 0;
 }
 </style>

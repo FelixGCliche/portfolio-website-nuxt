@@ -14,9 +14,7 @@
 import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
 
 const props = defineProps({
-  ...useBaseButtonProps({
-    label: 'button'
-  })
+  ...useBaseButtonProps({ label: undefined })
 })
 
 const emit = defineEmits(['button-click'])

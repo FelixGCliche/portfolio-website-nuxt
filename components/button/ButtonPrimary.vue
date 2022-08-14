@@ -1,5 +1,5 @@
 <template>
-  <ButtonBase class="button-primary" v-bind="{ ...$props, ...$attrs }" />
+  <ButtonBase class="button-primary" v-bind="{ $props, $attrs }" />
 </template>
 
 <style lang="scss" scoped>
