@@ -11,8 +11,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
-
 const props = defineProps({
   ...useBaseButtonProps({ label: undefined })
 })

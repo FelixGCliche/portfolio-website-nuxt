@@ -14,8 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseIconProps } from 'types/BaseIconProps'
-
 defineProps({
   ...useBaseIconProps({
     iconName: 'icon'
