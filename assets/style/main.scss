@@ -25,6 +25,15 @@ button {
   }
 }
 
+input {
+  border: none;
+  outline: none;
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
 .img-responsive {
   width: 100%;
   height: auto;

@@ -6,7 +6,7 @@
     <Navigation />
     <PageHome />
     <span id="contact" />
-    <PageContact />
+    <LazyPageContact />
   </main>
 </template>
 

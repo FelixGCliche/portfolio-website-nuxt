@@ -4,7 +4,9 @@
     <div class="section">
       <SectionContact />
     </div>
-    <div class="form">boi</div>
+    <div class="form">
+      <SectionEmailForm />
+    </div>
   </div>
 </template>
 

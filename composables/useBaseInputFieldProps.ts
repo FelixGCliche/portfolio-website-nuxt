@@ -1,10 +1,14 @@
-import { TextFieldProps } from 'types/InputField'
+import { BaseInputFieldProps } from 'types/InputField'
 
-export const useBaseInputFieldProps = (props?: TextFieldProps) => ({
+export const useBaseInputFieldProps = (props?: BaseInputFieldProps) => ({
   name: {
     type: String,
     default: props.name,
     required: true
+  },
+  required: {
+    type: Boolean,
+    default: props.required
   },
   label: {
     type: String,
@@ -14,11 +18,6 @@ export const useBaseInputFieldProps = (props?: TextFieldProps) => ({
   placeholder: {
     type: String,
     default: props.placeholder,
-    required: true
-  },
-  value: {
-    type: String,
-    default: props.value,
     required: true
   }
 })

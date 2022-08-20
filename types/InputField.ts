@@ -1,9 +1,6 @@
 export interface BaseInputFieldProps {
   name: string
+  required: boolean
   label: string
-  placeholder: string
-}
-
-export interface TextFieldProps extends BaseInputFieldProps {
-  value: string
+  placeholder?: string
 }
