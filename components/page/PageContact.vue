@@ -64,7 +64,7 @@
       border: 0.25rem solid theme.$surface;
       padding: 2rem;
       @if $size == 'xsmall' {
-        display: none;
+        @include layout.responsive-cell($columns);
       } @else {
         @include layout.responsive-cell(calc(($columns / 2) + 1));
       }
