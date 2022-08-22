@@ -9,17 +9,15 @@ export const useIconProps = () => ({
   }
 })
 
-export function useBaseIconProps() {
-  return {
-    iconName: {
-      type: String,
-      default: 'iconName',
-      required: true
-    },
-    size: {
-      type: Number,
-      default: 24,
-      required: true
-    }
+export const useBaseIconProps = () => ({
+  iconName: {
+    type: String,
+    default: 'iconName',
+    required: true
+  },
+  size: {
+    type: Number,
+    default: 24,
+    required: true
   }
-}
+})
