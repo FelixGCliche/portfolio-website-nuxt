@@ -9,15 +9,19 @@
         dir="rtl"
         @button-click.prevent="toggleOn"
       >
-        <IconMenu :size="24" />
+        <IconMenu icon-name="menu" :size="24" />
       </ButtonIcon>
     </div>
     <Transition name="slide-in">
       <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
         <div class="navbar-header">
-          <ButtonIcon dir="rtl" label="menu" @button-click.prevent="toggleOff">
-            <IconClear :size="24" />
-          </ButtonIcon>
+          <LazyButtonIcon
+            dir="rtl"
+            label="menu"
+            @button-click.prevent="toggleOff"
+          >
+            <IconClear icon-name="clear" :size="24" />
+          </LazyButtonIcon>
         </div>
         <LazyNavigationTree />
       </div>

@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 const props = defineProps({
-  ...useBaseButtonProps({ label: undefined })
+  ...useBaseButtonProps()
 })
 
 const emit = defineEmits(['button-click'])

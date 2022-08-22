@@ -1,16 +1,25 @@
-import { BaseIconProps } from 'types/BaseIconProps'
-
-export const useBaseIconProps = (props?: BaseIconProps) => ({
+export const useIconProps = () => ({
   iconName: {
     type: String,
-    default: props.iconName
+    required: true
   },
   size: {
     type: Number,
-    default: props.size
-  },
-  color: {
-    type: String,
-    default: 'currentColor'
+    required: true
   }
 })
+
+export function useBaseIconProps() {
+  return {
+    iconName: {
+      type: String,
+      default: 'iconName',
+      required: true
+    },
+    size: {
+      type: Number,
+      default: 24,
+      required: true
+    }
+  }
+}

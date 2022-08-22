@@ -1,23 +1,39 @@
-import { BaseInputFieldProps } from 'types/InputField'
+export const useInputFieldProps = () => ({
+  inputName: {
+    type: String,
+    required: true
+  },
+  inputLabel: {
+    type: String,
+    required: true
+  },
+  inputPlaceholder: {
+    type: String,
+    required: true
+  },
+  inputRequired: {
+    type: Boolean
+  }
+})
 
-export const useBaseInputFieldProps = (props?: BaseInputFieldProps) => ({
-  name: {
+export const useBaseInputFieldProps = () => ({
+  inputName: {
     type: String,
-    default: props.name,
+    default: 'input name',
     required: true
   },
-  required: {
+  inputLabel: {
+    type: String,
+    default: 'input label',
+    required: true
+  },
+  inputPlaceholder: {
+    type: String,
+    default: 'input placeholder',
+    required: true
+  },
+  inputRequired: {
     type: Boolean,
-    default: props.required
-  },
-  label: {
-    type: String,
-    default: props.label,
-    required: true
-  },
-  placeholder: {
-    type: String,
-    default: props.placeholder,
-    required: true
+    default: false
   }
 })

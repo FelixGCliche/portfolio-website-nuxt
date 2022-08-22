@@ -1,11 +1,7 @@
 <template>
   <IconBase
     class="icon-clear"
-    v-bind="{
-      iconName: iconName,
-      size: size,
-      color: color
-    }"
+    v-bind="{ ...$props, ...$attrs } as BaseIconProps"
   >
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path
@@ -15,9 +11,9 @@
 </template>
 
 <script lang="ts" setup>
+import { BaseIconProps } from '~~/types/BaseIconProps'
+
 defineProps({
-  ...useBaseIconProps({
-    iconName: 'clear'
-  })
+  ...useIconProps()
 })
 </script>

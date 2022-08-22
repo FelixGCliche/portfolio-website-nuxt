@@ -28,10 +28,6 @@ button {
 input {
   border: none;
   outline: none;
-
-  &:focus::placeholder {
-    color: transparent;
-  }
 }
 
 .img-responsive {

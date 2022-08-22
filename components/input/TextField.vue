@@ -1,41 +1,34 @@
 <template>
-  <div class="textfield">
+  <InputFieldBase
+    v-bind="{ ...$props, ...$attrs } as BaseInputFieldProps"
+    v-slot="{ toggleOn, toggleOff }"
+  >
     <input
       ref="textfield"
-      class="body textfield-input"
-      :class="{ filled: filled }"
-      type="text"
-      :id="name"
-      :name="name"
       v-model="modelValue"
-      :placeholder="placeholder"
+      class="body textfield-input"
+      type="text"
+      :id="inputName"
+      :name="inputName"
+      :placeholder="inputPlaceholder"
       @focus="onFocus"
-      @blur="onBlur"
-      required
+      @onBlur="onBlur"
     />
-    <Transition name="textfield-focus">
-      <label v-if="toggled" class="body textfield-label" :for="name">
-        {{ label }}
-      </label>
-    </Transition>
-  </div>
+  </InputFieldBase>
 </template>
 
 <script lang="ts" setup>
-const { toggled, toggleOn, toggleOff } = useToggle()
+import { BaseInputFieldProps } from 'types/BaseInputField'
+
 const textfield = ref(null)
 const modelValue = ref('')
 const filled = ref(false)
+const slot = useSlots()
 
 defineProps({
-  ...useBaseInputFieldProps({
-    name: 'textfield',
-    required: false,
-    label: 'label',
-    placeholder: 'placeholder',
-    textarea: false
-  })
+  ...useInputFieldProps()
 })
+
 onMounted(() => {
   filled.value = textfield.value && textfield.value.value !== ''
   if (filled) {
@@ -44,66 +37,34 @@ onMounted(() => {
 })
 
 function onFocus() {
-  toggleOn()
+  slot.toggleOff()
 }
-
 function onBlur() {
   filled.value = textfield.value && textfield.value.value !== ''
   if (!filled.value) {
-    toggleOff()
+    slot.toggleOff()
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
+
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
-    .textfield {
-      display: grid;
-      position: relative;
-
-      &-label {
-        position: absolute;
-        color: theme.$primary;
-        width: 100%;
-        top: 0;
-        left: 1rem;
+    .textfield-input {
+      color: theme.$on-background;
+      background-color: theme.$background;
+      padding: 0.5rem 1rem;
+      border-bottom: 0.125rem solid theme.$on-background;
+      width: 100%;
+      &:focus {
+        background-color: theme.$surface;
+        margin-top: calc(0.5rem + theme.get-line-height('body', $size));
+        border-bottom: 0.25rem solid theme.$secondary;
       }
-
-      &-input {
-        color: theme.$on-background;
-        background-color: theme.$background;
-        padding: 0.5rem 1rem;
-        border-bottom: 0.125rem solid theme.$on-background;
-        width: 100%;
-
-        &:focus {
-          background-color: theme.$surface;
-          margin-top: calc(0.5rem + theme.get-line-height('body', $size));
-          border-bottom: 0.25rem solid theme.$secondary;
-        }
-        &:focus + .textfield-label {
-          color: theme.$secondary;
-        }
-      }
-    }
-
-    .filled {
-      margin-top: calc(0.5rem + theme.get-line-height('body', $size));
-    }
-
-    .textfield-focus-enter-active,
-    .textfield-focus-leave-active {
-      transition: opacity 50ms ease-in, transform 200ms ease-in;
-    }
-
-    .textfield-focus-enter-from,
-    .textfield-focus-leave-to {
-      opacity: 0;
-      transform: translateY(100%);
-      &::placeholder {
-        color: transparent;
+      &:focus + .input-label {
+        color: theme.$secondary;
       }
     }
   }

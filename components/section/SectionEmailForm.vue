@@ -1,25 +1,15 @@
 <template>
   <form class="form-email" action="">
     <InputTextField
-      name="name"
-      :required="true"
-      label="Name"
-      placeholder="Name"
-    />
-    <InputTextField
-      name="email"
-      :required="true"
-      label="Email"
-      placeholder="Email"
-    />
-    <InputTextField
-      name="message"
-      :required="false"
-      label="Message"
-      placeholder="Your email here"
+      input-name="name"
+      input-label="Name"
+      input-placeholder="Name"
+      :input-required="true"
     />
   </form>
 </template>
+
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .form-email {

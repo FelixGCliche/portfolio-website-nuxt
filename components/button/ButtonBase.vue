@@ -12,9 +12,7 @@
 
 <script lang="ts" setup>
 defineProps({
-  ...useBaseButtonProps({
-    label: 'button'
-  })
+  ...useBaseButtonProps()
 })
 
 const buttonType = (url: string) => {

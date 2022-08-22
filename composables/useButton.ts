@@ -1,13 +1,10 @@
-import { BaseButtonProps } from 'types/BaseButtonProps'
-
-export const useBaseButtonProps = (props?: BaseButtonProps) => ({
+export const useBaseButtonProps = () => ({
   url: {
-    type: String,
-    default: props.url
+    type: String
   },
   label: {
     type: String,
-    default: props.label
+    default: 'button-label'
   }
 })
 
