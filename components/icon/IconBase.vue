@@ -16,6 +16,6 @@
 
 <script lang="ts" setup>
 defineProps({
-  ...useBaseIconProps()
+  ...useIconProps()
 })
 </script>

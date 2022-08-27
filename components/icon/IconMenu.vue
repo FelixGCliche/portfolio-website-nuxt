@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { BaseIconProps } from 'types/BaseIconProps'
+import type { BaseIconProps } from '@/types/BaseIconProps'
 
 defineProps({
   ...useIconProps()

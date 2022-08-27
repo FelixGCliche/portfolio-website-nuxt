@@ -1,7 +1,7 @@
 <template>
   <InputFieldBase
     v-bind="{ ...$props, ...$attrs } as BaseInputFieldProps"
-    v-slot="{ toggleOn, toggleOff }"
+    v-slot="slotProps"
   >
     <input
       ref="textfield"
@@ -11,40 +11,29 @@
       :id="inputName"
       :name="inputName"
       :placeholder="inputPlaceholder"
-      @focus="onFocus"
-      @onBlur="onBlur"
+      @focus="slotProps.onFocus"
+      @blur="slotProps.onBlur"
     />
+
+    <p class="body">slots: {{}}</p>
   </InputFieldBase>
 </template>
 
 <script lang="ts" setup>
-import { BaseInputFieldProps } from 'types/BaseInputField'
+import type { BaseInputFieldProps } from '@/types/BaseInputFieldProps'
 
 const textfield = ref(null)
 const modelValue = ref('')
 const filled = ref(false)
-const slot = useSlots()
 
-defineProps({
-  ...useInputFieldProps()
-})
+defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
   filled.value = textfield.value && textfield.value.value !== ''
-  if (filled) {
+  if (filled.value) {
     textfield.value.focus()
   }
 })
-
-function onFocus() {
-  slot.toggleOff()
-}
-function onBlur() {
-  filled.value = textfield.value && textfield.value.value !== ''
-  if (!filled.value) {
-    slot.toggleOff()
-  }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +52,7 @@ function onBlur() {
         margin-top: calc(0.5rem + theme.get-line-height('body', $size));
         border-bottom: 0.25rem solid theme.$secondary;
       }
-      &:focus + .input-label {
+      &:focus + label {
         color: theme.$secondary;
       }
     }

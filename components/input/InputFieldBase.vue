@@ -1,6 +1,6 @@
 <template>
   <div class="inputfield">
-    <slot :toggleOn="toggleOn" :toggleOff="toggleOff" />
+    <slot :onFocus="onFocus" :onBlur="onBlur" />
     <Transition name="input-focus">
       <label v-if="toggled" class="body inputfield-label" :for="inputName">
         {{ inputLabel }}
@@ -9,9 +9,17 @@
   </div>
 </template>
 
+<script></script>
 <script lang="ts" setup>
 const { toggled, toggleOn, toggleOff } = useToggle()
-defineProps({ ...useBaseInputFieldProps() })
+defineProps({ ...useInputFieldProps() })
+
+function onFocus() {
+  toggleOn()
+}
+function onBlur() {
+  toggleOff()
+}
 </script>
 
 <style lang="scss" scoped>
