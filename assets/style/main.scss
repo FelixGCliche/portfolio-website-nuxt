@@ -70,3 +70,10 @@ input {
     }
   }
 }
+.caption {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
+      @include theme.typography-caption($size);
+    }
+  }
+}

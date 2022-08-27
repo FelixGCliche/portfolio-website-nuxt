@@ -14,8 +14,6 @@
       @focus="slotProps.onFocus"
       @blur="slotProps.onBlur"
     />
-
-    <p class="body">slots: {{}}</p>
   </InputFieldBase>
 </template>
 
@@ -36,6 +34,12 @@ onMounted(() => {
 })
 </script>
 
+<style lang="scss">
+.textfield-input:focus + .inputfield-label {
+  color: theme.$secondary;
+}
+</style>
+
 <style lang="scss" scoped>
 @use 'sass:map';
 
@@ -45,15 +49,12 @@ onMounted(() => {
       color: theme.$on-background;
       background-color: theme.$background;
       padding: 0.5rem 1rem;
+      padding-top: calc(0.5rem + theme.get-line-height('body', $size));
       border-bottom: 0.125rem solid theme.$on-background;
       width: 100%;
       &:focus {
         background-color: theme.$surface;
-        margin-top: calc(0.5rem + theme.get-line-height('body', $size));
         border-bottom: 0.25rem solid theme.$secondary;
-      }
-      &:focus + label {
-        color: theme.$secondary;
       }
     }
   }
