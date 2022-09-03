@@ -13,22 +13,34 @@
 import { Ref } from 'vue'
 
 const { toggled, toggleOn, toggleOff } = useToggle()
-const currentActiveElement: Ref<HTMLInputElement> = ref(null)
+const currentActiveElement: Ref<HTMLInputElement | HTMLTextAreaElement> =
+  ref(null)
 
 defineProps({ ...useInputFieldProps() })
 
 function onFocus() {
-  if (document.activeElement instanceof HTMLInputElement)
-    currentActiveElement.value = document.activeElement as HTMLInputElement
+  currentActiveElement.value = document.activeElement as
+    | HTMLInputElement
+    | HTMLTextAreaElement
 
   toggleOn()
 }
 function onBlur() {
+  if (currentActiveElement.value == null) {
+    toggleOff()
+  }
   if (!currentActiveElement.value.value) {
     toggleOff()
   }
 }
 </script>
+
+<style lang="scss">
+input:focus + .inputfield-label,
+textarea:focus + .inputfield-label {
+  color: theme.$secondary;
+}
+</style>
 
 <style lang="scss" scoped>
 .inputfield {
@@ -37,9 +49,7 @@ function onBlur() {
   &-label {
     position: absolute;
     color: theme.$primary;
-    width: 100%;
-    height: 100%;
-    top: 1rem;
+    top: 0.75rem;
     left: 1rem;
   }
 }

@@ -7,10 +7,6 @@ export const useInputFieldProps = () => ({
     type: String,
     required: true
   },
-  inputPlaceholder: {
-    type: String,
-    required: true
-  },
   inputRequired: {
     type: Boolean
   }
@@ -25,11 +21,6 @@ export const useBaseInputFieldProps = () => ({
   inputLabel: {
     type: String,
     default: 'input label',
-    required: true
-  },
-  inputPlaceholder: {
-    type: String,
-    default: 'input placeholder',
     required: true
   },
   inputRequired: {

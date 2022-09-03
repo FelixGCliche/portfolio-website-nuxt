@@ -3,7 +3,16 @@
     <InputTextField
       input-name="name"
       input-label="Name"
-      input-placeholder="Name"
+      :input-required="true"
+    />
+    <InputTextField
+      input-name="email"
+      input-label="Email"
+      :input-required="true"
+    />
+    <InputTextAreaField
+      input-name="message"
+      input-label="Message"
       :input-required="true"
     />
   </form>
