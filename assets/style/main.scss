@@ -36,44 +36,40 @@ textarea {
   height: auto;
 }
 
-.display {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+@each $size in map.keys(layout.$breakpoints) {
+  @include layout.media-query($size) {
+    :root {
+      --line-height-display: #{theme.get-line-height('display', $size, true)};
+      --line-height-headline: #{theme.get-line-height('headline', $size, true)};
+      --line-height-title: #{theme.get-line-height('title', $size, true)};
+      --line-height-label: #{theme.get-line-height('label', $size, true)};
+      --line-height-body: #{theme.get-line-height('body', $size, true)};
+      --line-height-caption: #{theme.get-line-height('caption', $size, true)};
+
+      --font-size-display: #{theme.get-font-size('display', $size, true)};
+      --font-size-headline: #{theme.get-font-size('headline', $size, true)};
+      --font-size-title: #{theme.get-font-size('title', $size, true)};
+      --font-size-label: #{theme.get-font-size('label', $size, true)};
+      --font-size-body: #{theme.get-font-size('body', $size, true)};
+      --font-size-caption: #{theme.get-font-size('caption', $size, true)};
+    }
+
+    .display {
       @include theme.typography-display($size);
     }
-  }
-}
-.headline {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+    .headline {
       @include theme.typography-headline($size);
     }
-  }
-}
-.title {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+    .title {
       @include theme.typography-title($size);
     }
-  }
-}
-.label {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+    .label {
       @include theme.typography-label($size);
     }
-  }
-}
-.body {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+    .body {
       @include theme.typography-body($size);
     }
-  }
-}
-.caption {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
+    .caption {
       @include theme.typography-caption($size);
     }
   }

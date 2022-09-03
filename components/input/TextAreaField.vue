@@ -4,8 +4,7 @@
     v-slot="slotProps"
   >
     <textarea
-      role="textbox"
-      contenteditable
+      ref="textarea"
       v-model="modelValue"
       class="body textarea-input"
       type="text"
@@ -20,10 +19,32 @@
 
 <script lang="ts" setup>
 import type { BaseInputFieldProps } from '@/types/BaseInputFieldProps'
+import { Ref } from 'vue'
 
+const textarea: Ref<HTMLTextAreaElement> = ref(null)
 const modelValue = ref('')
+const minTextareaHeight = ref(0)
 
-defineProps({ ...useInputFieldProps() })
+const props = defineProps({ ...useInputFieldProps() })
+
+onMounted(() => {
+  minTextareaHeight.value = textarea.value.offsetHeight
+  textarea.value.required = props.inputRequired
+})
+
+watch(modelValue, newValue => {
+  resizeHeight(newValue)
+})
+
+const resizeHeight = (value: string) => {
+  const lineHeightProperty = useComputedStyleProperty('--line-height-body')
+  const lineHeight = +lineHeightProperty.replace('px', '')
+
+  const lineBreaks = (value.match(/\n/g) || []).length
+  const height = minTextareaHeight.value + lineBreaks * lineHeight
+
+  textarea.value.style.height = `${Math.max(minTextareaHeight.value, height)}px`
+}
 </script>
 
 <style lang="scss">
@@ -35,6 +56,13 @@ defineProps({ ...useInputFieldProps() })
 <style lang="scss" scoped>
 @use 'sass:map';
 
+.resize {
+  display: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  visibility: visible;
+}
+
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
     .textarea-input {
@@ -45,7 +73,6 @@ defineProps({ ...useInputFieldProps() })
       border-bottom: 0.125rem solid theme.$on-background;
       width: 100%;
       resize: vertical;
-      min-height: 6rem;
 
       &:focus {
         background-color: theme.$surface;

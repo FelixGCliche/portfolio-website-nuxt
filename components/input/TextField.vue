@@ -4,6 +4,7 @@
     v-slot="slotProps"
   >
     <input
+      ref="textfield"
       v-model="modelValue"
       class="body textfield-input"
       type="text"
@@ -18,9 +19,16 @@
 
 <script lang="ts" setup>
 import type { BaseInputFieldProps } from '@/types/BaseInputFieldProps'
+import { Ref } from 'vue'
+
+const textfield: Ref<HTMLInputElement> = ref(null)
 const modelValue = ref('')
 
-defineProps({ ...useInputFieldProps() })
+const props = defineProps({ ...useInputFieldProps() })
+
+onMounted(() => {
+  textfield.value.required = props.inputRequired
+})
 </script>
 
 <style lang="scss" scoped>

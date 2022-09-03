@@ -13,7 +13,7 @@
   }
 }
 
-@function get-font-size($style, $size) {
+@function get-font-size($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
   @if not map-has-key($font-size, $key) {
@@ -21,10 +21,15 @@
   }
 
   $value: map.get($font-size, $key);
-  @return px-to-rem($value);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
 }
 
-@function get-line-height($style, $size) {
+@function get-line-height($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
   @if not map-has-key($line-height, $key) {
@@ -32,7 +37,12 @@
   }
 
   $value: map.get($line-height, $key);
-  @return px-to-rem($value);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
 }
 
 @font-face {
