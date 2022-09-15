@@ -23,12 +23,12 @@ import { Ref } from 'vue'
 
 const textarea: Ref<HTMLTextAreaElement> = ref(null)
 const modelValue = ref('')
-const minTextareaHeight = ref(0)
+const minTextareaHeight = ref('')
 
 const props = defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
-  minTextareaHeight.value = textarea.value.offsetHeight
+  minTextareaHeight.value = `${textarea.value.offsetHeight}`
   textarea.value.required = props.inputRequired
 })
 
@@ -41,9 +41,11 @@ const resizeHeight = (value: string) => {
   const lineHeight = +lineHeightProperty.replace('px', '')
 
   const lineBreaks = (value.match(/\n/g) || []).length
-  const height = minTextareaHeight.value + lineBreaks * lineHeight
+  const currentHeight = textarea.value.style.height
+  const height = `${minTextareaHeight.value + lineBreaks * lineHeight}`
 
-  textarea.value.style.height = `${Math.max(minTextareaHeight.value, height)}px`
+  if (currentHeight >= minTextareaHeight.value && currentHeight < height)
+    textarea.value.style.height = `${minTextareaHeight.value}px`
 }
 </script>
 
@@ -56,13 +58,6 @@ const resizeHeight = (value: string) => {
 <style lang="scss" scoped>
 @use 'sass:map';
 
-.resize {
-  display: none;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  visibility: visible;
-}
-
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
     .textarea-input {
@@ -72,6 +67,7 @@ const resizeHeight = (value: string) => {
       padding-top: calc(1rem + theme.get-line-height('body', $size));
       border-bottom: 0.125rem solid theme.$on-background;
       width: 100%;
+      height: 100%;
       resize: vertical;
 
       &:focus {
