@@ -1,13 +1,18 @@
 <template>
   <Title>Félix Gagné Cliche</Title>
 
-  <div class="page-grid" id="home">
+  <span id="home" />
+  <main class="page-grid">
     <Navigation />
     <PageHome />
-  </div>
+    <span id="contact" />
+    <LazyPageContact />
+  </main>
 </template>
 
 <script lang="ts" setup>
+import emailjs from 'emailjs-com'
+
 useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
@@ -15,12 +20,14 @@ useHead({
     lang: 'fr'
   }
 })
+
 setLocale('fr')
+
+emailjs.init('fQsPv5E3xcb_a9l0T')
 </script>
 
 <style lang="scss" scoped>
 .page-grid {
   display: grid;
-  height: 100%;
 }
 </style>

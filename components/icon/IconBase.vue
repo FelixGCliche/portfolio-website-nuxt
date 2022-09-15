@@ -1,23 +1,21 @@
 <template>
   <svg
+    class="icon"
     xmlns="http://www.w3.org/2000/svg"
     :height="size"
     :width="size"
     :aria-labelledby="iconName"
     viewBox="0 0 24 24"
   >
-    <title :id="iconName" lang="en">{{ iconName }} icon</title>
-    <g :fill="color">
+    <title :id="iconName" lang="en">{{ iconName }}</title>
+    <g fill="currentColor">
       <slot />
     </g>
   </svg>
 </template>
 
-<script lang="ts">
-import { useBaseIconProps } from 'types/BaseIconProps'
-
-export default defineComponent({
-  props: { ...useBaseIconProps({ iconName: 'icon' }) },
-  setup() {}
+<script lang="ts" setup>
+defineProps({
+  ...useIconProps()
 })
 </script>

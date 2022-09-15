@@ -1,5 +1,5 @@
 <template>
-  <main class="home-main">
+  <div class="page-home">
     <div class="section">
       <SectionAbout />
     </div>
@@ -18,7 +18,7 @@
       src="~img/bg_image.webp"
       alt="home background"
     />
-  </main>
+  </div>
 </template>
 
 <script lang="ts" setup></script>
@@ -35,10 +35,10 @@
   $base: calc(map.get(layout.$columns, $size) / 2);
   @return calc($base + 1);
 }
-.home-main {
+.page-home {
   @include layout.layout-grid;
   grid-template-rows: 1fr auto auto 1fr;
-  height: 100%;
+  height: 100vh;
 }
 .section {
   @include layout.responsive-cell-base {
@@ -60,11 +60,6 @@
   width: 100%;
   height: auto;
   align-self: end;
-}
-.home-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 @each $size in map.keys(layout.$breakpoints) {
@@ -97,17 +92,20 @@
     }
 
     .home-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
       @if $size != 'xsmall' {
         mask-image: linear-gradient(
           180deg,
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 0) 66%
+          theme.background() 0%,
+          theme.background(0) 66%
         );
       } @else {
         mask-image: linear-gradient(
           180deg,
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 0) 95%
+          theme.background() 0%,
+          theme.background(0) 95%
         );
       }
     }

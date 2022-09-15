@@ -20,16 +20,13 @@ export default defineNuxtConfig({
     locales: ['fr', 'en']
   },
 
-  publicRuntimeConfig: {
-    strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'
-  },
-
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
   typescript: {
     shim: false
   },
 
   build: {
+    transpile: ['emailjs-com'],
     filenames: {
       font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
     }

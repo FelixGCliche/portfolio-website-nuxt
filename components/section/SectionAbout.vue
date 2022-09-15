@@ -1,12 +1,12 @@
 <template>
   <section class="section-about">
-    <ContentRenderer :value="about">
-      <h1 class="headline">{{ about.headline }}</h1>
-      <h2 class="title">{{ about.title }}</h2>
-      <p class="body">{{ about.description }}</p>
+    <ContentRenderer :value="sectionAbout">
+      <h1 class="headline">{{ sectionAbout.headline }}</h1>
+      <h2 class="title">{{ sectionAbout.title }}</h2>
+      <p class="body">{{ sectionAbout.body }}</p>
       <ButtonPrimary
         class="button-contact"
-        :label="about.contactLabel"
+        :label="sectionAbout.contactLabel"
         url="#contact"
       />
     </ContentRenderer>
@@ -14,15 +14,14 @@
 </template>
 
 <script lang="ts" setup>
-const { data: about } = await useAsyncData('about', () =>
+const { data: sectionAbout } = await useAsyncData('sectionAbout', () =>
   queryContent('/section/about').locale(useLocale().value).findOne()
 )
 </script>
 
 <style lang="scss" scoped>
 .section-about {
-  display: flex;
-  flex-flow: column nowrap;
+  display: grid;
   gap: 1.5rem;
   margin: 3rem 0;
 }

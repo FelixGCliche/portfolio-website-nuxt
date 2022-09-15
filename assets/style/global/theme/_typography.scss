@@ -13,7 +13,7 @@
   }
 }
 
-@function get-font-size($style, $size) {
+@function get-font-size($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
   @if not map-has-key($font-size, $key) {
@@ -21,10 +21,15 @@
   }
 
   $value: map.get($font-size, $key);
-  @return px-to-rem($value);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
 }
 
-@function get-line-height($style, $size) {
+@function get-line-height($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
   @if not map-has-key($line-height, $key) {
@@ -32,7 +37,12 @@
   }
 
   $value: map.get($line-height, $key);
-  @return px-to-rem($value);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
 }
 
 @font-face {
@@ -96,7 +106,12 @@ $font-size: (
   'body-large': 16px,
   'body-medium': 14px,
   'body-small': 14px,
-  'body-xsmall': 12px
+  'body-xsmall': 12px,
+
+  'caption-large': 14px,
+  'caption-medium': 12px,
+  'caption-small': 12px,
+  'caption-xsmall': 11px
 );
 
 $line-height: (
@@ -123,7 +138,12 @@ $line-height: (
   'body-large': 24px,
   'body-medium': 20px,
   'body-small': 20px,
-  'body-xsmall': 16px
+  'body-xsmall': 16px,
+
+  'caption-large': 14px,
+  'caption-medium': 12px,
+  'caption-small': 12px,
+  'caption-xsmall': 11px
 );
 
 @mixin typography-display($size) {
@@ -163,6 +183,14 @@ $line-height: (
   font-family: Lekton, sans-serif;
   font-size: get-font-size('body', $size);
   line-height: get-line-height('body', $size);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@mixin typography-caption($size) {
+  font-family: Lekton, sans-serif;
+  font-size: get-font-size('caption', $size);
+  line-height: get-line-height('caption', $size);
   font-weight: 400;
   text-decoration: none;
 }

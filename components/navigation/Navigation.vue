@@ -9,15 +9,19 @@
         dir="rtl"
         @button-click.prevent="toggleOn"
       >
-        <IconMenu :size="24" />
+        <IconMenu icon-name="menu" :size="24" />
       </ButtonIcon>
     </div>
     <Transition name="slide-in">
       <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
         <div class="navbar-header">
-          <ButtonIcon dir="rtl" label="menu" @button-click.prevent="toggleOff">
-            <IconClear :size="24" />
-          </ButtonIcon>
+          <LazyButtonIcon
+            dir="rtl"
+            label="menu"
+            @button-click.prevent="toggleOff"
+          >
+            <IconClear icon-name="clear" :size="24" />
+          </LazyButtonIcon>
         </div>
         <LazyNavigationTree />
       </div>
@@ -43,16 +47,28 @@ const { toggled, toggleOn, toggleOff } = useToggle()
   padding: 2rem;
 
   @include layout.media-query('large') {
+    background: linear-gradient(
+      180deg,
+      theme.background(1) 0%,
+      theme.background(0.5) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
     padding: 2rem 9.75rem;
   }
   @include layout.media-query('medium') {
+    background: linear-gradient(
+      180deg,
+      theme.background(1) 0%,
+      theme.background(0.5) 75%,
+      rgba(0, 0, 0, 0) 100%
+    );
     padding: 2rem 6rem;
   }
   @include layout.media-query('small') {
     padding: 1rem 4rem;
   }
   @include layout.media-query('xsmall') {
-    padding: 1rem 4rem;
+    padding: 1rem 2rem;
   }
 }
 .navbar-content {

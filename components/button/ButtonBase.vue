@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="useButtonType($props.url)"
+    :is="buttonType($props.url)"
     class="button-base"
     :href="url"
     @button-click="handleClick"
@@ -11,17 +11,17 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
-
-const props = defineProps({
-  ...useBaseButtonProps({
-    label: 'button'
-  })
+defineProps({
+  ...useBaseButtonProps()
 })
+
+const buttonType = (url: string) => {
+  return useButtonType(url)
+}
 
 const emit = defineEmits(['button-click'])
 
-function handleClick(event: Event) {
+const handleClick = (event: Event) => {
   emit('button-click', event)
 }
 </script>
