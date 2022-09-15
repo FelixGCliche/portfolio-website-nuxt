@@ -4,7 +4,6 @@
     name="form-email"
     class="form-email"
     @submit="handleSubmit"
-    action="POST"
   >
     <div class="form-email-inputs">
       <input type="hidden" name="contact_number" />
