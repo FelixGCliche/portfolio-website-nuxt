@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
+  // @ts-ignores
   ssr: ({ isDev }) => !isDev,
 
   alias: {
@@ -12,8 +13,11 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  publicRuntimeConfig: {
-    strapiURL: process.env.STRAPI_URL || 'http:localhost:1337'
+  modules: ['@nuxt/content'],
+  // @ts-ignore
+  content: {
+    watch: false,
+    locales: ['fr', 'en']
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
@@ -22,6 +26,7 @@ export default defineNuxtConfig({
   },
 
   build: {
+    transpile: ['emailjs-com'],
     filenames: {
       font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
     }

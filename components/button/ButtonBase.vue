@@ -1,9 +1,9 @@
 <template>
   <component
-    :is="buttonType"
+    :is="buttonType($props.url)"
     class="button-base"
     :href="url"
-    @click="handleClick"
+    @button-click="handleClick"
   >
     <slot />
     <span class="label">{{ label }}</span>
@@ -11,20 +11,18 @@
 </template>
 
 <script lang="ts" setup>
-import { useBaseButtonProps, useButtonType } from 'types/BaseButtonProps'
-
-const props = defineProps({
-  ...useBaseButtonProps({
-    label: 'button'
-  })
+defineProps({
+  ...useBaseButtonProps()
 })
 
-const emit = defineEmits(['click'])
+const buttonType = (url: string) => {
+  return useButtonType(url)
+}
 
-const buttonType = useButtonType(props.url)
+const emit = defineEmits(['button-click'])
 
-function handleClick(event: Event) {
-  emit('click', event)
+const handleClick = (event: Event) => {
+  emit('button-click', event)
 }
 </script>
 
