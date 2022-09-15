@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   },
 
   build: {
+    transpile: ['emailjs-com'],
     filenames: {
       font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
     }

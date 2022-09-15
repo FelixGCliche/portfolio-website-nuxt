@@ -11,6 +11,8 @@
 </template>
 
 <script lang="ts" setup>
+import emailjs from 'emailjs-com'
+
 useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
@@ -18,7 +20,10 @@ useHead({
     lang: 'fr'
   }
 })
+
 setLocale('fr')
+
+emailjs.init('fQsPv5E3xcb_a9l0T')
 </script>
 
 <style lang="scss" scoped>

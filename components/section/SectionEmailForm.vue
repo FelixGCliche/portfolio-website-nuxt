@@ -1,16 +1,23 @@
 <template>
-  <form name="form-email" class="form-email">
+  <form
+    ref="formEmail"
+    name="form-email"
+    class="form-email"
+    @submit.prevent="handleSubmit"
+    action="POST"
+  >
     <div class="form-email-inputs">
-      <input type="hidden" name="form-name" value="form-email" />
+      <input type="hidden" name="contact_number" />
       <InputTextField
-        input-name="name"
+        input-name="from_name"
         input-label="Name"
         :input-required="true"
       />
       <InputTextField
-        input-name="email"
+        input-name="reply_to"
         input-label="Email"
         :input-required="true"
+        type='"email'
       />
       <InputTextAreaField
         input-name="message"
@@ -26,7 +33,18 @@
   </form>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts" setup>
+import { Ref } from 'vue'
+import emailjs from 'emailjs-com'
+
+const formEmail: Ref<HTMLFormElement> = ref(null)
+
+function handleSubmit() {
+  console.log(`${formEmail.value} submitted`)
+
+  emailjs.sendForm('portfolio', 'default', formEmail.value, 'fQsPv5E3xcb_a9l0T')
+}
+</script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
@@ -49,7 +67,7 @@
 
 .submit {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   &-button {
     min-width: 4rem;
     background: transparent;
