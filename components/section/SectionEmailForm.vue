@@ -43,6 +43,7 @@ function handleSubmit() {
   console.log(`${formEmail.value} submitted`)
 
   emailjs.sendForm('portfolio', 'default', formEmail.value, 'fQsPv5E3xcb_a9l0T')
+  // emailjs.sendForm('portfolio', 'default', formEmail.value, 'fQsPv5E3xcb_a9l0T')
 }
 </script>
 
