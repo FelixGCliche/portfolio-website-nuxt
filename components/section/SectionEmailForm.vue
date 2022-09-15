@@ -3,7 +3,7 @@
     ref="formEmail"
     name="form-email"
     class="form-email"
-    @submit.prevent="handleSubmit"
+    @submit="handleSubmit"
     action="POST"
   >
     <div class="form-email-inputs">
@@ -35,15 +35,11 @@
 
 <script lang="ts" setup>
 import { Ref } from 'vue'
-import emailjs from 'emailjs-com'
 
 const formEmail: Ref<HTMLFormElement> = ref(null)
 
 function handleSubmit() {
-  console.log(`${formEmail.value} submitted`)
-
-  emailjs.sendForm('portfolio', 'default', formEmail.value, 'fQsPv5E3xcb_a9l0T')
-  // emailjs.sendForm('portfolio', 'default', formEmail.value, 'fQsPv5E3xcb_a9l0T')
+  useEmail(formEmail.value)
 }
 </script>
 
