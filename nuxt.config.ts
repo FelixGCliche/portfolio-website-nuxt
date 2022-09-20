@@ -25,6 +25,15 @@ export default defineNuxtConfig({
     shim: false
   },
 
+  runtimeConfig: {
+    public: {
+      emailJSServiceID: process.env.EMAILJS_SERVICEID,
+      emailJSTemplateID: process.env.EMAILJS_TEMPLATEID,
+      emailJSUserID: process.env.EMAILJS_USERID,
+      grecaptchaSiteKey: process.env.GRECAPTCHA_SITEKEY
+    }
+  },
+
   build: {
     transpile: ['emailjs-com'],
     filenames: {

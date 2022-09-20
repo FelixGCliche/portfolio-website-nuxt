@@ -1,9 +1,20 @@
-import emailjs from 'emailjs-com'
+import { sendForm } from 'emailjs-com'
 
-export function useEmail(form: HTMLFormElement) {
-  emailjs
-    .sendForm('portfolio', 'default', form, 'fQsPv5E3xcb_a9l0T')
-    .then(() => {
-      window.location.reload()
-    })
+export const useEmail = (form: HTMLFormElement) => {
+  const config = useRuntimeConfig()
+
+  sendForm(
+    config.emailJSServiceID,
+    config.emailJSTemplateID,
+    form,
+    config.emailJSUserID
+  ).then(
+    response => {
+      console.log(`success: ${response.status} ${response.text}`)
+      document.body.scrollTop = 0
+    },
+    error => {
+      console.error(`failure: ${error.status} ${error.text}`)
+    }
+  )
 }

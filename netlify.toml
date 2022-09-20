@@ -3,10 +3,17 @@ base = "/"
 publish = "dist"
 command = "yarn generate --fail-on-error"
 
+
 [context.production]
   [context.production.environment]
-    STRAPI_URL = "https://strapi.gagnecliche.dev"
+    EMAILJS_SERVICEID = "portfolio_mn83wvd"
+    EMAILJS_TEMPLATEID = "default_58v68tt"
+    EMAILJS_USERID = "fQsPv5E3xcb_a9l0T"
+    GRECAPTCHA_SITEKEY = "6Lf9bhwiAAAAAK_W_RUMWNTijtLkuTaUNXUmrYd2"
 
 [context.deploy-preview]
   [context.deploy-preview.environment]
-    STRAPI_URL = "https://strapi.gagnecliche.dev"
+    EMAILJS_SERVICEID = "portfolio_mn83wvd"
+    EMAILJS_TEMPLATEID = "dev-test_ge2auoi"
+    EMAILJS_USERID = "fQsPv5E3xcb_a9l0T"
+    GRECAPTCHA_SITEKEY = "6Lf9bhwiAAAAAK_W_RUMWNTijtLkuTaUNXUmrYd2"

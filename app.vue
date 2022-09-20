@@ -1,5 +1,7 @@
 <template>
-  <Title>Félix Gagné Cliche</Title>
+  <Head>
+    <Title>Félix Gagné Cliche</Title>
+  </Head>
 
   <span id="home" />
   <main class="page-grid">
