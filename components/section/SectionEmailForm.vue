@@ -4,6 +4,8 @@
     name="form-email"
     class="form-email"
     @submit="validateForm"
+    method="post"
+    action="?"
   >
     <div class="form-email-inputs">
       <InputTextField
@@ -23,38 +25,30 @@
       />
     </div>
     <div class="form-email-submit">
-      <div ref="recaptcha" :class="{ invisible: !toggled }"></div>
+      <InputRecaptcha
+        v-if="toggled"
+        :container-id="grecaptchaContainerId"
+        :callback="handleSubmit"
+        :theme="RecaptchaTheme.Dark"
+        :size="RecaptchaSize.Normal"
+      />
       <input
+        v-else
         class="label form-email-submit-button"
-        :class="{ invisible: toggled }"
         type="submit"
         value="Submit"
       />
     </div>
   </form>
-  <Script
-    src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async
-    defer
-  />
 </template>
 
 <script lang="ts" setup>
 import { Ref } from 'vue'
+import { RecaptchaSize, RecaptchaTheme } from '~~/types/Recaptcha'
 
-const { toggled, toggleOn } = useToggle()
+const { toggled, toggleOn, toggleOff } = useToggle()
 const formEmail: Ref<HTMLFormElement> = ref(null)
-const recaptcha: Ref<HTMLElement> = ref(null)
-
-onMounted(() => {
-  window.onloadCallback = function () {
-    window.grecaptcha.render(recaptcha.value, {
-      sitekey: useRuntimeConfig().grecaptchaSiteKey,
-      theme: 'dark',
-      callback: handleSubmit
-    })
-  }
-})
+const grecaptchaContainerId = 'form-email-submit-grecaptcha'
 
 function validateForm(e: Event) {
   e.preventDefault()
@@ -62,23 +56,21 @@ function validateForm(e: Event) {
 }
 
 function handleSubmit() {
+  toggleOff()
   useEmail(formEmail.value)
+  window.grecaptcha.reset(grecaptchaContainerId)
 }
 </script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
 
-.invisible {
-  display: none;
-}
-
 .form-email {
   display: flex;
   flex-flow: column nowrap;
   gap: 4rem;
+  padding: 2rem;
   width: 100%;
-  height: 100%;
 
   &-inputs {
     display: grid;
@@ -97,8 +89,8 @@ function handleSubmit() {
       padding: 0.25rem 1rem;
       color: theme.$on-background;
       border: none;
-      width: fit-content;
       height: fit-content;
+      width: max-content;
       border: 4px solid theme.$primary;
 
       &:hover {

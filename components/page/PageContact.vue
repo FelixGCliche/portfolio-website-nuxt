@@ -62,7 +62,6 @@
     .form {
       margin: 4rem 0;
       border: 0.25rem solid theme.$surface;
-      padding: 2rem;
       @if $size == 'xsmall' {
         @include layout.responsive-cell($columns);
       } @else {

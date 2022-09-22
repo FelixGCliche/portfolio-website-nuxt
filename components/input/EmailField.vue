@@ -1,6 +1,6 @@
 <template>
   <InputFieldBase
-    v-bind="{ ...$props, ...$attrs } as BaseInputFieldProps"
+    v-bind="{ ...$props, ...$attrs } as InputFieldProps"
     v-slot="slotProps"
   >
     <input
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { BaseInputFieldProps } from '@/types/BaseInputFieldProps'
+import type { InputFieldProps } from '~~/types/InputField'
 import { Ref } from 'vue'
 
 const emailField: Ref<HTMLInputElement> = ref(null)

@@ -12,6 +12,15 @@
   </main>
 </template>
 
+<script lang="ts">
+declare global {
+  interface Window {
+    onloadCallback: () => void
+    grecaptcha: any
+  }
+}
+</script>
+
 <script lang="ts" setup>
 import emailjs from 'emailjs-com'
 
@@ -25,7 +34,7 @@ useHead({
 
 setLocale('fr')
 
-emailjs.init('fQsPv5E3xcb_a9l0T')
+emailjs.init(useRuntimeConfig().emailJSUserID)
 </script>
 
 <style lang="scss" scoped>
