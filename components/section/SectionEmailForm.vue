@@ -85,7 +85,6 @@ function handleSubmit() {
   gap: 4rem;
   padding: 2rem;
   width: 100%;
-
   &-inputs {
     display: grid;
     grid-template-rows: min-content min-content 1fr;
@@ -97,6 +96,9 @@ function handleSubmit() {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @include layout.media-query('xsmall') {
+      justify-content: center;
+    }
     &-button {
       min-width: 4rem;
       background: transparent;
@@ -106,7 +108,6 @@ function handleSubmit() {
       height: fit-content;
       width: max-content;
       border: 4px solid theme.$primary;
-
       &:hover {
         @include theme.hover(theme.$on-background) {
           border-color: theme.$secondary;
