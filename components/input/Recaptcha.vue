@@ -23,9 +23,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@include layout.media-query('xsmall') {
-  .grecaptcha {
-    transform: scale(0.66);
+.grecaptcha {
+  & div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  @include layout.media-query('xsmall') {
+    transform: scale(0.5);
     transform-origin: 0 0;
   }
 }

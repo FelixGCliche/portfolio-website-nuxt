@@ -30,7 +30,7 @@
         :container-id="grecaptchaContainerId"
         :callback="handleSubmit"
         :theme="RecaptchaTheme.Dark"
-        :size="RecaptchaSize.Normal"
+        :size="grecaptchaSize"
       />
       <input
         v-else
@@ -49,6 +49,20 @@ import { RecaptchaSize, RecaptchaTheme } from '~~/types/Recaptcha'
 const { toggled, toggleOn, toggleOff } = useToggle()
 const formEmail: Ref<HTMLFormElement> = ref(null)
 const grecaptchaContainerId = 'form-email-submit-grecaptcha'
+const grecaptchaSize = ref(RecaptchaSize.Normal)
+
+onMounted(() => {
+  window.addEventListener('resize', onResize)
+})
+
+function onResize() {
+  const deviceSize = useComputedStyleProperty('--device-size')
+  if (deviceSize === 'xsmall' || deviceSize === 'small') {
+    grecaptchaSize.value = RecaptchaSize.Compact
+  } else {
+    grecaptchaSize.value = RecaptchaSize.Normal
+  }
+}
 
 function validateForm(e: Event) {
   e.preventDefault()
