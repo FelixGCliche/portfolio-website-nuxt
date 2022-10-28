@@ -1,4 +1,4 @@
-export interface BaseIconProps {
+export interface IconProps {
   iconName: string
   size: number
 }
