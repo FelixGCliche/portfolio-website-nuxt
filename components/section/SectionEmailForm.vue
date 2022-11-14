@@ -85,6 +85,7 @@ function handleSubmit() {
   gap: 4rem;
   padding: 2rem;
   width: 100%;
+  height: 100%;
   &-inputs {
     display: grid;
     grid-template-rows: min-content min-content 1fr;

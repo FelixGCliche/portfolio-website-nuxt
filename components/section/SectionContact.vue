@@ -1,9 +1,9 @@
 <template>
   <section class="section-contact">
-    <ContentRenderer :value="sectionContact">
+    <!-- <ContentRenderer :value="sectionContact">
       <h2 class="headline">{{ sectionContact.headline }}</h2>
       <p class="body">{{ sectionContact.body }}</p>
-    </ContentRenderer>
+    </ContentRenderer> -->
     <div class="contact-buttons">
       <ButtonIcon
         class="button-email"
@@ -24,9 +24,9 @@
 </template>
 
 <script lang="ts" setup>
-const { data: sectionContact } = await useAsyncData('sectionContact', () =>
-  queryContent('/section/contact').locale(useLocale().value).findOne()
-)
+// const { data: sectionContact } = await useAsyncData('sectionContact', () =>
+//   queryContent('/section/contact').locale(useLocale().value).findOne()
+// )
 </script>
 
 <style lang="scss" scoped>

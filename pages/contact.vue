@@ -17,7 +17,6 @@
 .page-contact {
   @include layout.layout-grid;
   padding: 8rem 0;
-  height: 100vh;
   grid-template-rows: min-content 1fr;
 }
 .display {

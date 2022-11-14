@@ -1,15 +1,9 @@
 <template>
-  <Head>
-    <Title>Félix Gagné Cliche</Title>
-  </Head>
+  <Title>Félix Gagné Cliche</Title>
 
-  <span id="home" />
-  <main class="page-grid">
-    <Navigation />
-    <PageHome />
-    <span id="contact" />
-    <LazyPageContact />
-  </main>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script lang="ts">

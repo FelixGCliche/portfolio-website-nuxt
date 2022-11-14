@@ -1,7 +1,7 @@
 <template>
   <div class="page-home">
     <div class="section">
-      <SectionAbout />
+      <ContentRenderer :value="sectionAbout" />
     </div>
     <div class="profile">
       <img
@@ -13,19 +13,21 @@
     <div class="logo-container">
       <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
     </div>
-    <img
-      class="img-responsive home-bg"
-      src="~img/bg_image.webp"
-      alt="home background"
-    />
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+definePageMeta({
+  layout: 'home'
+})
+
+const { data: sectionAbout } = await useAsyncData('sectionAbout', () =>
+  queryContent('/').locale(useLocale().value).findOne()
+)
+</script>
 
 <style lang="scss" scoped>
 @use 'sass:map';
-
 @function get-overlap-start($size) {
   $base: calc(map.get(layout.$columns, $size) + 1);
   @return calc($base * -1);
@@ -37,29 +39,7 @@
 }
 .page-home {
   @include layout.layout-grid;
-  grid-template-rows: 1fr auto auto 1fr;
-  height: 100vh;
-}
-.section {
-  @include layout.responsive-cell-base {
-    grid-row: 3;
-    z-index: 3;
-  }
-}
-.profile {
-  @include layout.responsive-cell-base {
-    grid-row-start: 2;
-    grid-row-end: span 3;
-    align-self: start;
-    z-index: 2;
-  }
-}
-.logo-container {
-  grid-row: 2;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-  align-self: end;
+  grid-template-rows: repeat(4, auto);
 }
 
 @each $size in map.keys(layout.$breakpoints) {
@@ -67,46 +47,41 @@
     $columns: map.get(layout.$columns, $size);
 
     .section {
-      grid-column-start: get-overlap-start($size);
+      @include layout.responsive-cell-base {
+        grid-row: 3;
+        z-index: 3;
+        grid-column-start: get-overlap-start($size);
+      }
+
       @if $size == 'xsmall' {
         grid-column-end: span $columns;
-      } @else if $size == 'large' {
-        grid-column-end: span calc($columns / 2);
-      } @else {
-        grid-column-end: span calc(($columns / 2) + 1);
-      }
-    }
-    .logo-container {
-      grid-column-start: get-overlap-start($size);
-      @if $size == 'xsmall' {
-        grid-column-end: span calc($columns / 2);
       } @else if $size == 'large' {
         grid-column-end: span calc($columns / 2) + 2;
       } @else {
         grid-column-end: span calc(($columns / 2) + 1);
       }
     }
-    .profile {
-      grid-column-start: span get-profile-overlap($size);
-      grid-column-end: -1;
-    }
+    .logo-container {
+      grid-row: 2;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      align-self: end;
+      grid-column-start: get-overlap-start($size);
 
-    .home-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      @if $size != 'xsmall' {
-        mask-image: linear-gradient(
-          180deg,
-          theme.background() 0%,
-          theme.background(0) 66%
-        );
+      @if $size == 'large' {
+        grid-column-end: span calc($columns / 2) + 2;
       } @else {
-        mask-image: linear-gradient(
-          180deg,
-          theme.background() 0%,
-          theme.background(0) 95%
-        );
+        grid-column-end: span calc(($columns / 2) + 1);
+      }
+    }
+    .profile {
+      @include layout.responsive-cell-base {
+        grid-row-start: 2;
+        grid-row-end: span 2;
+        z-index: 2;
+        grid-column-start: span get-profile-overlap($size);
+        grid-column-end: -1;
       }
     }
   }

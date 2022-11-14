@@ -3,7 +3,7 @@ import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
-  // @ts-ignores
+  // @ts-ignore
   ssr: ({ isDev }) => !isDev,
 
   alias: {
