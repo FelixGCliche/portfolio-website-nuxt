@@ -1,10 +1,12 @@
 <template>
   <section class="section-contact">
-    <!-- <ContentRenderer :value="sectionContact">
-      <h2 class="headline">{{ sectionContact.headline }}</h2>
-      <p class="body">{{ sectionContact.body }}</p>
-    </ContentRenderer> -->
-    <div class="contact-buttons">
+    <h1 class="headline">
+      <slot name="headline" />
+    </h1>
+    <div class="body">
+      <slot name="body" />
+    </div>
+    <div class="button">
       <ButtonIcon
         class="button-email"
         url="mailto: felix@gagnecliche.dev"
@@ -23,32 +25,27 @@
   </section>
 </template>
 
-<script lang="ts" setup>
-// const { data: sectionContact } = await useAsyncData('sectionContact', () =>
-//   queryContent('/section/contact').locale(useLocale().value).findOne()
-// )
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .section-contact {
   display: grid;
   gap: 1.5rem;
-  margin: 3rem 0;
 }
 .headline {
   color: theme.$secondary;
 }
 
-.contact-buttons {
+.button {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   gap: 1rem;
-}
 
-.button-email,
-.button-sms {
-  width: fit-content;
-  padding: 0;
+  &-email,
+  &-sms {
+    width: fit-content;
+    padding: 0;
+  }
 }
 </style>

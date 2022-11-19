@@ -16,17 +16,14 @@ declare global {
 </script>
 
 <script lang="ts" setup>
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
 
+setLocale('en')
 useHead({
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  charset: 'utf-8',
   htmlAttrs: {
-    lang: 'fr'
+    lang: useLocale().value
   }
 })
-
-setLocale('fr')
 
 emailjs.init(useRuntimeConfig().emailJSUserID)
 </script>

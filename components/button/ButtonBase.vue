@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="buttonType($props.url)"
+    :is="useButtonType(url)"
     class="button-base"
     :href="url"
     @button-click="handleClick"
@@ -14,10 +14,6 @@
 defineProps({
   ...useBaseButtonProps()
 })
-
-const buttonType = (url: string) => {
-  return useButtonType(url)
-}
 
 const emit = defineEmits(['button-click'])
 

@@ -1,10 +1,8 @@
+import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
-import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
   target: 'static',
-  // @ts-ignore
-  ssr: false,
 
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
@@ -14,13 +12,14 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/content'],
-  // @ts-ignore
+
   content: {
     watch: false,
-    locales: ['fr', 'en']
+    locales: ['en', 'fr']
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
+
   typescript: {
     shim: false
   },

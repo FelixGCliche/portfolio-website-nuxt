@@ -1,4 +1,4 @@
-import { sendForm } from 'emailjs-com'
+import { sendForm } from '@emailjs/browser'
 
 export function useEmail(form: HTMLFormElement) {
   const config = useRuntimeConfig()

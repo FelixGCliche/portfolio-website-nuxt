@@ -27,7 +27,7 @@ const buttonType = useButtonType(props.url)
 <style lang="scss" scoped>
 @use 'sass:map';
 .button-icon {
-  display: inline-flex;
+  display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;

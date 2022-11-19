@@ -1,16 +1,16 @@
 <template>
-  <header class="navbar" ref="navbar">
+  <header class="navbar" ref="navbarRef">
+    <Transition name="fade">
+      <div class="navbar-background" v-if="isSticky" />
+    </Transition>
     <div class="navbar-header">
       <NavigationTree class="navbar-links" />
 
-      <ButtonIcon
-        class="navbar-button"
-        label="menu"
-        dir="rtl"
-        @button-click.prevent="toggleOn"
-      >
-        <IconMenu icon-name="menu" :size="24" />
-      </ButtonIcon>
+      <div class="navbar-button">
+        <ButtonIcon label="menu" dir="rtl" @button-click.prevent="toggleOn">
+          <IconMenu icon-name="menu" :size="24" />
+        </ButtonIcon>
+      </div>
     </div>
     <Transition name="slide-in">
       <div v-if="toggled" class="navbar-content" @click.prevent="toggleOff">
@@ -30,19 +30,13 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref } from 'vue'
-
 const { toggled, toggleOn, toggleOff } = useToggle()
-const navbar: Ref<HTMLElement> = ref(null)
+const { isSticky, onStick } = useSticky()
+const navbarRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    ([e]) => {
-      console.log(e.intersectionRatio, e.isIntersecting)
-    },
-    { threshold: [1] }
-  )
-  observer.observe(navbar.value)
+  const navbar = navbarRef?.value
+  onStick(navbar!)
 })
 </script>
 
@@ -62,7 +56,14 @@ onMounted(() => {
     @include layout.layout-grid;
   }
 
-  &-background-sticky {
+  &-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
     @include layout.media-query('large') {
       background: linear-gradient(
         180deg,
@@ -130,11 +131,19 @@ onMounted(() => {
 
 .slide-in-enter-active,
 .slide-in-leave-active {
-  transition: opacity 100ms ease-out, transform 200ms ease-out;
+  transition: opacity 500ms ease-out;
 }
 .slide-in-enter-from,
 .slide-in-leave-to {
-  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 500ms ease-out;
+}
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

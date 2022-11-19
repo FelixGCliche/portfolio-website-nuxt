@@ -39,31 +39,40 @@ $max: breakpoint-max('large');
   $max: breakpoint-max($size);
 
   @if $min == null and $max != null {
-    // small
-    @media screen and (max-width: $max) {
-      :root {
-        --device-size: #{$size};
-      }
+    @media (max-width: $max) {
       @content;
     }
   } @else if $min != null and $max != null {
-    // medium
     @media (min-width: $min) and (max-width: $max) {
-      :root {
-        --device-size: #{$size};
-      }
       @content;
     }
   } @else if $min != null and $max == null {
-    // large
     @media (min-width: $min) {
-      :root {
-        --device-size: #{$size};
-      }
       @content;
     }
   } @else {
     // Fallback - no breakpoints defined
+    @content;
+  }
+}
+
+@mixin media-query-min($size) {
+  @if not map.has-key($breakpoints, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
+  }
+  $max: breakpoint-max($size);
+  @media (min-width: breakpoint-max($size)) {
+    @content;
+  }
+}
+
+@mixin media-query-max($size) {
+  @if not map.has-key($breakpoints, $size) {
+    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
+  }
+
+  $min: breakpoint-min($size);
+  @media (max-width: $min) {
     @content;
   }
 }

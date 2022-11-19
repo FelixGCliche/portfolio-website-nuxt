@@ -6,9 +6,9 @@
     <h2 class="title">
       <slot name="title" />
     </h2>
-    <p class="body">
+    <div class="body">
       <slot name="body" />
-    </p>
+    </div>
     <ButtonPrimary class="section-about-button-contact label" url="/contact">
       <slot name="contact" />
     </ButtonPrimary>

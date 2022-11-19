@@ -58,10 +58,6 @@ $default-span: 4;
 @mixin responsive-cell($span: $default-span) {
   @each $size in map.keys($columns) {
     @include layout.media-query($size) {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      justify-content: center;
       grid-column: span $span;
       @content;
     }

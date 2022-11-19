@@ -1,17 +1,20 @@
 <template>
   <nav class="navlink">
     <ContentNavigation>
-      <div v-for="link of navigation" :key="link._path">
-        <NuxtLink class="navlink-item" :to="link._path">{{
-          link.title
-        }}</NuxtLink>
-      </div>
+      <NuxtLink
+        class="navlink-item"
+        v-for="link of navigation"
+        :key="link._path"
+        :to="link._path"
+      >
+        {{ link.title }}
+      </NuxtLink>
     </ContentNavigation>
   </nav>
 </template>
 <script lang="ts" setup>
 const { data: navigation } = await useAsyncData('navigation', () =>
-  queryContent('/').locale(useLocale().value).find()
+  queryContent().where({ _partial: false }).locale('en').find()
 )
 </script>
 

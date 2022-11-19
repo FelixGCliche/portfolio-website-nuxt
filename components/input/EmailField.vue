@@ -19,15 +19,15 @@
 
 <script lang="ts" setup>
 import type { InputFieldProps } from '~~/types/InputField'
-import { Ref } from 'vue'
 
-const emailField: Ref<HTMLInputElement> = ref(null)
+const emailFieldRef = ref<HTMLInputElement | null>(null)
 const modelValue = ref('')
 
 const props = defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
-  emailField.value.required = props.inputRequired
+  const emailField = emailFieldRef?.value
+  emailField!.required = props.inputRequired
 })
 </script>
 

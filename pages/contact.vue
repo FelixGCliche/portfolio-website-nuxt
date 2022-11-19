@@ -1,11 +1,10 @@
 <template>
   <div class="page-contact">
-    <h1 class="display">Contactez-moi!</h1>
-    <div class="section">
-      <SectionContact />
+    <div class="section section-contact">
+      <ContentDoc path="/contact/contact" />
     </div>
-    <div class="form">
-      <SectionEmailForm />
+    <div class="section section-form">
+      <ContentDoc path="/contact/email-form" />
     </div>
   </div>
 </template>
@@ -13,59 +12,32 @@
 <script lang="ts" setup></script>
 
 <style lang="scss" scoped>
-@use 'sass:map';
 .page-contact {
   @include layout.layout-grid;
-  padding: 8rem 0;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: repeat(4, auto);
+
+  @include layout.media-query-min('small') {
+    grid-template-rows: repeat(3, auto);
+  }
 }
-.display {
+
+.section {
   @include layout.responsive-cell-full;
-  color: theme.$primary;
-  overflow: hidden;
-}
-.display:after {
-  content: '';
-  display: inline-block;
-  vertical-align: baseline;
-  width: 100%;
-  margin-right: -100%;
-  margin-left: 1rem;
-  border-top: 4px solid;
-}
+  place-self: center;
 
-@each $size in map.keys(layout.$breakpoints) {
-  @include layout.media-query($size) {
-    $columns: map.get(layout.$columns, $size);
-    .display:after {
-      content: '';
-      display: inline-block;
-      vertical-align: baseline;
-      width: 100%;
-      margin-right: -100%;
-      margin-left: 1rem;
-      border-top: 4px solid;
+  @include layout.media-query-min('small') {
+    @include layout.responsive-cell-half;
+  }
+  &-contact {
+    grid-row: 2;
+  }
 
-      @if $size == 'xsmall' {
-        display: none;
-      }
-    }
-
-    .section {
-      @if $size == 'xsmall' {
-        @include layout.responsive-cell($columns);
-      } @else {
-        @include layout.responsive-cell(calc(($columns / 2) - 1));
-      }
-    }
-    .form {
-      margin: 4rem 0;
-      border: 0.25rem solid theme.$surface;
-      @if $size == 'xsmall' {
-        @include layout.responsive-cell($columns);
-      } @else {
-        @include layout.responsive-cell(calc(($columns / 2) + 1));
-      }
+  &-form {
+    border: 1px solid red;
+    grid-row: 3;
+    @include layout.media-query-min('small') {
+      grid-row: 2;
+      @include layout.responsive-cell-half;
     }
   }
 }
