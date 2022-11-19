@@ -8,18 +8,6 @@
 <style lang="scss" scoped>
 @use 'sass:map';
 
-.page-grid {
-  display: grid;
-  grid-template-rows: min-content 1fr;
-  height: 100%;
-  background-image: linear-gradient(
-      180deg,
-      theme.background() 0%,
-      theme.background(0) 66%
-    ),
-    url('@/assets/img/bg_image.webp');
-  background-size: cover;
-}
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
     .page-grid {
@@ -33,8 +21,8 @@
       @if $size != 'xsmall' {
         background-image: linear-gradient(
             0deg,
-            theme.background() 10%,
-            theme.background(0.24) 66%
+            theme.$background 24%,
+            theme.background(0.24)
           ),
           url('@/assets/img/bg_image.webp');
       } @else {

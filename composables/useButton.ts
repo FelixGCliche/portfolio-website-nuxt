@@ -3,8 +3,7 @@ export const useBaseButtonProps = () => ({
     type: String
   },
   label: {
-    type: String,
-    default: 'button-label'
+    type: String
   }
 })
 

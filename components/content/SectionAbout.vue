@@ -9,6 +9,9 @@
     <p class="body">
       <slot name="body" />
     </p>
+    <ButtonPrimary class="section-about-button-contact label" url="/contact">
+      <slot name="contact" />
+    </ButtonPrimary>
   </section>
 </template>
 
@@ -17,6 +20,10 @@
   display: grid;
   gap: 1.5rem;
   margin: 3rem 0;
+
+  &-button-contact {
+    width: fit-content;
+  }
 }
 .headline {
   color: theme.$primary;
@@ -34,9 +41,5 @@
 }
 .title {
   color: theme.$secondary;
-}
-
-.button-contact {
-  width: fit-content;
 }
 </style>

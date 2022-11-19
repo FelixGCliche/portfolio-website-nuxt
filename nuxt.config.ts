@@ -4,7 +4,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   target: 'static',
   // @ts-ignore
-  ssr: ({ isDev }) => !isDev,
+  ssr: false,
 
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
