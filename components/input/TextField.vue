@@ -4,13 +4,13 @@
     v-slot="slotProps"
   >
     <input
-      ref="textfield"
+      ref="textfieldRef"
       v-model="modelValue"
       class="body textfield-input"
       type="text"
       :id="inputName"
       :name="inputName"
-      :placeholder="inputLabel"
+      :placeholder="inputPlaceholder"
       @focus="slotProps.onFocus"
       @blur="slotProps.onBlur"
     />
@@ -19,15 +19,16 @@
 
 <script lang="ts" setup>
 import type { InputFieldProps } from '~~/types/InputField'
-import { Ref } from 'vue'
 
-const textfield: Ref<HTMLInputElement> = ref(null)
+const textfieldRef = ref<HTMLInputElement>()
 const modelValue = ref('')
 
 const props = defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
-  textfield.value.required = props.inputRequired
+  const textfield = textfieldRef.value!
+  textfield.required = props.inputRequired
+  textfield.placeholder = props.inputLabel!
 })
 </script>
 

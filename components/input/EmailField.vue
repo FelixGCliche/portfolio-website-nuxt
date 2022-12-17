@@ -4,13 +4,13 @@
     v-slot="slotProps"
   >
     <input
-      ref="emailField"
+      ref="emailFieldRef"
       v-model="modelValue"
       class="body emailfield-input"
       type="email"
       :id="inputName"
       :name="inputName"
-      :placeholder="inputLabel"
+      :placeholder="inputPlaceholder"
       @focus="slotProps.onFocus"
       @blur="slotProps.onBlur"
     />
@@ -18,16 +18,17 @@
 </template>
 
 <script lang="ts" setup>
-import type { InputFieldProps } from '~~/types/InputField'
+import type { InputFieldProps } from '@/types/InputField'
 
-const emailFieldRef = ref<HTMLInputElement | null>(null)
+const emailFieldRef = ref<HTMLInputElement>()
 const modelValue = ref('')
 
 const props = defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
-  const emailField = emailFieldRef?.value
-  emailField!.required = props.inputRequired
+  const emailField = emailFieldRef.value!
+  emailField.required = props.inputRequired
+  emailField.placeholder = props.inputLabel!
 })
 </script>
 

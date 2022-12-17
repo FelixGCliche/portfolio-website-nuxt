@@ -36,14 +36,10 @@ const handleClick = (event: Event) => {
   color: theme.$on-background;
   border: none;
 
-  &:hover {
-    @include theme.hover(theme.$on-background) {
-      border-color: theme.$secondary;
-    }
+  @include theme.hover(theme.$on-background) {
+    border-color: theme.$secondary;
   }
-  &:active {
-    @include theme.pressed(theme.$secondary);
-  }
+  @include theme.pressed(theme.$secondary);
 }
 .button-label {
   @each $size in map.keys(layout.$breakpoints) {

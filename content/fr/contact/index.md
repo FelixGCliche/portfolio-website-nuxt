@@ -1,3 +1,7 @@
+---
+title: Contact
+---
+
 ::SectionContact
 
 #headline

@@ -1,0 +1,15 @@
+{
+  "nameInput": {
+    "label": "Name",
+    "placeholder": "John Doe"
+  },
+  "emailInput": {
+    "label": "Email",
+    "placeholder": "courriel@example.ca"
+  },
+  "messageInput": {
+    "label": "Message",
+    "placeholder": "Message here..."
+  },
+  "submitLabel": "Send"
+}

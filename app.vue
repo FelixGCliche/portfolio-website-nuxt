@@ -18,13 +18,6 @@ declare global {
 <script lang="ts" setup>
 import emailjs from '@emailjs/browser'
 
-setLocale('en')
-useHead({
-  htmlAttrs: {
-    lang: useLocale().value
-  }
-})
-
 emailjs.init(useRuntimeConfig().emailJSUserID)
 </script>
 

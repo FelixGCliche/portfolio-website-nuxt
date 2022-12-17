@@ -1,15 +1,13 @@
 <template>
   <div class="page-contact">
     <div class="section section-contact">
-      <ContentDoc path="/contact/contact" />
+      <ContentDoc path="/contact" :locale="useLocale().value" />
     </div>
     <div class="section section-form">
-      <ContentDoc path="/contact/email-form" />
+      <SectionEmailForm />
     </div>
   </div>
 </template>
-
-<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .page-contact {
@@ -33,7 +31,8 @@
   }
 
   &-form {
-    border: 1px solid red;
+    width: 100%;
+    border: 0.25rem solid theme.$surface;
     grid-row: 3;
     @include layout.media-query-min('small') {
       grid-row: 2;

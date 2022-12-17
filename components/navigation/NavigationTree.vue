@@ -13,9 +13,13 @@
   </nav>
 </template>
 <script lang="ts" setup>
-const { data: navigation } = await useAsyncData('navigation', () =>
-  queryContent().where({ _partial: false }).locale('en').find()
+const { data: navigation, refresh } = await useAsyncData('navigation', () =>
+  queryContent().where({ _partial: false }).locale(useLocale().value).find()
 )
+
+watch(useLocale(), () => {
+  refreshNuxtData('navigation')
+})
 </script>
 
 <style lang="scss" scoped>
@@ -47,12 +51,8 @@ const { data: navigation } = await useAsyncData('navigation', () =>
           margin-left: 1.5rem;
         }
 
-        &:hover {
-          @include theme.hover(theme.$secondary);
-        }
-        &:active {
-          @include theme.pressed(theme.$tertiary);
-        }
+        @include theme.hover(theme.$secondary);
+        @include theme.pressed(theme.$tertiary);
       }
     }
   }

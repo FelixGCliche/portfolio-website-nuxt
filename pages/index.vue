@@ -1,8 +1,7 @@
 <template>
   <div class="page-home">
     <div class="section">
-      <!-- <ContentDoc path="/" /> -->
-      <ContentRenderer :value="data" />
+      <ContentDoc path="/" :locale="useLocale().value" />
     </div>
     <div class="profile">
       <img
@@ -20,11 +19,6 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'home'
-})
-const { data } = await useAsyncData('home', async () => {
-  const res = await queryContent('/').findOne()
-  console.log(res)
-  return res
 })
 </script>
 

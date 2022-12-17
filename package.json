@@ -10,7 +10,7 @@
     "format": "prettier --config .prettierrc --write ."
   },
   "devDependencies": {
-    "@nuxt/content": "^2.0.1",
+    "@nuxt/content": "^2.3.0",
     "@nuxtjs/eslint-config-typescript": "latest",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
