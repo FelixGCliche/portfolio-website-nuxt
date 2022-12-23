@@ -1,13 +1,21 @@
 <template>
   <div class="page-contact">
     <div class="section section-contact">
-      <ContentDoc path="/contact" :locale="useLocale().value" />
+      <ContentRendererMarkdown :value="contact!" />
     </div>
     <div class="section section-form">
       <SectionEmailForm />
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+const { data: contact } = await useAsyncData('contact', () => {
+  return queryContent('/contact')
+    .where({ _partial: false, _locale: useLocale().value })
+    .findOne()
+})
+</script>
 
 <style lang="scss" scoped>
 .page-contact {

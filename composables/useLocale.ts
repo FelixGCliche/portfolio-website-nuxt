@@ -7,7 +7,6 @@ export const useLocale = () => {
   }
 }
 const useDefaultLocale = (fallback = 'fr') => {
-  console.log('Loading default locale')
   const locale = ref(fallback)
 
   if (process.server) {
