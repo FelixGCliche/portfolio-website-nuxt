@@ -8,16 +8,3 @@ export const useIconProps = () => ({
     required: true
   }
 })
-
-export const useBaseIconProps = () => ({
-  iconName: {
-    type: String,
-    default: 'iconName',
-    required: true
-  },
-  size: {
-    type: Number,
-    default: 24,
-    required: true
-  }
-})

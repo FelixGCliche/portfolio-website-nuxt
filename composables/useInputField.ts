@@ -7,24 +7,10 @@ export const useInputFieldProps = () => ({
     type: String,
     required: true
   },
+  inputPlaceholder: {
+    type: String
+  },
   inputRequired: {
     type: Boolean
-  }
-})
-
-export const useBaseInputFieldProps = () => ({
-  inputName: {
-    type: String,
-    default: 'input name',
-    required: true
-  },
-  inputLabel: {
-    type: String,
-    default: 'input label',
-    required: true
-  },
-  inputRequired: {
-    type: Boolean,
-    default: false
   }
 })

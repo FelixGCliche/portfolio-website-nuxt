@@ -1,0 +1,13 @@
+---
+title: Contact
+---
+
+::SectionContact
+
+#headline
+Let's work together
+
+#body
+Let's keep in touch! Feel free to reach out to me about your next project, big or small.
+
+Cheers!

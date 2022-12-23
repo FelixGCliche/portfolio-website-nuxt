@@ -1,0 +1,13 @@
+---
+title: Contact
+---
+
+::SectionContact
+
+#headline
+Travaillons ensemble
+
+#body
+Restons en contact! N'hésitez pas à me contacter au sujet de votre prochain projet, petit ou grand.
+
+Cheers!

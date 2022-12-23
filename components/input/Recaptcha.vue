@@ -1,14 +1,20 @@
 <template>
   <div :id="props.containerId" class="grecaptcha"></div>
-  <Script
-    src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    :async="true"
-    :defer="true"
-  />
 </template>
 
 <script lang="ts" setup>
 const props = defineProps({ ...useRecaptchaProps() })
+
+useHead({
+  script: [
+    {
+      src: 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit',
+      async: true,
+      defer: true,
+      tagPosition: 'bodyClose'
+    }
+  ]
+})
 
 onMounted(() => {
   window.onloadCallback = function () {

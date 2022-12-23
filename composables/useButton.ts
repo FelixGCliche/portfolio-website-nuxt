@@ -3,12 +3,11 @@ export const useBaseButtonProps = () => ({
     type: String
   },
   label: {
-    type: String,
-    default: 'button-label'
+    type: String
   }
 })
 
-export const useButtonType = (url: string) => {
+export const useButtonType = (url?: string) => {
   if (!url) {
     return 'button'
   }

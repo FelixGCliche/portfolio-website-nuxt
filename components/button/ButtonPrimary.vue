@@ -2,7 +2,9 @@
   <ButtonBase
     class="button-primary"
     v-bind="{ ...$props, ...$attrs } as ButtonProps"
-  />
+  >
+    <slot />
+  </ButtonBase>
 </template>
 
 <script lang="ts" setup>

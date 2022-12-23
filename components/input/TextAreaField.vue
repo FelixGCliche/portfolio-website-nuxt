@@ -4,13 +4,13 @@
     v-slot="slotProps"
   >
     <textarea
-      ref="textarea"
+      ref="textareaRef"
       v-model="modelValue"
       class="body textarea-input"
       type="text"
       :id="inputName"
       :name="inputName"
-      :placeholder="inputLabel"
+      :placeholder="inputPlaceholder"
       @focus="slotProps.onFocus"
       @blur="slotProps.onBlur"
     />
@@ -19,33 +19,26 @@
 
 <script lang="ts" setup>
 import type { InputFieldProps } from '~~/types/InputField'
-import { Ref } from 'vue'
 
-const textarea: Ref<HTMLTextAreaElement> = ref(null)
+const textareaRef = ref<HTMLTextAreaElement>()
 const modelValue = ref('')
-const minTextareaHeight = ref('')
+const baseHeight = ref(0)
 
 const props = defineProps({ ...useInputFieldProps() })
 
 onMounted(() => {
-  minTextareaHeight.value = `${textarea.value.offsetHeight}`
-  textarea.value.required = props.inputRequired
+  const textarea = textareaRef.value!
+  textarea.required = props.inputRequired
+  textarea.placeholder = props.inputLabel!
+  baseHeight.value = textarea.offsetHeight
+  textarea.addEventListener('input', onResize)
 })
 
-watch(modelValue, newValue => {
-  resizeHeight(newValue)
-})
-
-const resizeHeight = (value: string) => {
-  const lineHeightProperty = useComputedStyleProperty('--line-height-body')
-  const lineHeight = +lineHeightProperty.replace('px', '')
-
-  const lineBreaks = (value.match(/\n/g) || []).length
-  const currentHeight = textarea.value.style.height
-  const height = `${minTextareaHeight.value + lineBreaks * lineHeight}`
-
-  if (currentHeight >= minTextareaHeight.value && currentHeight < height)
-    textarea.value.style.height = `${minTextareaHeight.value}px`
+const onResize = (event: Event) => {
+  const targetElement = event.target! as HTMLElement
+  targetElement.style.height = `${baseHeight.value}px`
+  const newHeight = Math.max(baseHeight.value, targetElement.scrollHeight)
+  targetElement.style.height = `${newHeight}px`
 }
 </script>
 

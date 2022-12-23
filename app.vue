@@ -1,15 +1,9 @@
 <template>
-  <Head>
-    <Title>Félix Gagné Cliche</Title>
-  </Head>
+  <Title>Félix Gagné Cliche</Title>
 
-  <span id="home" />
-  <main class="page-grid">
-    <Navigation />
-    <PageHome />
-    <span id="contact" />
-    <LazyPageContact />
-  </main>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script lang="ts">
@@ -22,17 +16,7 @@ declare global {
 </script>
 
 <script lang="ts" setup>
-import emailjs from 'emailjs-com'
-
-useHead({
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  charset: 'utf-8',
-  htmlAttrs: {
-    lang: 'fr'
-  }
-})
-
-setLocale('fr')
+import emailjs from '@emailjs/browser'
 
 emailjs.init(useRuntimeConfig().emailJSUserID)
 </script>
