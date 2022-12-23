@@ -5,13 +5,18 @@
 <script lang="ts" setup>
 const props = defineProps({ ...useRecaptchaProps() })
 
-onMounted(() => {
-  const recaptchaScript = document.createElement('script')
-  recaptchaScript.src =
-    'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'
-  recaptchaScript.async = true
-  recaptchaScript.defer = true
+useHead({
+  script: [
+    {
+      src: 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit',
+      async: true,
+      defer: true,
+      tagPosition: 'bodyClose'
+    }
+  ]
+})
 
+onMounted(() => {
   window.onloadCallback = function () {
     window.grecaptcha.render(props.containerId, {
       sitekey: useRuntimeConfig().grecaptchaSiteKey,
