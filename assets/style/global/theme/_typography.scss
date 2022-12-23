@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 @function get-typography-value($style, $size) {
-  @return #{$style}+ '-' +#{$size};
+  @return #{$style} + '-' + #{$size};
 }
 
 @function px-to-rem($px) {

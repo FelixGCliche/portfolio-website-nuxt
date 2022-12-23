@@ -1,12 +1,14 @@
 <template>
   <ButtonBase
     class="button-primary"
-    v-bind="{ ...$props, ...$attrs } as BaseButtonProps"
-  />
+    v-bind="{ ...$props, ...$attrs } as ButtonProps"
+  >
+    <slot />
+  </ButtonBase>
 </template>
 
 <script lang="ts" setup>
-import type { BaseButtonProps } from '@/types/BaseButtonProps'
+import type { ButtonProps } from '~~/types/Button'
 </script>
 
 <style lang="scss" scoped>

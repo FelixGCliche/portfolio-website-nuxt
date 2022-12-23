@@ -10,13 +10,10 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref } from 'vue'
-
 const { toggled, toggleOn, toggleOff } = useToggle()
-const currentActiveElement: Ref<HTMLInputElement | HTMLTextAreaElement> =
-  ref(null)
+const currentActiveElement = ref<HTMLInputElement | HTMLTextAreaElement>()
 
-defineProps({ ...useInputFieldProps() })
+const props = defineProps({ ...useInputFieldProps() })
 
 function onFocus() {
   currentActiveElement.value = document.activeElement as
@@ -24,13 +21,15 @@ function onFocus() {
     | HTMLTextAreaElement
 
   toggleOn()
+  currentActiveElement.value.placeholder = props.inputPlaceholder!
 }
 function onBlur() {
-  if (currentActiveElement.value == null) {
-    toggleOff()
+  if (!currentActiveElement?.value) {
+    return
   }
-  if (!currentActiveElement.value.value) {
+  if (!currentActiveElement.value!.value) {
     toggleOff()
+    currentActiveElement.value.placeholder = props.inputLabel!
   }
 }
 </script>

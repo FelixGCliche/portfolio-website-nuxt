@@ -1,6 +1,6 @@
 <template>
   <component
-    :is="buttonType($props.url)"
+    :is="useButtonType(url)"
     class="button-base"
     :href="url"
     @button-click="handleClick"
@@ -14,10 +14,6 @@
 defineProps({
   ...useBaseButtonProps()
 })
-
-const buttonType = (url: string) => {
-  return useButtonType(url)
-}
 
 const emit = defineEmits(['button-click'])
 
@@ -40,14 +36,10 @@ const handleClick = (event: Event) => {
   color: theme.$on-background;
   border: none;
 
-  &:hover {
-    @include theme.hover(theme.$on-background) {
-      border-color: theme.$secondary;
-    }
+  @include theme.hover(theme.$on-background) {
+    border-color: theme.$secondary;
   }
-  &:active {
-    @include theme.pressed(theme.$secondary);
-  }
+  @include theme.pressed(theme.$secondary);
 }
 .button-label {
   @each $size in map.keys(layout.$breakpoints) {

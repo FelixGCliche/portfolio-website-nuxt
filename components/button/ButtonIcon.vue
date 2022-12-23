@@ -27,7 +27,7 @@ const buttonType = useButtonType(props.url)
 <style lang="scss" scoped>
 @use 'sass:map';
 .button-icon {
-  display: inline-flex;
+  display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
@@ -41,11 +41,8 @@ const buttonType = useButtonType(props.url)
   [dir='rtl'] & {
     flex-flow: row-reverse nowrap;
   }
-  &:hover {
-    @include theme.hover(theme.$primary);
-  }
-  &:active {
-    @include theme.pressed(theme.$secondary);
-  }
+
+  @include theme.hover(theme.$primary);
+  @include theme.pressed(theme.$secondary);
 }
 </style>

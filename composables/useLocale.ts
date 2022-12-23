@@ -1,24 +1,23 @@
 export const useLocale = () => {
-  return useState<string>('locale', () => useDefaultLocale().value)
-}
-export const setLocale = (locale: string) => {
-  if (locale === 'fr' || locale === 'en')
-    return useState<string>('locale', () => locale)
-  else console.log(`Locale ${locale} is not available`)
+  const locale = useState<string>('locale')
+  if (locale.value) {
+    return locale
+  } else {
+    return useState<string>('locale', () => useDefaultLocale().value)
+  }
 }
 const useDefaultLocale = (fallback = 'fr') => {
   const locale = ref(fallback)
 
   if (process.server) {
     try {
-      const reqLang: string =
-        useNuxtApp().ssrContext?.req.headers['accept-language'].split(',')[0]
+      const reqLang = useRequestHeaders()['accept-language']?.split(',')[0]
       if (reqLang) {
         locale.value = reqLang.split('-')[0]
       }
     } catch (error) {
       console.log(
-        `Error getting client locale, fallback on locale ${locale}. Error: ${error}`
+        `Error getting server locale, fallback on locale ${locale}. Error: ${error}`
       )
       return locale
     }
