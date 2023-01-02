@@ -76,7 +76,3 @@ $max: breakpoint-max('large');
     @content;
   }
 }
-
-@each $size in map.keys($breakpoints) {
-  @include media-query($size);
-}

@@ -1,6 +1,6 @@
 <template>
   <div class="page-grid">
-    <Navigation />
+    <LayoutHeader />
     <NuxtPage />
   </div>
 </template>

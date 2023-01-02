@@ -1,6 +1,4 @@
 <template>
-  <Title>Félix Gagné Cliche</Title>
-
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

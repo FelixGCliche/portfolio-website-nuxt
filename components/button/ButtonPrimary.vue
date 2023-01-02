@@ -3,7 +3,11 @@
     class="button-primary"
     v-bind="{ ...$props, ...$attrs } as ButtonProps"
   >
-    <slot />
+    <div class="bevel bevel-container">
+      <div class="bevel bevel-inner">
+        <slot />
+      </div>
+    </div>
   </ButtonBase>
 </template>
 
@@ -12,7 +16,18 @@ import type { ButtonProps } from '~~/types/Button'
 </script>
 
 <style lang="scss" scoped>
-.button-primary {
-  border: 4px solid theme.$primary;
+.bevel {
+  &-container {
+    @include theme.bevel(theme.$primary, 8px);
+    padding: 4px;
+    @include theme.hover(theme.$on-background) {
+      @include theme.bevel(theme.$secondary, 8px);
+    }
+    @include theme.pressed(theme.$secondary);
+  }
+  &-inner {
+    @include theme.bevel(theme.$background, 8 - 1px);
+    padding: 0.5rem;
+  }
 }
 </style>

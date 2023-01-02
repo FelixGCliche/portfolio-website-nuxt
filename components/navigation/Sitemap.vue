@@ -1,21 +1,30 @@
 <template>
   <nav class="navlink">
     <ContentNavigation>
-      <NuxtLink
-        class="navlink-item"
-        v-for="link of navigation"
-        :key="link._path"
-        :to="link._path"
-      >
-        {{ link.title }}
-      </NuxtLink>
+      <div v-for="link of sitemap" :key="link._path">
+        <NuxtLink class="navlink-item" :to="link._path">
+          {{ link.title }}
+        </NuxtLink>
+        <div v-if="link.children" v-for="child of link.children">
+          <NuxtLink class="navlink-item" :to="child._path">
+            {{ child.title }}
+          </NuxtLink>
+        </div>
+      </div>
     </ContentNavigation>
   </nav>
 </template>
 <script lang="ts" setup>
-const { data: navigation } = await useAsyncData('navigation', () =>
-  fetchContentNavigation()
-)
+const { data: sitemap } = await useAsyncData('sitemap', async () => {
+  const c = await fetchContentNavigation()
+  c.forEach(e =>
+    console.log(
+      `${e._path} has ${e.children ? e.children?.length : 0} children`,
+      e.children
+    )
+  )
+  return c
+})
 
 watch(useLocale(), () => {
   refreshNuxtData('navigation')
@@ -29,7 +38,7 @@ watch(useLocale(), () => {
   @include layout.media-query($size) {
     .navlink {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       text-transform: uppercase;
 
       @if $size == 'xsmall' {
