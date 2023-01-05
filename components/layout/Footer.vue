@@ -6,7 +6,9 @@
       </div>
       <NavigationSitemap class="footer-sitemap" />
     </div>
-    <span class="caption footer-caption">Copyright 2023</span>
+    <span class="caption footer-caption"
+      >&copy; Copyright Félix Gagné Cliche 2023</span
+    >
   </footer>
 </template>
 

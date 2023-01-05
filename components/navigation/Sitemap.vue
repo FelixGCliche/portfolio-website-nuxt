@@ -6,7 +6,7 @@
           {{ link.title }}
         </NuxtLink>
         <div v-if="link.children" v-for="child of link.children">
-          <NuxtLink :to="child._path" class="caption navlink-item">
+          <NuxtLink :to="child._path" class="body navlink-item">
             {{ child.title }}
           </NuxtLink>
         </div>
@@ -42,7 +42,7 @@ watch(useLocale(), () => {
 
       &-item {
         display: block;
-        color: theme.$on-surface;
+        color: theme.$on-background;
 
         @include theme.hover(theme.$primary);
         @include theme.pressed(theme.$secondary);

@@ -1,5 +1,5 @@
 <template>
-  <div class="locale-switch" v-for="value of locales" :key="value">
+  <div class="locale-switch" v-for="value of content.locales" :key="value">
     <input
       class="locale-switch-radio"
       type="radio"
@@ -16,8 +16,12 @@
 
 <script lang="ts" setup>
 const { content } = useRuntimeConfig().public
-const locales = content.locales
 const selectedLocale = ref(content.defaultLocale)
+
+watch(selectedLocale, () => {
+  useState<string>('locale').value = selectedLocale.value
+  console.log(useLocale().value)
+})
 </script>
 
 <style lang="scss" scoped>
