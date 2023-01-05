@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
     "lint": "eslint --ext .ts,.tsx,.js,.vue .",
     "lint:fix": "yarn eslint --fix",
     "format": "prettier --config .prettierrc --write ."
