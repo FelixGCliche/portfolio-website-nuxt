@@ -20,7 +20,6 @@ const selectedLocale = ref(content.defaultLocale)
 
 watch(selectedLocale, () => {
   useState<string>('locale').value = selectedLocale.value
-  console.log(useLocale().value)
 })
 </script>
 
