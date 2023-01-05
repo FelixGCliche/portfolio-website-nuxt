@@ -3,7 +3,7 @@
     <ContentNavigation>
       <NuxtLink
         class="navlink-item"
-        v-for="link of navigation"
+        v-for="link of navigationTree"
         :key="link._path"
         :to="link._path"
       >
@@ -13,12 +13,12 @@
   </nav>
 </template>
 <script lang="ts" setup>
-const { data: navigation, refresh } = await useAsyncData('navigation', () =>
-  queryContent().where({ _partial: false }).locale(useLocale().value).find()
-)
+const { data: navigationTree } = await useAsyncData('navigationTree', () => {
+  return fetchContentNavigation(queryContent().locale(useLocale().value))
+})
 
 watch(useLocale(), () => {
-  refreshNuxtData('navigation')
+  refreshNuxtData('navigationTree')
 })
 </script>
 
@@ -29,7 +29,7 @@ watch(useLocale(), () => {
   @include layout.media-query($size) {
     .navlink {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       text-transform: uppercase;
 
       @if $size == 'xsmall' {

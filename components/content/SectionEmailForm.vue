@@ -56,8 +56,7 @@ const grecaptchaContainerId = 'form-email-submit-grecaptcha'
 const grecaptchaSize = ref(RecaptchaSize.Normal)
 
 const { data: emailForm } = await useAsyncData('emailForm', () => {
-  return queryContent('contact', '_email')
-    .where({ _partial: true })
+  return queryContent('/contact/#contact-email')
     .locale(useLocale().value)
     .findOne()
 })

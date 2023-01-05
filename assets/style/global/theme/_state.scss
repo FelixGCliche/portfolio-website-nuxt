@@ -12,7 +12,13 @@
   &:active {
     cursor: pointer;
     color: $color;
+    @content;
+  }
+}
 
+@mixin checked($color) {
+  &:checked {
+    color: $color;
     @content;
   }
 }
