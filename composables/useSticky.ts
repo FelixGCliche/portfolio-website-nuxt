@@ -8,7 +8,7 @@ export const useSticky = () => {
       },
       { threshold: [1] }
     )
-    observer.observe(target)
+    observer.observe(target!)
   }
 
   return {

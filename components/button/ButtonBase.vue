@@ -32,14 +32,8 @@ const handleClick = (event: Event) => {
   justify-content: center;
   min-width: 4rem;
   background: transparent;
-  padding: 0.25rem 1rem;
   color: theme.$on-background;
   border: none;
-
-  @include theme.hover(theme.$on-background) {
-    border-color: theme.$secondary;
-  }
-  @include theme.pressed(theme.$secondary);
 }
 .button-label {
   @each $size in map.keys(layout.$breakpoints) {

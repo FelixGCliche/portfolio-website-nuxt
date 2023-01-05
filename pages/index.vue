@@ -1,5 +1,5 @@
 <template>
-  <div class="page-home">
+  <div class="page-home" :style="maskStyles">
     <div class="section">
       <ContentDoc path="/" :locale="useLocale().value" />
     </div>
@@ -10,16 +10,35 @@
         alt="profile picture"
       />
     </div>
-    <div class="logo-container">
-      <img class="img-responsive" src="~img/portfolio_logo.svg" alt="logo" />
-    </div>
+    <div class="logo-container" />
   </div>
 </template>
 
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'home'
+const maskPosition = ref('')
+const maskSize = ref('')
+
+const maskStyles = computed(() =>
+  reactive({
+    '--mask-position': maskPosition.value,
+    '--mask-size': maskSize.value
+  })
+)
+onMounted(() => {
+  getMaskStyles()
+  window.addEventListener('resize', getMaskStyles)
 })
+
+function getMaskStyles() {
+  const logoRect = document
+    .querySelector('.logo-container')
+    ?.getBoundingClientRect()
+  const profileRect = document
+    .querySelector('.profile')
+    ?.getBoundingClientRect()
+  maskPosition.value = `${logoRect?.x}px ${profileRect?.y}px`
+  maskSize.value = `${logoRect?.width}px`
+}
 </script>
 
 <style lang="scss" scoped>
@@ -36,6 +55,26 @@ definePageMeta({
 .page-home {
   @include layout.layout-grid;
   grid-template-rows: repeat(4, auto);
+
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('@/assets/img/bg_image.webp');
+
+    mask: url('@/assets/img/logo.svg');
+    mask-repeat: no-repeat;
+    mask-position: var(--mask-position);
+    mask-size: var(--mask-size);
+  }
 }
 
 @each $size in map.keys(layout.$breakpoints) {
@@ -48,10 +87,8 @@ definePageMeta({
         z-index: 3;
         grid-column-start: get-overlap-start($size);
       }
-
-      @if $size == 'xsmall' {
-        grid-column-end: span $columns;
-      } @else if $size == 'large' {
+      grid-column-end: span $columns;
+      @if $size == 'large' {
         grid-column-end: span calc($columns / 2) + 2;
       } @else {
         grid-column-end: span calc(($columns / 2) + 1);

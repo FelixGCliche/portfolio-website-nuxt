@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 
   content: {
     watch: false,
-    locales: ['en', 'fr']
+    locales: ['fr', 'en']
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],

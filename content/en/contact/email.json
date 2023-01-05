@@ -1,4 +1,6 @@
 {
+  "title": "Email",
+  "_path": "/contact/#contact-email",
   "nameInput": {
     "label": "Name",
     "placeholder": "John Doe"
