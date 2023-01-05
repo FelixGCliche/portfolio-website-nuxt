@@ -14,7 +14,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content'],
 
   content: {
-    watch: false,
     locales: ['fr', 'en']
   },
 
