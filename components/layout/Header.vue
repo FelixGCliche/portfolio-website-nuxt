@@ -12,7 +12,7 @@
       </div>
       <NavigationTree
         class="navbar-menu"
-        :class="{ 'navbar-menu-open': toggled }"
+        :class="[toggled ? 'navbar-menu-open' : 'navbar-menu-closed']"
         @click.prevent="toggleOff"
       />
     </div>
@@ -82,6 +82,7 @@ onMounted(() => {
     width: 0;
     height: 0;
     opacity: 0;
+    pointer-events: all;
 
     &-open {
       display: flex;
@@ -90,6 +91,12 @@ onMounted(() => {
       opacity: 1;
       transform: translateX(0%);
       transition: transform 1s cubic-bezier(0.6, 0, 0, 1);
+    }
+
+    &-closed {
+      @include layout.media-query('xsmall') {
+        pointer-events: none;
+      }
     }
   }
 }

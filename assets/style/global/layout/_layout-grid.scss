@@ -28,9 +28,6 @@ $default-span: 4;
   @return calc($gutters + $columns);
 }
 
-@function get-margin($size) {
-}
-
 @mixin layout-grid {
   @each $size in map.keys($columns) {
     @include layout.media-query($size) {
@@ -40,6 +37,7 @@ $default-span: 4;
       justify-content: center;
       @content;
       @if $size == 'xsmall' {
+        grid-gap: map.get($default-gutter, $size);
         grid-template-columns: repeat(map.get($columns, $size), 1fr);
         margin: 0 map.get($default-margin, $size);
       }

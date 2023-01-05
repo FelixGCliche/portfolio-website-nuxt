@@ -3,7 +3,7 @@
     <ContentNavigation>
       <NuxtLink
         class="navlink-item"
-        v-for="link of navigation"
+        v-for="link of navigationTree"
         :key="link._path"
         :to="link._path"
       >
@@ -13,12 +13,12 @@
   </nav>
 </template>
 <script lang="ts" setup>
-const { data: navigation } = await useAsyncData('navigation', () =>
-  fetchContentNavigation()
-)
+const { data: navigationTree } = await useAsyncData('navigationTree', () => {
+  return fetchContentNavigation(queryContent().locale(useLocale().value))
+})
 
 watch(useLocale(), () => {
-  refreshNuxtData('navigation')
+  refreshNuxtData('navigationTree')
 })
 </script>
 

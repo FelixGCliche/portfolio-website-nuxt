@@ -31,13 +31,13 @@ onMounted(() => {
 
 function getMaskStyles() {
   const logoRect = document
-    .querySelector('.logo-container')!
-    .getBoundingClientRect()
+    .querySelector('.logo-container')
+    ?.getBoundingClientRect()
   const profileRect = document
-    .querySelector('.profile')!
-    .getBoundingClientRect()
-  maskPosition.value = `${logoRect.x}px ${profileRect.y}px`
-  maskSize.value = `${logoRect.width}px`
+    .querySelector('.profile')
+    ?.getBoundingClientRect()
+  maskPosition.value = `${logoRect?.x}px ${profileRect?.y}px`
+  maskSize.value = `${logoRect?.width}px`
 }
 </script>
 
@@ -62,6 +62,7 @@ function getMaskStyles() {
     inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 0;
 
     background-repeat: no-repeat;
     background-size: cover;

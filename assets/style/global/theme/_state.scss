@@ -15,3 +15,10 @@
     @content;
   }
 }
+
+@mixin checked($color) {
+  &:checked {
+    color: $color;
+    @content;
+  }
+}

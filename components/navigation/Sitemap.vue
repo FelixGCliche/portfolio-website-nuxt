@@ -1,12 +1,12 @@
 <template>
   <nav class="navlink">
     <ContentNavigation>
-      <div v-for="link of sitemap" :key="link._path">
-        <NuxtLink class="navlink-item" :to="link._path">
+      <div v-for="link of sitemap" :key="link._path" class="navlink-group">
+        <NuxtLink :to="link._path" class="label navlink-item">
           {{ link.title }}
         </NuxtLink>
         <div v-if="link.children" v-for="child of link.children">
-          <NuxtLink class="navlink-item" :to="child._path">
+          <NuxtLink :to="child._path" class="caption navlink-item">
             {{ child.title }}
           </NuxtLink>
         </div>
@@ -16,18 +16,11 @@
 </template>
 <script lang="ts" setup>
 const { data: sitemap } = await useAsyncData('sitemap', async () => {
-  const c = await fetchContentNavigation()
-  c.forEach(e =>
-    console.log(
-      `${e._path} has ${e.children ? e.children?.length : 0} children`,
-      e.children
-    )
-  )
-  return c
+  return fetchContentNavigation(queryContent().locale(useLocale().value))
 })
 
 watch(useLocale(), () => {
-  refreshNuxtData('navigation')
+  refreshNuxtData('sitemap')
 })
 </script>
 
@@ -38,30 +31,21 @@ watch(useLocale(), () => {
   @include layout.media-query($size) {
     .navlink {
       display: flex;
-      align-items: center;
-      text-transform: uppercase;
+      align-items: flex-start;
+      gap: 1rem;
 
-      @if $size == 'xsmall' {
-        flex-direction: column;
-        justify-content: center;
-      } @else {
-        flex-direction: row;
+      &-group {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.5rem;
       }
 
       &-item {
         display: block;
-        color: theme.$primary;
+        color: theme.$on-surface;
 
-        @if $size == 'xsmall' {
-          @include theme.typography-headline($size);
-          margin-bottom: 2rem;
-        } @else {
-          @include theme.typography-label($size);
-          margin-left: 1.5rem;
-        }
-
-        @include theme.hover(theme.$secondary);
-        @include theme.pressed(theme.$tertiary);
+        @include theme.hover(theme.$primary);
+        @include theme.pressed(theme.$secondary);
       }
     }
   }

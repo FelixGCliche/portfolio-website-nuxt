@@ -2,6 +2,7 @@
   <div class="page-grid">
     <LayoutHeader />
     <NuxtPage />
+    <LayoutFooter />
   </div>
 </template>
 
@@ -10,7 +11,7 @@
 
 .page-grid {
   display: grid;
-  grid-template-rows: min-content 1fr;
-  height: 100%;
+  grid-template-rows: min-content 1fr min-content;
+  min-height: 100%;
 }
 </style>
