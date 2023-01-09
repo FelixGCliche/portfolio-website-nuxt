@@ -37,6 +37,7 @@
 
   &-locale-switch {
     display: flex;
+    gap: 1rem;
   }
 }
 </style>

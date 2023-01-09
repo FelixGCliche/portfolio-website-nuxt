@@ -15,10 +15,11 @@
 </template>
 
 <script lang="ts" setup>
+const { locale } = useI18n()
 const { data: contact } = await useAsyncData('contact', () => {
-  return queryContent('contact')
+  return queryContent('/contact')
     .where({ _path: '/contact' })
-    .locale(useLocale().value)
+    .locale(locale.value)
     .findOne()
 })
 </script>

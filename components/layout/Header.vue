@@ -60,9 +60,7 @@ onMounted(() => {
 
 .navbar {
   z-index: 24;
-  @include layout.layout-grid {
-    gap: 0;
-  }
+  @include layout.layout-grid;
   grid-template-rows: 4rem;
 
   &-open {

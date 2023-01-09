@@ -50,15 +50,14 @@
 <script lang="ts" setup>
 import { RecaptchaSize, RecaptchaTheme } from '@/types/Recaptcha'
 
+const { locale } = useI18n()
 const { toggled, toggleOn, toggleOff } = useToggle()
 const formEmail = ref<HTMLFormElement>()
 const grecaptchaContainerId = 'form-email-submit-grecaptcha'
 const grecaptchaSize = ref(RecaptchaSize.Normal)
 
 const { data: emailForm } = await useAsyncData('emailForm', () => {
-  return queryContent('/contact/#contact-email')
-    .locale(useLocale().value)
-    .findOne()
+  return queryContent('/contact/#contact-email').locale(locale.value).findOne()
 })
 
 onMounted(() => {
