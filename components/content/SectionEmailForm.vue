@@ -60,8 +60,14 @@ const { data: emailForm } = await useAsyncData('emailForm', () => {
   return queryContent('/contact/#contact-email').locale(locale.value).findOne()
 })
 
+watch(locale, () => {
+  refreshNuxtData('emailForm')
+})
+
 onMounted(() => {
   window.addEventListener('resize', onResize)
+  console.log(emailForm.value)
+  refreshNuxtData('emailForm')
 })
 
 function onResize() {

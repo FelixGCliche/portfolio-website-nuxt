@@ -1,6 +1,5 @@
 ---
 title: Contact
-navigation: false
 ---
 
 ::SectionContact

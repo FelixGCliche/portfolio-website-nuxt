@@ -22,6 +22,14 @@ const { data: contact } = await useAsyncData('contact', () => {
     .locale(locale.value)
     .findOne()
 })
+
+watch(locale, () => {
+  refreshNuxtData('contact')
+})
+
+onMounted(() => {
+  refreshNuxtData('contact')
+})
 </script>
 
 <style lang="scss" scoped>
