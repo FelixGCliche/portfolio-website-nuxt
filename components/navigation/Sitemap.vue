@@ -6,7 +6,10 @@
           {{ link.title }}
         </NuxtLink>
         <div v-if="link.children" v-for="child of link.children">
-          <NuxtLink :to="localePath(child._path)" class="body navlink-item">
+          <NuxtLink
+            :to="localizedAnchorRoute(child._path)"
+            class="body navlink-item"
+          >
             {{ child.title }}
           </NuxtLink>
         </div>
@@ -24,6 +27,15 @@ const { data: sitemap } = await useAsyncData('sitemap', async () => {
 watch(locale, () => {
   refreshNuxtData('sitemap')
 })
+
+const localizedAnchorRoute = (path: string) => {
+  const routeParams = path.split('#')
+  if (!routeParams) {
+    return localePath(path)
+  }
+  const anchor = routeParams.at(-1)
+  return `${localePath(path)}/#${anchor}`
+}
 </script>
 
 <style lang="scss" scoped>

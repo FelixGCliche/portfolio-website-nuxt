@@ -1,7 +1,9 @@
 <template>
   <div class="page-home" :style="maskStyles">
     <div class="section">
-      <ContentRendererMarkdown :value="home!" />
+      <ContentDoc path="/" :locale="locale" v-slot="{ doc: home }">
+        <ContentRenderer :value="home" />
+      </ContentDoc>
     </div>
     <div class="profile">
       <img
@@ -19,14 +21,6 @@ const { locale } = useI18n()
 const maskPosition = ref('')
 const maskSize = ref('')
 
-const { data: home } = await useAsyncData('home', () => {
-  return queryContent('/').locale(locale.value).findOne()
-})
-
-watch(locale, () => {
-  refreshNuxtData('home')
-})
-
 const maskStyles = computed(() =>
   reactive({
     '--mask-position': maskPosition.value,
@@ -36,7 +30,6 @@ const maskStyles = computed(() =>
 onMounted(() => {
   getMaskStyles()
   window.addEventListener('resize', getMaskStyles)
-  refreshNuxtData('home')
 })
 
 function getMaskStyles() {

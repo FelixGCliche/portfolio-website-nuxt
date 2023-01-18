@@ -1,7 +1,7 @@
 <template>
   <div class="page-contact">
     <div class="section section-contact">
-      <ContentRendererMarkdown :value="contact!" />
+      <ContentDoc path="/contact" :locale="locale" />
     </div>
 
     <div class="section section-form" id="contact-email">
@@ -16,20 +16,6 @@
 
 <script lang="ts" setup>
 const { locale } = useI18n()
-const { data: contact } = await useAsyncData('contact', () => {
-  return queryContent('/contact')
-    .where({ _path: '/contact' })
-    .locale(locale.value)
-    .findOne()
-})
-
-watch(locale, () => {
-  refreshNuxtData('contact')
-})
-
-onMounted(() => {
-  refreshNuxtData('contact')
-})
 </script>
 
 <style lang="scss" scoped>
