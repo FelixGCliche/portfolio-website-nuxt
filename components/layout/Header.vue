@@ -4,10 +4,20 @@
     :class="{ 'header-open': toggled, 'header-sticky': isSticky }"
     ref="headerRef"
   >
-    <div class="navbar" :class="{ 'navbar-open': toggled }">
+    <div
+      class="navbar"
+      :class="{ 'navbar-open': toggled }"
+    >
       <div class="navbar-button">
-        <ButtonIcon label="menu" dir="rtl" @button-click.prevent="toggle">
-          <IconMenu icon-name="menu" :size="24" />
+        <ButtonIcon
+          label="menu"
+          dir="rtl"
+          @button-click.prevent="toggle"
+        >
+          <IconMenu
+            icon-name="menu"
+            :size="24"
+          />
         </ButtonIcon>
       </div>
       <NavigationTree

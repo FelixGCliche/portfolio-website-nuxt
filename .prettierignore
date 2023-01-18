@@ -4,3 +4,4 @@ dist
 .output
 static
 coverage
+*.md

@@ -2,6 +2,11 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
 
 export default defineNuxtConfig({
+  ssr: true,
+  experimental: {
+    payloadExtraction: false
+  },
+
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
     img: fileURLToPath(new URL('./assets/img', import.meta.url)),

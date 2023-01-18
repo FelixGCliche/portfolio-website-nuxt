@@ -1,13 +1,23 @@
 <template>
   <div class="page-contact">
     <div class="section section-contact">
-      <ContentDoc path="/contact" :locale="locale" />
+      <ContentDoc
+        path="/contact"
+        :locale="locale"
+      />
     </div>
 
-    <div class="section section-form" id="contact-email">
+    <div
+      class="section section-form"
+      id="contact-email"
+    >
       <div class="bevel bevel-container">
         <div class="bevel bevel-inner">
-          <SectionEmailForm />
+          <ContentDoc
+            path="/contact/#contact-email"
+            :locale="locale"
+            :head="false"
+          />
         </div>
       </div>
     </div>

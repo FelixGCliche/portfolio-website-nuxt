@@ -9,7 +9,10 @@
     <div class="body">
       <slot name="body" />
     </div>
-    <ButtonPrimary class="section-about-button-contact label" url="/contact">
+    <ButtonPrimary
+      class="section-about-button-contact label"
+      url="/contact"
+    >
       <slot name="contact" />
     </ButtonPrimary>
   </section>

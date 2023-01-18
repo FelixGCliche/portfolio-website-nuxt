@@ -1,8 +1,16 @@
 <template>
   <div class="inputfield">
-    <slot class="inputfield-slot" :onFocus="onFocus" :onBlur="onBlur" />
+    <slot
+      class="inputfield-slot"
+      :onFocus="onFocus"
+      :onBlur="onBlur"
+    />
     <Transition name="inputfield-focus">
-      <label v-if="toggled" class="caption inputfield-label" :for="inputName">
+      <label
+        v-if="toggled"
+        class="caption inputfield-label"
+        :for="inputName"
+      >
         {{ inputLabel }}
       </label>
     </Transition>

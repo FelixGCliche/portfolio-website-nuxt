@@ -1,5 +1,8 @@
 <template>
-  <ContentDoc path="/portfolio" :locale="locale" />
+  <ContentDoc
+    path="/portfolio"
+    :locale="locale"
+  />
 </template>
 
 <script lang="ts" setup>

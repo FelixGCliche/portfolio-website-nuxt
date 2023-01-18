@@ -1,11 +1,21 @@
 <template>
   <nav class="navlink">
     <ContentNavigation>
-      <div v-for="link of sitemap" :key="link._path" class="navlink-group">
-        <NuxtLink :to="localePath(link._path)" class="label navlink-item">
+      <div
+        v-for="link of sitemap"
+        :key="link._path"
+        class="navlink-group"
+      >
+        <NuxtLink
+          :to="localePath(link._path)"
+          class="label navlink-item"
+        >
           {{ link.title }}
         </NuxtLink>
-        <div v-if="link.children" v-for="child of link.children">
+        <div
+          v-if="link.children"
+          v-for="child of link.children"
+        >
           <NuxtLink
             :to="localizedAnchorRoute(child._path)"
             class="body navlink-item"

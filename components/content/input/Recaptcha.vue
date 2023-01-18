@@ -1,5 +1,8 @@
 <template>
-  <div :id="props.containerId" class="grecaptcha"></div>
+  <div
+    :id="props.containerId"
+    class="grecaptcha"
+  ></div>
 </template>
 
 <script lang="ts" setup>

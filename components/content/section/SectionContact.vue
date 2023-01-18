@@ -12,14 +12,20 @@
         url="mailto: felix@gagnecliche.dev"
         label="felix@gagnecliche.dev"
       >
-        <IconEmail icon-name="email" :size="32" />
+        <IconEmail
+          icon-name="email"
+          :size="32"
+        />
       </ButtonIcon>
       <ButtonIcon
         class="button-sms"
         url="tel: 418-805-6251"
         label="(418) 805-6251"
       >
-        <IconSMS icon-name="sms" :size="32" />
+        <IconSMS
+          icon-name="sms"
+          :size="32"
+        />
       </ButtonIcon>
     </div>
   </section>

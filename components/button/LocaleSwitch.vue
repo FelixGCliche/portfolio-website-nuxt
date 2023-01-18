@@ -1,10 +1,10 @@
 <template>
   <NuxtLink
-    v-for="l of locales"
+    v-for="locale of locales"
     class="label locale-switch"
-    :to="switchLocalePath(l.toString())"
+    :to="switchLocalePath(locale.toString())"
   >
-    {{ l }}
+    {{ locale }}
   </NuxtLink>
 </template>
 

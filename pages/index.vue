@@ -1,8 +1,15 @@
 <template>
-  <div class="page-home" :style="maskStyles">
+  <div
+    class="page-home"
+    :style="maskStyles"
+  >
     <div class="section">
-      <ContentDoc path="/" :locale="locale" v-slot="{ doc: home }">
-        <ContentRenderer :value="home" />
+      <ContentDoc
+        path="/"
+        :locale="locale"
+        v-slot="{ doc: about }"
+      >
+        <ContentRenderer :value="about" />
       </ContentDoc>
     </div>
     <div class="profile">

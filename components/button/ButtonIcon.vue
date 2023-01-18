@@ -6,7 +6,11 @@
     @click="handleClick"
   >
     <slot />
-    <span v-if="label" class="label">{{ label }}</span>
+    <span
+      v-if="label"
+      class="label"
+      >{{ label }}</span
+    >
   </component>
 </template>
 
