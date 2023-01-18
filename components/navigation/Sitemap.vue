@@ -2,11 +2,14 @@
   <nav class="navlink">
     <ContentNavigation>
       <div v-for="link of sitemap" :key="link._path" class="navlink-group">
-        <NuxtLink :to="link._path" class="label navlink-item">
+        <NuxtLink :to="localePath(link._path)" class="label navlink-item">
           {{ link.title }}
         </NuxtLink>
         <div v-if="link.children" v-for="child of link.children">
-          <NuxtLink :to="child._path" class="body navlink-item">
+          <NuxtLink
+            :to="localizedAnchorRoute(child._path)"
+            class="body navlink-item"
+          >
             {{ child.title }}
           </NuxtLink>
         </div>
@@ -15,13 +18,24 @@
   </nav>
 </template>
 <script lang="ts" setup>
+const { locale } = useI18n()
+const localePath = useLocalePath()
 const { data: sitemap } = await useAsyncData('sitemap', async () => {
-  return fetchContentNavigation(queryContent().locale(useLocale().value))
+  return fetchContentNavigation(queryContent().locale(locale.value))
 })
 
-watch(useLocale(), () => {
+watch(locale, () => {
   refreshNuxtData('sitemap')
 })
+
+const localizedAnchorRoute = (path: string) => {
+  const routeParams = path.split('#')
+  if (!routeParams) {
+    return localePath(path)
+  }
+  const anchor = routeParams.at(-1)
+  return `${localePath(path)}/#${anchor}`
+}
 </script>
 
 <style lang="scss" scoped>

@@ -9,11 +9,15 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@nuxtjs/i18n'],
 
   content: {
-    documentDriven: true,
-    locales: ['en', 'fr']
+    locales: ['fr', 'en']
+  },
+
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en']
   },
 
   css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],

@@ -5,7 +5,7 @@
         class="navlink-item"
         v-for="link of navigationTree"
         :key="link._path"
-        :to="link._path"
+        :to="localePath(link._path)"
       >
         {{ link.title }}
       </NuxtLink>
@@ -13,11 +13,13 @@
   </nav>
 </template>
 <script lang="ts" setup>
+const { locale } = useI18n()
+const localePath = useLocalePath()
 const { data: navigationTree } = await useAsyncData('navigationTree', () => {
-  return fetchContentNavigation(queryContent().locale(useLocale().value))
+  return fetchContentNavigation(queryContent().locale(locale.value))
 })
 
-watch(useLocale(), () => {
+watch(locale, () => {
   refreshNuxtData('navigationTree')
 })
 </script>

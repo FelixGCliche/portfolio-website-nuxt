@@ -7,7 +7,7 @@
   },
   "emailInput": {
     "label": "Email",
-    "placeholder": "courriel@example.ca"
+    "placeholder": "email@example.ca"
   },
   "messageInput": {
     "label": "Message",
