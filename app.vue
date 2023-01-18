@@ -18,9 +18,3 @@ import emailjs from '@emailjs/browser'
 
 emailjs.init(useRuntimeConfig().emailJSUserID)
 </script>
-
-<style lang="scss" scoped>
-.page-grid {
-  display: grid;
-}
-</style>

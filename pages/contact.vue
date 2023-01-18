@@ -1,7 +1,7 @@
 <template>
   <div class="page-contact">
     <div class="section section-contact">
-      <ContentRendererMarkdown :value="contact!" />
+      <ContentDoc path="/contact" :locale="locale" />
     </div>
 
     <div class="section section-form" id="contact-email">
@@ -15,12 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: contact } = await useAsyncData('contact', () => {
-  return queryContent('contact')
-    .where({ _path: '/contact' })
-    .locale(useLocale().value)
-    .findOne()
-})
+const { locale } = useI18n()
 </script>
 
 <style lang="scss" scoped>

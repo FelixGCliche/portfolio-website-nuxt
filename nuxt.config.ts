@@ -2,8 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
 
 export default defineNuxtConfig({
-  target: 'static',
-
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
     img: fileURLToPath(new URL('./assets/img', import.meta.url)),
@@ -11,10 +9,14 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@nuxtjs/i18n'],
 
   content: {
-    watch: false,
+    locales: ['fr', 'en']
+  },
+
+  i18n: {
+    defaultLocale: 'fr',
     locales: ['fr', 'en']
   },
 
@@ -34,10 +36,7 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ['emailjs-com'],
-    filenames: {
-      font: ({ isDev }) => (isDev ? '[name].[ext]' : '[id].[contenthash].[ext]')
-    }
+    transpile: ['emailjs-com']
   },
   vite: {
     css: {

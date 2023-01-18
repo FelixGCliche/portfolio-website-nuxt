@@ -1,7 +1,9 @@
 <template>
   <div class="page-home" :style="maskStyles">
     <div class="section">
-      <ContentDoc path="/" :locale="useLocale().value" />
+      <ContentDoc path="/" :locale="locale" v-slot="{ doc: home }">
+        <ContentRenderer :value="home" />
+      </ContentDoc>
     </div>
     <div class="profile">
       <img
@@ -15,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+const { locale } = useI18n()
 const maskPosition = ref('')
 const maskSize = ref('')
 

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
     "lint": "eslint --ext .ts,.tsx,.js,.vue .",
     "lint:fix": "yarn eslint --fix",
     "format": "prettier --config .prettierrc --write ."
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@nuxt/content": "^2.3.0",
     "@nuxtjs/eslint-config-typescript": "latest",
+    "@nuxtjs/i18n": "^8.0.0-beta.7",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
