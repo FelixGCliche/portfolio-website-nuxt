@@ -56,6 +56,7 @@ onMounted(() => {
   position: sticky;
   top: -1px;
   z-index: 24;
+  background-color: theme.$background;
 
   &-open {
     position: fixed;
@@ -114,24 +115,9 @@ onMounted(() => {
 @include layout.media-query-min('xsmall') {
   .header {
     padding: 1rem 0;
-
     &-sticky {
-      &:before {
-        display: block;
-        position: absolute;
-        content: '';
-        width: 100%;
-        height: 4rem;
-        background: theme.$background;
-      }
-      &:after {
-        display: block;
-        position: absolute;
-        content: '';
-        width: 100%;
-        height: 2rem;
-        background: bg-gradient(theme.$background);
-      }
+      box-shadow: 0 1rem 1rem 1rem theme.$background;
+      padding: 1rem 0 0 0;
     }
   }
 
