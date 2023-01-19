@@ -35,12 +35,12 @@ $default-span: 4;
       grid-gap: map.get($default-gutter, $size);
       grid-template-columns: repeat(map.get($columns, $size), $column-width);
       justify-content: center;
-      @content;
       @if $size == 'xsmall' {
         grid-gap: map.get($default-gutter, $size);
         grid-template-columns: repeat(map.get($columns, $size), 1fr);
         margin: 0 map.get($default-margin, $size);
       }
+      @content;
     }
   }
 }
@@ -49,14 +49,14 @@ $default-span: 4;
   @each $size in map.keys($columns) {
     @include layout.media-query($size) {
       display: grid;
-      grid-gap: map.get($default-gutter, $size);
+      column-gap: map.get($default-gutter, $size);
       grid-template-columns: repeat(map.get($columns, $size), $column-width);
       justify-content: center;
-      @content;
       @if $size == 'xsmall' {
         grid-template-columns: repeat(map.get($columns, $size), 1fr);
         margin: 0;
       }
+      @content;
     }
   }
 }

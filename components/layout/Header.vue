@@ -70,7 +70,9 @@ onMounted(() => {
 
 .navbar {
   z-index: 24;
-  @include layout.layout-grid;
+  @include layout.layout-grid {
+    row-gap: 0;
+  }
   grid-template-rows: 4rem;
 
   &-open {
@@ -110,24 +112,29 @@ onMounted(() => {
 }
 
 @include layout.media-query-min('xsmall') {
-  .header-sticky {
-    &:before {
-      display: block;
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 4rem;
-      background: theme.$background;
-    }
-    &:after {
-      display: block;
-      position: absolute;
-      content: '';
-      width: 100%;
-      height: 2rem;
-      background: bg-gradient(theme.$background);
+  .header {
+    padding: 1rem 0;
+
+    &-sticky {
+      &:before {
+        display: block;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 4rem;
+        background: theme.$background;
+      }
+      &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 2rem;
+        background: bg-gradient(theme.$background);
+      }
     }
   }
+
   .navbar {
     &-button {
       display: none;
