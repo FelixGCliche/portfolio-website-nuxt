@@ -2,7 +2,6 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
 
 export default defineNuxtConfig({
-  ssr: true,
   experimental: {
     payloadExtraction: false
   },
@@ -48,8 +47,8 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
-          @use './assets/style/global/layout' as layout;
-          @use './assets/style/global/theme' as theme;
+          @use './assets/style/partials/layout' as layout;
+          @use './assets/style/partials/theme' as theme;
           `
         }
       }
