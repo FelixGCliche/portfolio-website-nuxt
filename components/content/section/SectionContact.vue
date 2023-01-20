@@ -39,7 +39,7 @@
   gap: 1.5rem;
 }
 .headline {
-  color: theme.$secondary;
+  color: theme.$primary;
 }
 
 .button {

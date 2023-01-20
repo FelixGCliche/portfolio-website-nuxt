@@ -1,7 +1,9 @@
 <template>
   <section class="section-about">
     <h1 class="headline">
-      <slot name="headline" />
+      <span>
+        <slot name="headline" />
+      </span>
     </h1>
     <h2 class="title">
       <slot name="title" />
@@ -30,17 +32,6 @@
 }
 .headline {
   color: theme.$primary;
-  overflow: hidden;
-
-  & > *:after {
-    content: '';
-    display: inline-block;
-    vertical-align: baseline;
-    width: 100%;
-    margin-right: -100%;
-    margin-left: 1rem;
-    border-top: 4px solid;
-  }
 }
 .title {
   color: theme.$secondary;

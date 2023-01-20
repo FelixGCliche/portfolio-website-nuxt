@@ -1,8 +1,27 @@
 <template>
-  <ContentDoc
-    path="/portfolio"
-    :locale="locale"
-  />
+  <main class="page-portfolio">
+    <ContentList
+      path="/portfolio/_projects"
+      :locale="locale"
+      v-slot="{ list }"
+    >
+      <div
+        v-for="project in list"
+        :key="project._path"
+      >
+        <h1 class="display">{{ project.title }}</h1>
+        <h3 class="title">{{ project.year }}</h3>
+        <ul>
+          <li
+            class="body"
+            v-for="tag in project.tags"
+          >
+            {{ tag }}
+          </li>
+        </ul>
+      </div>
+    </ContentList>
+  </main>
 </template>
 
 <script lang="ts" setup>

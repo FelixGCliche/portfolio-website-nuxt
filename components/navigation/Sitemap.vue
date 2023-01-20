@@ -17,6 +17,7 @@
           v-for="child of link.children"
         >
           <NuxtLink
+            v-if="link._path != child._path"
             :to="localizedAnchorRoute(child._path)"
             class="body navlink-item"
           >
@@ -40,7 +41,7 @@ watch(locale, () => {
 
 const localizedAnchorRoute = (path: string) => {
   const routeParams = path.split('#')
-  if (!routeParams) {
+  if (routeParams.length < 1) {
     return localePath(path)
   }
   const anchor = routeParams.at(-1)
