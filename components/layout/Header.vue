@@ -8,6 +8,9 @@
       class="navbar"
       :class="{ 'navbar-open': toggled }"
     >
+      <div class="navbar-locale-switch">
+        <ButtonLocaleSwitch />
+      </div>
       <div class="navbar-button">
         <ButtonIcon
           label="menu"
@@ -57,6 +60,9 @@ onMounted(() => {
   top: -1px;
   z-index: 24;
   background-color: theme.$background;
+  &-sticky {
+    box-shadow: 0 1rem 1rem 1rem theme.$background;
+  }
 
   &-open {
     position: fixed;
@@ -84,7 +90,15 @@ onMounted(() => {
   &-button {
     display: flex;
     justify-content: flex-end;
-    @include layout.responsive-cell-full;
+    @include layout.responsive-cell-half;
+  }
+
+  &-locale-switch {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    @include layout.responsive-cell-half;
   }
 
   &-menu {
@@ -129,7 +143,7 @@ onMounted(() => {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      @include layout.responsive-cell-full;
+      @include layout.responsive-cell-half;
       width: 100%;
       height: 100%;
       opacity: 1;

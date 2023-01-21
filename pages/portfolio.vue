@@ -1,7 +1,11 @@
 <template>
   <main class="page-portfolio">
+    <ContentDoc
+      path="/portfolio"
+      :locale="locale"
+    />
     <ContentList
-      path="/portfolio/_projects"
+      path="/portfolio/projects"
       :locale="locale"
       v-slot="{ list }"
     >
@@ -21,6 +25,7 @@
         </ul>
       </div>
     </ContentList>
+    <!-- </ContentDoc> -->
   </main>
 </template>
 

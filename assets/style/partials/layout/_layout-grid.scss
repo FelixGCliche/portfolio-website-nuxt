@@ -103,6 +103,15 @@ $default-span: 4;
 @mixin responsive-cell-half {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
+      grid-column: span calc(map.get($columns, $size) / 2);
+      @content;
+    }
+  }
+}
+
+@mixin responsive-cell-half-mobile {
+  @each $size in map.keys(layout.$breakpoints) {
+    @include layout.media-query($size) {
       grid-column: span clamp(4, calc(map.get($columns, $size) / 2), 6);
       @content;
     }

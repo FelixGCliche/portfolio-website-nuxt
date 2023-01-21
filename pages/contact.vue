@@ -39,18 +39,12 @@ const { locale } = useI18n()
 }
 
 .section {
-  @include layout.responsive-cell-full;
+  @include layout.responsive-cell-half-mobile;
   place-self: center;
-
-  @include layout.media-query-min('small') {
-    @include layout.responsive-cell-half;
-  }
 
   &-form {
     width: 100%;
-    @include layout.media-query-min('small') {
-      @include layout.responsive-cell-half;
-    }
+    @include layout.responsive-cell-half-mobile;
   }
 }
 
