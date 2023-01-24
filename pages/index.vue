@@ -3,15 +3,16 @@
     class="page-home"
     :style="maskStyles"
   >
-    <div class="section">
-      <ContentDoc
-        path="/"
-        :locale="locale"
-        v-slot="{ doc: about }"
-      >
-        <ContentRenderer :value="about" />
-      </ContentDoc>
-    </div>
+    <ContentDoc
+      path="/"
+      :locale="locale"
+      v-slot="{ doc: about }"
+    >
+      <ContentRenderer
+        class="section"
+        :value="about"
+      />
+    </ContentDoc>
     <div class="profile">
       <img
         class="img-responsive"
@@ -92,11 +93,10 @@ function getMaskStyles() {
     $columns: map.get(layout.$columns, $size);
 
     .section {
-      @include layout.responsive-cell-base {
-        grid-row: 3;
-        z-index: 3;
-        grid-column-start: get-overlap-start($size);
-      }
+      grid-row: 3;
+      z-index: 3;
+      grid-column-start: get-overlap-start($size);
+
       grid-column-end: span $columns;
       @if $size == 'large' {
         grid-column-end: span calc($columns / 2) + 2;

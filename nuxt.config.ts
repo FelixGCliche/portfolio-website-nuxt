@@ -16,7 +16,10 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxtjs/i18n'],
 
   content: {
-    locales: ['fr', 'en']
+    locales: ['fr', 'en'],
+    markdown: {
+      anchorLinks: false
+    }
   },
 
   i18n: {
@@ -24,7 +27,7 @@ export default defineNuxtConfig({
     locales: ['fr', 'en']
   },
 
-  css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
+  css: ['@/assets/style/reset.css', '@/assets/style/main.scss'],
 
   typescript: {
     shim: false

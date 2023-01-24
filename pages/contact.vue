@@ -1,11 +1,39 @@
 <template>
-  <div class="page-contact">
-    <div class="section section-contact">
+  <main class="page-contact">
+    <section class="section">
       <ContentDoc
         path="/contact"
         :locale="locale"
-      />
-    </div>
+        v-slot="{ doc }"
+      >
+        <ContentRenderer
+          class="section-content"
+          :value="doc"
+        />
+      </ContentDoc>
+      <div class="section-buttons">
+        <ButtonIcon
+          class="section-buttons-email"
+          url="mailto: felix@gagnecliche.dev"
+          label="felix@gagnecliche.dev"
+        >
+          <IconEmail
+            icon-name="email"
+            :size="32"
+          />
+        </ButtonIcon>
+        <ButtonIcon
+          class="section-buttons-sms"
+          url="tel: 418-805-6251"
+          label="(418) 805-6251"
+        >
+          <IconSMS
+            icon-name="sms"
+            :size="32"
+          />
+        </ButtonIcon>
+      </div>
+    </section>
 
     <div
       class="section section-form"
@@ -21,7 +49,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -33,14 +61,38 @@ const { locale } = useI18n()
   @include layout.layout-grid {
     grid-row-gap: 4rem;
   }
-
-  @include layout.media-query-min('small') {
-  }
 }
 
 .section {
   @include layout.responsive-cell-half-mobile;
   place-self: center;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1.5rem;
+
+  &-content {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+    padding: 2rem 0;
+
+    &:deep(h2) {
+      color: theme.$primary;
+      @include theme.typography-baseline;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+
+    &-email,
+    &-sms {
+      width: fit-content;
+      padding: 0;
+    }
+  }
 
   &-form {
     width: 100%;

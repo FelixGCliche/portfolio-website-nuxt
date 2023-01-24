@@ -45,18 +45,22 @@ textarea {
       --device-size: #{$size};
     }
 
+    h1,
     .display {
       @include theme.typography-display($size);
     }
+    h2,
     .headline {
       @include theme.typography-headline($size);
     }
+    h3,
     .title {
       @include theme.typography-title($size);
     }
     .label {
       @include theme.typography-label($size);
     }
+    p,
     .body {
       @include theme.typography-body($size);
     }

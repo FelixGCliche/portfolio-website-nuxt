@@ -5,7 +5,7 @@
   >
     <div class="bevel bevel-container">
       <div class="bevel bevel-inner">
-        <slot />
+        <slot class="label" />
       </div>
     </div>
   </ButtonBase>

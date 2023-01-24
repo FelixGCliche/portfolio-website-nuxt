@@ -16,7 +16,10 @@
             <h1 class="headline">
               {{ project.title }}
             </h1>
-            <p class="title">{{ project.description }}</p>
+            <p class="title">{{ project._path }}</p>
+            <div class="portfolio-project-content">
+              <ContentRendererMarkdown :value="project" />
+            </div>
             <div class="portfolio-project-buttons">
               <ButtonIcon
                 v-if="project.url"
@@ -39,6 +42,22 @@
 const { locale } = useI18n()
 
 useHead({ title: 'Portfolio' })
+
+const { data } = useAsyncData('portfolio', async () => {
+  const c = await queryContent('/portfolio/projects')
+    .sort({ year: -1 })
+    .only(['_path'])
+    .locale(locale.value)
+    .findOne()
+
+  const [prev, next] = await queryContent('/portfolio/projects')
+    .sort({ year: -1 })
+    .only(['_path'])
+    .findSurround(c._path!)
+  console.log('Current: ', c)
+  console.log(`Next: ${next?._path}, Prev: ${prev?._path}`)
+  return c
+})
 </script>
 
 <style lang="scss" scoped>
