@@ -1,7 +1,15 @@
 <template>
   <footer class="footer">
-    <div class="footer-locale-switch">
+    <div class="footer-content">
       <ButtonLocaleSwitch />
+    </div>
+    <div class="footer-content footer-content-right">
+      <ButtonIcon url="https://github.com/FelixGCliche">
+        <IconGithub
+          icon-name="github"
+          :size="24"
+        />
+      </ButtonIcon>
     </div>
     <span class="caption footer-caption"
       >&copy; Copyright Félix Gagné Cliche 2023</span
@@ -15,10 +23,14 @@
   z-index: 2;
   @include layout.layout-grid;
 
-  &-locale-switch {
+  &-content {
     display: flex;
+    align-items: center;
     gap: 1rem;
     @include layout.responsive-cell-half;
+    &-right {
+      justify-content: flex-end;
+    }
   }
 
   &-caption {

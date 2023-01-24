@@ -1,13 +1,9 @@
 <template>
   <main class="portfolio-page">
-    <article class="portfolio-main">
-      <ContentDoc
-        path="/portfolio"
-        :locale="locale"
-      />
-    </article>
     <ContentList
       path="portfolio/projects"
+      :locale="locale"
+      :query="{ sort: { year: -1 } }"
       v-slot="{ list }"
     >
       <div
@@ -17,12 +13,21 @@
       >
         <div class="bevel bevel-inner">
           <div class="portfolio-project">
-            <p class="headline portolio-project-name">
+            <h1 class="headline">
               {{ project.title }}
-            </p>
-            <p class="title">
-              {{ project.description }}
-            </p>
+            </h1>
+            <p class="title">{{ project.description }}</p>
+            <div class="portfolio-project-buttons">
+              <ButtonIcon
+                v-if="project.url"
+                :url="project.url"
+              >
+                <IconGithub
+                  icon-name="github"
+                  :size="32"
+                />
+              </ButtonIcon>
+            </div>
           </div>
         </div>
       </div>
@@ -32,6 +37,8 @@
 
 <script lang="ts" setup>
 const { locale } = useI18n()
+
+useHead({ title: 'Portfolio' })
 </script>
 
 <style lang="scss" scoped>
@@ -47,33 +54,26 @@ const { locale } = useI18n()
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
+    height: 100%;
 
-    &-name {
-      display: inline-block;
-      color: theme.$primary;
-      & > :after {
-        content: '';
-        display: inline-block;
-        vertical-align: baseline;
-        width: 100%;
-        margin-right: -100%;
-        margin-left: 1rem;
-        border-top: 4px solid;
-      }
+    &-buttons {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      height: 100%;
     }
   }
 }
 
 .bevel {
+  $bevel-size: 1.5rem;
   &-container {
-    @include layout.responsive-cell-half;
-    @include theme.bevel(theme.$surface, 16px);
+    @include layout.responsive-cell-half-mobile;
+    @include theme.bevel(theme.$primary, $bevel-size);
     padding: 4px;
   }
   &-inner {
-    @include theme.bevel(theme.$background, 16 - 1px);
-    display: flex;
-    align-items: center;
+    @include theme.bevel(theme.$background, calc($bevel-size - 1px));
     padding: 2rem;
     height: 100%;
   }
