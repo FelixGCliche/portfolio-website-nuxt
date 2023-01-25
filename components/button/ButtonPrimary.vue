@@ -1,14 +1,14 @@
 <template>
-  <ButtonBase
-    class="button-primary"
-    v-bind="{ ...$props, ...$attrs } as ButtonProps"
-  >
-    <div class="bevel bevel-container">
-      <div class="bevel bevel-inner">
-        <slot class="label" />
-      </div>
+  <div class="bevel bevel-container">
+    <div class="bevel bevel-inner">
+      <ButtonBase
+        class="button-primary"
+        v-bind="{ ...$props, ...$attrs } as ButtonProps"
+      >
+        <slot />
+      </ButtonBase>
     </div>
-  </ButtonBase>
+  </div>
 </template>
 
 <script lang="ts" setup>

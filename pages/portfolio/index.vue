@@ -15,6 +15,11 @@
           <h1 class="headline">{{ project.title }}</h1>
           <h3 class="title">{{ project.year }}</h3>
           <p class="body">{{ project.description }}</p>
+          <ButtonPrimary
+            class="portfolio-project-button"
+            :url="project._path"
+            label="Voir plus"
+          />
         </div>
         <div class="portfolio-project-img"></div>
       </div>
@@ -27,6 +32,7 @@ const { locale } = useI18n()
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:map';
 .portfolio {
   @include layout.layout-grid {
     grid-row-gap: 6rem;
@@ -39,6 +45,10 @@ const { locale } = useI18n()
     &-content {
       @include layout.responsive-cell-half-mobile;
       align-self: center;
+    }
+
+    &-button {
+      width: fit-content;
     }
 
     &-img {

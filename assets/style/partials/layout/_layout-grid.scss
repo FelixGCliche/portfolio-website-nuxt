@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use '_breakpoints' as layout;
 
-$columns: (
+$default-columns: (
   'large': 12,
   'medium': 8,
   'small': 8,
@@ -20,112 +20,73 @@ $default-gutter: (
   'small': 16px,
   'xsmall': 16px
 );
-$default-span: 4;
+$default-span: 4 !default;
 
-@function get-width($size, $span) {
-  $gutters: calc(map.get($default-gutter, $size) * ($span - 1));
-  $columns: calc($column-width * $span);
-  @return calc($gutters + $columns);
+@mixin _layout-grid-base($size, $columns) {
+  display: grid;
+  grid-gap: map.get($default-gutter, $size);
+  grid-template-columns: repeat($columns, $column-width);
+  @if ($size == 'xsmall') {
+    grid-template-columns: repeat($columns, 1fr);
+  }
+  @content;
 }
 
 @mixin layout-grid {
-  @each $size in map.keys($columns) {
+  @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      display: grid;
-      grid-gap: map.get($default-gutter, $size);
-      grid-template-columns: repeat(map.get($columns, $size), $column-width);
-      justify-content: center;
-      @if $size == 'xsmall' {
-        grid-gap: map.get($default-gutter, $size);
-        grid-template-columns: repeat(map.get($columns, $size), 1fr);
-        margin: 0 map.get($default-margin, $size);
+      @include _layout-grid-base($size, map.get($default-columns, $size)) {
+        justify-content: center;
+
+        @if ($size == 'xsmall') {
+          margin: 0 map.get($default-margin, $size);
+        }
       }
       @content;
     }
   }
 }
 
-@mixin layout-grid-inner {
-  @each $size in map.keys($columns) {
+@mixin _layout-grid-inner($columns) {
+  @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      display: grid;
-      grid-gap: map.get($default-gutter, $size);
-      grid-template-columns: repeat(map.get($columns, $size), $column-width);
-      justify-content: center;
-      @if $size == 'xsmall' {
-        grid-gap: map.get($default-gutter, $size);
-        grid-template-columns: repeat(map.get($columns, $size), 1fr);
+      @include _layout-grid-base($size, map.get($columns, $size)) {
+        justify-content: center;
       }
       @content;
     }
   }
 }
 
-@mixin layout-grid-mobile {
-  @each $size in map.keys($columns) {
-    @include layout.media-query($size) {
-      display: grid;
-      column-gap: map.get($default-gutter, $size);
-      grid-template-columns: repeat(map.get($columns, $size), $column-width);
-      justify-content: center;
-      @if $size == 'xsmall' {
-        grid-template-columns: repeat(map.get($columns, $size), 1fr);
-        margin: 0;
-      }
-      @content;
-    }
-  }
-}
-
-@mixin responsive-cell-base {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
+@mixin layout-grid-cell($span: $default-span) {
+  grid-column-end: span $span;
+  @include _layout-grid-inner($span);
   @content;
 }
 
-@mixin responsive-cell($span: $default-span) {
-  @each $size in map.keys($columns) {
+@mixin layout-grid-cell-full($margins: true) {
+  @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      grid-column: span $span;
-      @content;
-    }
-  }
-}
-
-@mixin responsive-cell-full {
-  grid-column: 1/-1;
-  @content;
-}
-
-@mixin responsive-cell-full-mobile {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      grid-column: 1/-1;
-      @content;
-
-      @if ($size == 'xsmall') {
-        margin: 0 calc(map.get($default-margin, $size) * -1);
+      @include _layout-grid-cell(map.get($columns, $size)) {
+        @if ($size == 'xsmall' && $margins) {
+          margin: calc(map.get($default-margin, $size) * -1);
+        }
       }
     }
   }
+  @content;
 }
 
-@mixin responsive-cell-half {
-  @each $size in map.keys(layout.$breakpoints) {
+@mixin layout-grid-cell-half($margins: true) {
+  @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      grid-column: span calc(map.get($columns, $size) / 2);
-      @content;
+      $span: calc(map.get($columns, $size) / 2);
+      @include _layout-grid-cell($span) {
+        @if ($size == 'xsmall' && $margins) {
+          margin: calc(map.get($default-margin, $size) * -1);
+        }
+      }
     }
   }
-}
-
-@mixin responsive-cell-half-mobile {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      grid-column: span clamp(4, calc(map.get($columns, $size) / 2), 6);
-      @content;
-    }
-  }
+  @content;
 }

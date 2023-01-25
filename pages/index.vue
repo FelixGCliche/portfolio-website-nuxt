@@ -1,26 +1,27 @@
 <template>
   <div
-    class="page-home"
+    class="about"
     :style="maskStyles"
   >
-    <ContentDoc
-      path="/"
-      :locale="locale"
-      v-slot="{ doc: about }"
-    >
-      <ContentRenderer
-        class="section"
-        :value="about"
+    <section class="about-section">
+      <ContentDoc
+        path="/"
+        :locale="locale"
       />
-    </ContentDoc>
-    <div class="profile">
+      <ButtonPrimary
+        class="about-section-button"
+        url="/contact"
+        label="Contactez-moi"
+      />
+    </section>
+    <div class="about-profile">
       <img
         class="img-responsive"
         src="~img/profile.webp"
         alt="profile picture"
       />
     </div>
-    <div class="logo-container" />
+    <div class="about-logo" />
   </div>
 </template>
 
@@ -42,10 +43,10 @@ onMounted(() => {
 
 function getMaskStyles() {
   const logoRect = document
-    .querySelector('.logo-container')
+    .querySelector('.about-logo')
     ?.getBoundingClientRect()
   const profileRect = document
-    .querySelector('.profile')
+    .querySelector('.about-profile')
     ?.getBoundingClientRect()
   maskPosition.value = `${logoRect?.x}px ${profileRect?.y}px`
   maskSize.value = `${logoRect?.width}px`
@@ -63,68 +64,80 @@ function getMaskStyles() {
   $base: calc(map.get(layout.$columns, $size) / 2);
   @return calc($base + 1);
 }
-.page-home {
-  @include layout.layout-grid;
-  grid-template-rows: repeat(4, auto);
-
-  &:after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-image: url('@/assets/img/bg_image.webp');
-
-    mask: url('@/assets/img/logo.svg');
-    mask-repeat: no-repeat;
-    mask-position: var(--mask-position);
-    mask-size: var(--mask-size);
-  }
-}
-
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
     $columns: map.get(layout.$columns, $size);
 
-    .section {
-      grid-row: 3;
-      z-index: 3;
-      grid-column-start: get-overlap-start($size);
+    .about {
+      @include layout.layout-grid;
+      grid-template-rows: repeat(4, auto);
 
-      grid-column-end: span $columns;
-      @if $size == 'large' {
-        grid-column-end: span calc($columns / 2) + 2;
-      } @else {
-        grid-column-end: span calc(($columns / 2) + 1);
-      }
-    }
-    .logo-container {
-      grid-row: 2;
-      z-index: 1;
-      width: 100%;
-      height: auto;
-      align-self: end;
-      grid-column-start: get-overlap-start($size);
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
 
-      @if $size == 'large' {
-        grid-column-end: span calc($columns / 2) + 2;
-      } @else {
-        grid-column-end: span calc(($columns / 2) + 1);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-image: url('@/assets/img/bg_image.webp');
+
+        mask: url('@/assets/img/logo.svg');
+        mask-repeat: no-repeat;
+        mask-position: var(--mask-position);
+        mask-size: var(--mask-size);
       }
-    }
-    .profile {
-      @include layout.responsive-cell-base {
+
+      &-section {
+        grid-row: 3;
+        z-index: 3;
+        grid-column-start: get-overlap-start($size);
+        grid-column-end: span $columns;
+        @if $size == 'large' {
+          grid-column-end: span calc($columns / 2) + 2;
+        } @else {
+          grid-column-end: span calc(($columns / 2) + 1);
+        }
+
+        &:deep(h2) {
+          color: theme.$primary;
+          @include theme.typography-baseline;
+        }
+
+        &:deep(h3) {
+          color: theme.$secondary;
+        }
+
+        &-button {
+          width: fit-content;
+        }
+      }
+
+      &-profile {
         grid-row-start: 2;
         grid-row-end: span 2;
         z-index: 2;
         grid-column-start: span get-profile-overlap($size);
         grid-column-end: -1;
+      }
+
+      &-logo {
+        grid-row: 2;
+        z-index: 1;
+        width: 100%;
+        height: auto;
+        align-self: end;
+        grid-column-start: get-overlap-start($size);
+
+        @if $size == 'large' {
+          grid-column-end: span calc($columns / 2) + 2;
+        } @else {
+          grid-column-end: span calc(($columns / 2) + 1);
+        }
       }
     }
   }

@@ -26,7 +26,7 @@ const handleClick = (event: Event) => {
 @use 'sass:map';
 
 .button-base {
-  display: inline-flex;
+  display: flex;
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
@@ -34,12 +34,5 @@ const handleClick = (event: Event) => {
   background: transparent;
   color: theme.$on-background;
   border: none;
-}
-.button-label {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      @include theme.typography-label($size);
-    }
-  }
 }
 </style>

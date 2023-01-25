@@ -4,7 +4,7 @@
 $breakpoints: (
   'large': 1240px,
   'medium': 905px,
-  'small': 767px,
+  'small': 600px,
   'xsmall': 0px
 );
 
@@ -52,27 +52,6 @@ $max: breakpoint-max('large');
     }
   } @else {
     // Fallback - no breakpoints defined
-    @content;
-  }
-}
-
-@mixin media-query-min($size) {
-  @if not map.has-key($breakpoints, $size) {
-    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
-  }
-  $max: breakpoint-max($size);
-  @media (min-width: breakpoint-max($size)) {
-    @content;
-  }
-}
-
-@mixin media-query-max($size) {
-  @if not map.has-key($breakpoints, $size) {
-    @error 'Invalid style specified! Choose one of #{map.keys($breakpoints)}';
-  }
-
-  $min: breakpoint-min($size);
-  @media (max-width: $min) {
     @content;
   }
 }
