@@ -21,7 +21,7 @@
           { hidden: !isProjectValid(prev) },
           'project-navigation-button'
         ]"
-        :url="surroundPath(prev)"
+        :url="prev?._path"
       >
         <IconBack
           icon-name="previous"
@@ -34,7 +34,7 @@
           { hidden: !isProjectValid(next) },
           'project-navigation-button'
         ]"
-        :url="surroundPath(next)"
+        :url="next?.path"
       >
         <IconForward
           icon-name="next"
@@ -50,69 +50,31 @@ import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
 const { locale } = useI18n()
 const route = useRoute()
-const router = useRouter()
 
 const { data: project } = await useAsyncData('project', () =>
-  queryContent(`/portfolio/projects/${route.params.id}`)
-    .locale(locale.value)
-    .findOne()
+  queryContent(`/portfolio/${route.params.id}`).locale(locale.value).findOne()
 )
 
-const [prev, next] = await queryContent('/portfolio/projects')
+const [prev, next] = await queryContent('/portfolio')
   .only(['_path'])
   .sort({ year: -1 })
-  .findSurround(`/portfolio/projects/${route.params.id}`)
+  .findSurround(`/portfolio/${route.params.id}`)
 
 const isProjectValid = (
   project: Pick<ParsedContent, string> | any
 ): boolean => {
   return project && project._path
 }
-
-function surroundPath(project: Pick<ParsedContent, string>): string {
-  if (isProjectValid(project)) {
-    return project._path.replace('/projects', '')
-  }
-  return ''
-}
-
-function onWheel(e: WheelEvent) {
-  e.preventDefault
-  console.log(e.deltaY)
-  if (e.deltaY < 0) {
-    if (isProjectValid(prev)) {
-      console.log(surroundPath(prev))
-      router.push(surroundPath(prev))
-    }
-  }
-
-  if (e.deltaY > 0) {
-    if (isProjectValid(next)) {
-      console.log(surroundPath(next))
-      router.push(surroundPath(next))
-    }
-  }
-}
-
-onMounted(() => {
-  document.onwheel = (e: WheelEvent) => onWheel(e)
-})
 </script>
 
 <style lang="scss" scoped>
-@use 'sass:map';
-@function get-overlap-start($size) {
-  $base: calc(map.get(layout.$columns, $size) + 1);
-  @return calc($base * -1);
-}
-
-@function get-profile-overlap($size) {
-  $base: calc(map.get(layout.$columns, $size) / 2);
-  @return calc($base + 1);
-}
 .project {
   @include layout.layout-grid {
-    grid-template-rows: 1fr auto;
+    grid-template-rows: min-content 1fr min-content;
+
+    @include layout.media-query-min('xsmall') {
+      grid-template-rows: 1fr auto;
+    }
   }
 
   &-section {
@@ -137,18 +99,20 @@ onMounted(() => {
   }
 
   &-img {
-    background-color: red;
-    margin: 6rem 0;
-    @include layout.responsive-cell-half-mobile;
+    @include layout.responsive-cell-full-mobile;
+    background-color: theme.$surface;
+
+    @include layout.media-query-min('xsmall') {
+      @include layout.responsive-cell-half;
+      margin: 6rem 0;
+    }
   }
 
   &-navigation {
     display: flex;
     align-items: center;
     justify-content: center;
-    @include layout.responsive-cell-full {
-      grid-row: 2;
-    }
+    @include layout.responsive-cell-full;
   }
 }
 

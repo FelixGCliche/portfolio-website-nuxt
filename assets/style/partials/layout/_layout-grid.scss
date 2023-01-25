@@ -45,6 +45,22 @@ $default-span: 4;
   }
 }
 
+@mixin layout-grid-inner {
+  @each $size in map.keys($columns) {
+    @include layout.media-query($size) {
+      display: grid;
+      grid-gap: map.get($default-gutter, $size);
+      grid-template-columns: repeat(map.get($columns, $size), $column-width);
+      justify-content: center;
+      @if $size == 'xsmall' {
+        grid-gap: map.get($default-gutter, $size);
+        grid-template-columns: repeat(map.get($columns, $size), 1fr);
+      }
+      @content;
+    }
+  }
+}
+
 @mixin layout-grid-mobile {
   @each $size in map.keys($columns) {
     @include layout.media-query($size) {

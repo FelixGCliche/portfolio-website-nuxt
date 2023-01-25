@@ -12,3 +12,15 @@
   background-size: 65% 65%;
   background-repeat: no-repeat;
 }
+
+@mixin bevel-clip-path($size) {
+  $end-size: calc(100% - $size);
+  clip-path: polygon(
+    $size 0%,
+    100% 0,
+    100% $end-size,
+    $end-size 100%,
+    0 100%,
+    0% $size
+  );
+}

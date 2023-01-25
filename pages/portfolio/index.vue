@@ -1,100 +1,56 @@
 <template>
-  <main class="portfolio-page">
+  <div class="portfolio">
     <ContentList
-      path="portfolio/projects"
+      path="portfolio"
       :locale="locale"
       :query="{ sort: { year: -1 } }"
       v-slot="{ list }"
     >
       <div
-        class="bevel bevel-container"
+        class="portfolio-project"
         v-for="project in list"
         :key="project._path"
       >
-        <div class="bevel bevel-inner">
-          <div class="portfolio-project">
-            <h1 class="headline">
-              {{ project.title }}
-            </h1>
-            <p class="title">{{ project.year }}</p>
-            <div class="portfolio-project-content">
-              <ContentRendererMarkdown :value="project" />
-            </div>
-            <div class="portfolio-project-buttons">
-              <ButtonIcon
-                v-if="project.url"
-                :url="project.url"
-              >
-                <IconGithub
-                  icon-name="github"
-                  :size="32"
-                />
-              </ButtonIcon>
-            </div>
-          </div>
+        <div class="portfolio-project-content">
+          <h1 class="headline">{{ project.title }}</h1>
+          <h3 class="title">{{ project.year }}</h3>
+          <p class="body">{{ project.description }}</p>
         </div>
+        <div class="portfolio-project-img"></div>
       </div>
     </ContentList>
-  </main>
+  </div>
 </template>
 
 <script lang="ts" setup>
 const { locale } = useI18n()
-
-useHead({ title: 'Portfolio' })
-
-const { data } = useAsyncData('portfolio', async () => {
-  const c = await queryContent('/portfolio/projects')
-    .sort({ year: -1 })
-    .only(['_path'])
-    .locale(locale.value)
-    .findOne()
-
-  const [prev, next] = await queryContent('/portfolio/projects')
-    .sort({ year: -1 })
-    .only(['_path'])
-    .findSurround(c._path!)
-  console.log('Current: ', c)
-  console.log(`Next: ${next?._path}, Prev: ${prev?._path}`)
-  return c
-})
 </script>
 
 <style lang="scss" scoped>
 .portfolio {
-  &-page {
-    @include layout.layout-grid;
+  @include layout.layout-grid {
+    grid-row-gap: 6rem;
   }
-  &-main {
-    @include layout.responsive-cell-full;
-  }
+
   &-project {
-    @include layout.responsive-cell;
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
-    height: 100%;
+    @include layout.responsive-cell-full;
+    @include layout.layout-grid-inner;
 
-    &-buttons {
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      height: 100%;
+    &-content {
+      @include layout.responsive-cell-half-mobile;
+      align-self: center;
     }
-  }
-}
 
-.bevel {
-  $bevel-size: 1.5rem;
-  &-container {
-    @include layout.responsive-cell-half-mobile;
-    @include theme.bevel(theme.$primary, $bevel-size);
-    padding: 4px;
-  }
-  &-inner {
-    @include theme.bevel(theme.$background, calc($bevel-size - 1px));
-    padding: 2rem;
-    height: 100%;
+    &-img {
+      @include layout.responsive-cell-half-mobile;
+      background-color: theme.$surface;
+      min-height: 400px;
+      @include theme.bevel-clip-path(2rem);
+
+      @include layout.media-query('xsmall') {
+        grid-row: 1;
+      }
+    }
   }
 }
 </style>
