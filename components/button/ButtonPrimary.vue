@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { ButtonProps } from '~~/types/Button'
+import type { ButtonProps } from '@/types/Button'
 </script>
 
 <style lang="scss" scoped>

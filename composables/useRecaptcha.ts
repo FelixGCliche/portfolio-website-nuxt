@@ -1,4 +1,4 @@
-import { RecaptchaSize, RecaptchaTheme } from '~~/types/Recaptcha'
+import { RecaptchaSize, RecaptchaTheme } from '@/types/Recaptcha'
 
 export const useRecaptchaProps = () => ({
   containerId: {

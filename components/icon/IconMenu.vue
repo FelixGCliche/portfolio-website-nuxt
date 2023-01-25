@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IconProps } from '~~/types/Icon'
+import type { IconProps } from '@/types/Icon'
 
 defineProps({
   ...useIconProps()

@@ -16,7 +16,7 @@
             <h1 class="headline">
               {{ project.title }}
             </h1>
-            <p class="title">{{ project._path }}</p>
+            <p class="title">{{ project.year }}</p>
             <div class="portfolio-project-content">
               <ContentRendererMarkdown :value="project" />
             </div>

@@ -1,6 +1,6 @@
 <template>
   <IconBase v-bind="{ ...$props, ...$attrs } as IconProps">
-    <path d="M32 22V18H7.6665L13 10H8L0 22H32Z" />
+    <path d="M0 7V10H18.2501L14.25 16H18L24 7H0Z" />
   </IconBase>
 </template>
 

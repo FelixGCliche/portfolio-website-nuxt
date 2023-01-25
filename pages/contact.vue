@@ -4,11 +4,11 @@
       <ContentDoc
         path="/contact"
         :locale="locale"
-        v-slot="{ doc }"
+        v-slot="{ doc: contact }"
       >
         <ContentRenderer
           class="section-content"
-          :value="doc"
+          :value="contact"
         />
       </ContentDoc>
       <div class="section-buttons">

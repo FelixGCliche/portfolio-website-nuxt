@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 defineProps({
-  ...useBaseButtonProps()
+  ...useButtonProps()
 })
 
 const emit = defineEmits(['button-click'])

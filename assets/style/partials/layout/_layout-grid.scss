@@ -79,18 +79,14 @@ $default-span: 4;
 }
 
 @mixin responsive-cell-full {
-  @each $size in map.keys(layout.$breakpoints) {
-    @include layout.media-query($size) {
-      grid-column: span map.get($columns, $size);
-      @content;
-    }
-  }
+  grid-column: 1/-1;
+  @content;
 }
 
 @mixin responsive-cell-full-mobile {
   @each $size in map.keys(layout.$breakpoints) {
     @include layout.media-query($size) {
-      grid-column: span map.get($columns, $size);
+      grid-column: 1/-1;
       @content;
 
       @if ($size == 'xsmall') {

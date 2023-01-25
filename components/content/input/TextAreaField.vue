@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { InputFieldProps } from '~~/types/InputField'
+import type { InputFieldProps } from '@/types/InputField'
 
 const textareaRef = ref<HTMLTextAreaElement>()
 const modelValue = ref('')
