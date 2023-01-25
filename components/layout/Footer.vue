@@ -2,8 +2,6 @@
   <footer class="footer">
     <div class="footer-content">
       <ButtonLocaleSwitch />
-    </div>
-    <div class="footer-content footer-content-right">
       <ButtonIcon url="https://github.com/FelixGCliche">
         <IconGithub
           icon-name="github"
@@ -19,22 +17,18 @@
 
 <style lang="scss" scoped>
 .footer {
-  padding: 2rem 0;
-  z-index: 2;
-  @include layout.layout-grid;
+  grid-template-rows: repeat(2, minmax(0, min-content));
+  align-self: center;
 
   &-content {
+    @include layout.layout-grid-cell-full;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    @include layout.responsive-cell-half;
-    &-right {
-      justify-content: flex-end;
-    }
   }
 
   &-caption {
-    @include layout.responsive-cell-full;
+    @include layout.layout-grid-cell-full;
     text-align: center;
     color: theme.$on-surface;
   }

@@ -12,7 +12,7 @@
         :key="project._path"
       >
         <div class="portfolio-project-content">
-          <h1 class="headline">{{ project.title }}</h1>
+          <h2 class="headline">{{ project.title }}</h2>
           <h3 class="title">{{ project.year }}</h3>
           <p class="body">{{ project.description }}</p>
           <ButtonPrimary
@@ -39,11 +39,10 @@ const { locale } = useI18n()
   }
 
   &-project {
-    @include layout.responsive-cell-full;
-    @include layout.layout-grid-inner;
+    @include layout.layout-grid-cell-full($inner-grid: true);
 
     &-content {
-      @include layout.responsive-cell-half-mobile;
+      @include layout.layout-grid-cell-half;
       align-self: center;
     }
 
@@ -52,7 +51,7 @@ const { locale } = useI18n()
     }
 
     &-img {
-      @include layout.responsive-cell-half-mobile;
+      @include layout.layout-grid-cell-half;
       background-color: theme.$surface;
       min-height: 400px;
       @include theme.bevel-clip-path(2rem);

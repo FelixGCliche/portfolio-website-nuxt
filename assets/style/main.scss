@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'components';
 
 * {
   box-sizing: border-box;
@@ -17,6 +18,12 @@ body,
   color: theme.$text-light;
 }
 
+input,
+textarea {
+  border: none;
+  outline: none;
+}
+
 a,
 button {
   text-decoration: none;
@@ -26,12 +33,6 @@ button {
   &:visited {
     color: theme.$text-light;
   }
-}
-
-input,
-textarea {
-  border: none;
-  outline: none;
 }
 
 .img-responsive {
@@ -45,22 +46,19 @@ textarea {
       --device-size: #{$size};
     }
 
-    h1,
     .display {
       @include theme.typography-display($size);
     }
-    h2,
     .headline {
       @include theme.typography-headline($size);
     }
-    h3,
     .title {
       @include theme.typography-title($size);
     }
-    .label {
+    .label,
+    .label > p {
       @include theme.typography-label($size);
     }
-    p,
     .body {
       @include theme.typography-body($size);
     }

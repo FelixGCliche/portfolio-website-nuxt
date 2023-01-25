@@ -3,11 +3,17 @@
     class="about"
     :style="maskStyles"
   >
-    <section class="about-section">
+    <section class="section about-section">
       <ContentDoc
         path="/"
         :locale="locale"
-      />
+        v-slot="{ doc: about }"
+      >
+        <ContentRenderer
+          class="section-content"
+          :value="about"
+        />
+      </ContentDoc>
       <ButtonPrimary
         class="about-section-button"
         url="/contact"
@@ -56,17 +62,17 @@ function getMaskStyles() {
 <style lang="scss" scoped>
 @use 'sass:map';
 @function get-overlap-start($size) {
-  $base: calc(map.get(layout.$columns, $size) + 1);
+  $base: calc(map.get(layout.$default-columns, $size) + 1);
   @return calc($base * -1);
 }
 
 @function get-profile-overlap($size) {
-  $base: calc(map.get(layout.$columns, $size) / 2);
+  $base: calc(map.get(layout.$default-columns, $size) / 2);
   @return calc($base + 1);
 }
 @each $size in map.keys(layout.$breakpoints) {
   @include layout.media-query($size) {
-    $columns: map.get(layout.$columns, $size);
+    $columns: map.get(layout.$default-columns, $size);
 
     .about {
       @include layout.layout-grid;
@@ -102,22 +108,10 @@ function getMaskStyles() {
         } @else {
           grid-column-end: span calc(($columns / 2) + 1);
         }
-
-        &:deep(h2) {
-          color: theme.$primary;
-          @include theme.typography-baseline;
-        }
-
-        &:deep(h3) {
-          color: theme.$secondary;
-        }
-
-        &-button {
-          width: fit-content;
-        }
       }
 
       &-profile {
+        align-self: center;
         grid-row-start: 2;
         grid-row-end: span 2;
         z-index: 2;

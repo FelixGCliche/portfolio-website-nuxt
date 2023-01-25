@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '../partials/layout' as layout;
+@use '../partials/theme' as theme;
+
+@each $size in map.keys(layout.$breakpoints) {
+  @include layout.media-query($size) {
+    .section {
+      @include layout.layout-grid-cell-half;
+      place-self: center;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 1.5rem;
+
+      &-content {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1.5rem;
+      }
+    }
+  }
+}

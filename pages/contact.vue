@@ -1,17 +1,17 @@
 <template>
-  <main class="page-contact">
-    <section class="section">
+  <main class="contact">
+    <section class="section contact-section">
       <ContentDoc
         path="/contact"
         :locale="locale"
         v-slot="{ doc: contact }"
       >
         <ContentRenderer
-          class="section-content"
+          class="section-content contact-section-content"
           :value="contact"
         />
       </ContentDoc>
-      <div class="section-buttons">
+      <div class="contact-buttons">
         <ButtonIcon
           class="section-buttons-email"
           url="mailto: felix@gagnecliche.dev"
@@ -35,8 +35,8 @@
       </div>
     </section>
 
-    <div
-      class="section section-form"
+    <!-- <div
+      class="contact-form"
       id="contact-email"
     >
       <div class="bevel bevel-container">
@@ -48,7 +48,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -57,46 +57,33 @@ const { locale } = useI18n()
 </script>
 
 <style lang="scss" scoped>
-.page-contact {
-  @include layout.layout-grid {
-    grid-row-gap: 4rem;
-  }
-}
+@use 'sass:map';
 
-.section {
-  @include layout.responsive-cell-half-mobile;
-  place-self: center;
-  display: flex;
-  flex-flow: column nowrap;
-  gap: 1.5rem;
+@each $size in map.keys(layout.$breakpoints) {
+  @include layout.media-query($size) {
+    .contact {
+      @include layout.layout-grid;
 
-  &-content {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1.5rem;
-    padding: 2rem 0;
+      &-section {
+        @include layout.layout-grid-cell-half;
+      }
 
-    &:deep(h2) {
-      color: theme.$primary;
-      @include theme.typography-baseline;
+      &-buttons {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1rem;
+
+        & > a {
+          padding: 0;
+        }
+      }
+
+      &-form {
+        @include layout.layout-grid-cell-half;
+        place-self: center;
+        width: 100%;
+      }
     }
-  }
-
-  &-buttons {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 1rem;
-
-    &-email,
-    &-sms {
-      width: fit-content;
-      padding: 0;
-    }
-  }
-
-  &-form {
-    width: 100%;
-    @include layout.responsive-cell-half-mobile;
   }
 }
 

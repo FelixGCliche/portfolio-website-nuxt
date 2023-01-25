@@ -20,6 +20,7 @@ $default-gutter: (
   'small': 16px,
   'xsmall': 16px
 );
+
 $default-span: 4 !default;
 
 @mixin _layout-grid-base($size, $columns) {
@@ -39,7 +40,7 @@ $default-span: 4 !default;
         justify-content: center;
 
         @if ($size == 'xsmall') {
-          margin: 0 map.get($default-margin, $size);
+          padding: 0 map.get($default-margin, $size);
         }
       }
       @content;
@@ -50,7 +51,7 @@ $default-span: 4 !default;
 @mixin _layout-grid-inner($columns) {
   @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      @include _layout-grid-base($size, map.get($columns, $size)) {
+      @include _layout-grid-base($size, map.get($default-columns, $size)) {
         justify-content: center;
       }
       @content;
@@ -58,18 +59,20 @@ $default-span: 4 !default;
   }
 }
 
-@mixin layout-grid-cell($span: $default-span) {
+@mixin layout-grid-cell($span: $default-span, $inner-grid: false) {
   grid-column-end: span $span;
-  @include _layout-grid-inner($span);
+  @if $inner-grid {
+    @include _layout-grid-inner($span);
+  }
   @content;
 }
 
-@mixin layout-grid-cell-full($margins: true) {
+@mixin layout-grid-cell-full($margins: true, $inner-grid: false) {
   @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      @include _layout-grid-cell(map.get($columns, $size)) {
-        @if ($size == 'xsmall' && $margins) {
-          margin: calc(map.get($default-margin, $size) * -1);
+      @include layout-grid-cell(map.get($default-columns, $size), $inner-grid) {
+        @if ($size == 'xsmall' and not $margins) {
+          margin: 0 calc(map.get($default-margin, $size) * -1);
         }
       }
     }
@@ -77,16 +80,21 @@ $default-span: 4 !default;
   @content;
 }
 
-@mixin layout-grid-cell-half($margins: true) {
+@mixin layout-grid-cell-half($margins: true, $inner-grid: false) {
   @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      $span: calc(map.get($columns, $size) / 2);
-      @include _layout-grid-cell($span) {
-        @if ($size == 'xsmall' && $margins) {
-          margin: calc(map.get($default-margin, $size) * -1);
+      $span: clamp(4, calc(map.get($default-columns, $size) / 2), 6);
+      @include layout-grid-cell($span, $inner-grid) {
+        @if ($size == 'xsmall' and $margins) {
+          margin: 0 calc(map.get($default-margin, $size) * -1);
         }
       }
     }
   }
+  @content;
+}
+
+@mixin layout-grid-cell-inner {
+  grid-column: 1/-1;
   @content;
 }

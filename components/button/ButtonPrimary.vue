@@ -20,6 +20,7 @@ import type { ButtonProps } from '@/types/Button'
   &-container {
     @include theme.bevel(theme.$primary, 8px);
     padding: 4px;
+    max-width: fit-content;
     @include theme.hover(theme.$on-background) {
       @include theme.bevel(theme.$secondary, 8px);
     }

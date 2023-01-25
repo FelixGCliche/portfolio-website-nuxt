@@ -37,6 +37,7 @@ const buttonType = useButtonType(props.url)
   justify-content: center;
   gap: 8px;
   min-width: 4rem;
+  width: fit-content;
   background: none;
   padding: 0.25rem 1rem;
   color: theme.$on-background;
