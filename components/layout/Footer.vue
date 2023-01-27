@@ -17,8 +17,10 @@
 
 <style lang="scss" scoped>
 .footer {
+  @include layout.layout-grid;
   grid-template-rows: repeat(2, minmax(0, min-content));
   align-self: center;
+  z-index: 23;
 
   &-content {
     @include layout.layout-grid-cell-full;

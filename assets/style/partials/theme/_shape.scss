@@ -13,14 +13,12 @@
   background-repeat: no-repeat;
 }
 
-@mixin bevel-clip-path($size) {
-  $end-size: calc(100% - $size);
-  clip-path: polygon(
-    $size 0%,
-    100% 0,
-    100% $end-size,
-    $end-size 100%,
-    0 100%,
-    0% $size
-  );
+@mixin bevel-border($border, $color, $size) {
+  &-container {
+    @include bevel($color, $size);
+    padding: $border;
+  }
+  &-inner {
+    @include bevel(color.$background, $size);
+  }
 }

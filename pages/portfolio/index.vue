@@ -34,7 +34,8 @@ const { locale } = useI18n()
 <style lang="scss" scoped>
 @use 'sass:map';
 .portfolio {
-  @include layout.layout-grid {
+  margin: 2rem 0;
+  @include layout.layout-grid($margins: true) {
     grid-row-gap: 6rem;
   }
 
@@ -43,7 +44,17 @@ const { locale } = useI18n()
 
     &-content {
       @include layout.layout-grid-cell-half;
+      @include layout.layout-flex;
       align-self: center;
+      width: 100%;
+
+      & > .headline {
+        color: theme.$primary;
+        @include theme.typography-baseline;
+      }
+      & > .title {
+        color: theme.$secondary;
+      }
     }
 
     &-button {
@@ -52,9 +63,8 @@ const { locale } = useI18n()
 
     &-img {
       @include layout.layout-grid-cell-half;
-      background-color: theme.$surface;
       min-height: 400px;
-      @include theme.bevel-clip-path(2rem);
+      @include theme.bevel(theme.$surface, 2rem);
 
       @include layout.media-query('xsmall') {
         grid-row: 1;

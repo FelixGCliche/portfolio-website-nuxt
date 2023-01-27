@@ -6,7 +6,7 @@
 }
 
 @function px-to-rem($px) {
-  @if ($px == null) {
+  @if $px == null {
     @error 'px value is null';
   } @else {
     @return math.div($px, 16px) * 1rem;

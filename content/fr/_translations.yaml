@@ -1,0 +1,15 @@
+title: 'translations'
+_path: '/translations'
+navigation: false
+
+home:
+  contactButton: 'Contactez-moi'
+
+emailForm:
+  nameLabel: 'Nom'
+  namePlaceholder: 'Nom complet'
+  emailLabel: 'Courriel'
+  emailPlaceholder: 'courriel@exemple.ca'
+  messageLabel: 'Message'
+  messagePlaceholder: 'Votre message ici...'
+  submit: 'Envoyer'

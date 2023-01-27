@@ -11,11 +11,7 @@
 
 .layout {
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
-  min-height: 100%;
-
-  & > * {
-    @include layout.layout-grid;
-  }
+  grid-template-rows: 4rem 1fr min-content;
+  min-height: 99%;
 }
 </style>

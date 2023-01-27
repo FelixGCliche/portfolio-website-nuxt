@@ -56,12 +56,40 @@ const onNavbarClicked = () => {
 @use 'sass:map';
 
 .header {
+  @include layout.layout-grid {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
   position: sticky;
   top: -1px;
   z-index: 24;
   background-color: theme.$background;
+
   &-sticky {
-    box-shadow: 0 1rem 1rem 1rem theme.$background;
+    @include layout.layout-grid {
+      padding-top: 2rem;
+      padding-bottom: 0;
+    }
+    box-shadow: 0 2rem 2rem 0.25rem theme.$background;
+  }
+
+  @include layout.media-query('xsmall') {
+    @include layout.layout-grid {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    position: sticky;
+    top: -1px;
+    z-index: 24;
+    background-color: theme.$background;
+
+    &-sticky {
+      @include layout.layout-grid;
+
+      padding-top: 1rem;
+      padding-bottom: 0;
+      box-shadow: 0 1rem 1rem 0.25rem theme.$background;
+    }
   }
 }
 
@@ -72,14 +100,11 @@ const onNavbarClicked = () => {
 
   &-open {
     @include layout.layout-grid-cell-full($margins: false);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 4rem 1fr;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100%;
-    padding: 0 map.get(layout.$default-margin, 'xsmall');
+    padding: 1rem map.get(layout.$default-margin, 'xsmall');
     backdrop-filter: blur(1rem);
     background-color: rgba(theme.$background, 0.5);
     transition: backdrop-filter 0.66s cubic-bezier(0.6, 0, 0.07, 1);
@@ -89,9 +114,9 @@ const onNavbarClicked = () => {
     display: none;
 
     @include layout.media-query('xsmall') {
+      @include layout.layout-grid-cell-full;
       display: flex;
       justify-content: flex-end;
-      @include layout.layout-grid-cell-full;
     }
   }
 

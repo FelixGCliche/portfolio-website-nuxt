@@ -3,21 +3,16 @@
     class="about"
     :style="maskStyles"
   >
-    <section class="section about-section">
+    <section class="about-section">
       <ContentDoc
         path="/"
         :locale="locale"
-        v-slot="{ doc: about }"
-      >
-        <ContentRenderer
-          class="section-content"
-          :value="about"
-        />
-      </ContentDoc>
+        :query="{ where: { _partial: false } }"
+      />
       <ButtonPrimary
         class="about-section-button"
         url="/contact"
-        label="Contactez-moi"
+        :label="home['contactButton']"
       />
     </section>
     <div class="about-profile">
@@ -33,6 +28,7 @@
 
 <script lang="ts" setup>
 const { locale } = useI18n()
+const { home } = useTranslations().translations.value
 const maskPosition = ref('')
 const maskSize = ref('')
 
@@ -51,10 +47,7 @@ function getMaskStyles() {
   const logoRect = document
     .querySelector('.about-logo')
     ?.getBoundingClientRect()
-  const profileRect = document
-    .querySelector('.about-profile')
-    ?.getBoundingClientRect()
-  maskPosition.value = `${logoRect?.x}px ${profileRect?.y}px`
+  maskPosition.value = `${logoRect?.left}px ${logoRect?.top}px`
   maskSize.value = `${logoRect?.width}px`
 }
 </script>
@@ -75,8 +68,11 @@ function getMaskStyles() {
     $columns: map.get(layout.$default-columns, $size);
 
     .about {
-      @include layout.layout-grid;
-      grid-template-rows: repeat(4, auto);
+      @include layout.layout-grid($margins: true);
+      grid-template-rows: 1fr min-content min-content 1fr;
+      @include layout.media-query('xsmall') {
+        grid-template-rows: repeat(4, auto);
+      }
 
       &:after {
         content: '';
@@ -99,6 +95,11 @@ function getMaskStyles() {
       }
 
       &-section {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 1.5rem;
+
+        align-self: center;
         grid-row: 3;
         z-index: 3;
         grid-column-start: get-overlap-start($size);
@@ -123,13 +124,16 @@ function getMaskStyles() {
         grid-row: 2;
         z-index: 1;
         width: 100%;
-        height: auto;
-        align-self: end;
+        align-self: start;
         grid-column-start: get-overlap-start($size);
 
-        @if $size == 'large' {
+        @if $size == 'xsmall' {
+          @include layout.layout-grid-cell-full;
+        } @else if $size == 'large' {
+          grid-column-start: get-overlap-start($size);
           grid-column-end: span calc($columns / 2) + 2;
         } @else {
+          grid-column-start: get-overlap-start($size);
           grid-column-end: span calc(($columns / 2) + 1);
         }
       }

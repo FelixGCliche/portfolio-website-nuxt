@@ -17,18 +17,18 @@ import type { ButtonProps } from '@/types/Button'
 
 <style lang="scss" scoped>
 .bevel {
+  @include theme.bevel-border(0.25rem, theme.$primary, 0.5rem);
+  max-width: fit-content;
+
   &-container {
-    @include theme.bevel(theme.$primary, 8px);
-    padding: 4px;
-    max-width: fit-content;
     @include theme.hover(theme.$on-background) {
       @include theme.bevel(theme.$secondary, 8px);
     }
     @include theme.pressed(theme.$secondary);
   }
-  &-inner {
-    @include theme.bevel(theme.$background, 8 - 1px);
-    padding: 0.5rem;
-  }
+}
+
+.button-primary {
+  padding: 0.5rem;
 }
 </style>
