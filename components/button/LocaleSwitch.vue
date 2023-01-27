@@ -1,18 +1,26 @@
 <template>
   <div class="locale-switch">
     <NuxtLink
-      v-for="locale of locales"
+      v-for="locale of availableLocales"
       class="label locale-switch-button"
-      :to="switchLocalePath(locale.toString())"
+      :id="locale.code"
+      :to="switchLocalePath(locale.code)"
     >
-      {{ locale }}
+      {{ locale.code }}
     </NuxtLink>
   </div>
 </template>
 
 <script lang="ts" setup>
-const { locales } = useI18n()
+import { LocaleObject } from 'vue-i18n-routing'
+
+const { locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const availableLocales = computed(() => {
+  return locales.value.filter(
+    (current: LocaleObject) => current.code !== locale.value
+  )
+})
 </script>
 
 <style lang="scss" scoped>
@@ -26,9 +34,5 @@ const switchLocalePath = useSwitchLocalePath()
     @include theme.hover(theme.$primary);
     @include theme.pressed(theme.$secondary);
   }
-}
-
-.router-link-active {
-  color: theme.$secondary;
 }
 </style>

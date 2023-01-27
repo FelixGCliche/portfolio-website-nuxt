@@ -12,7 +12,7 @@
       <ButtonPrimary
         class="about-section-button"
         url="/contact"
-        :label="home['contactButton']"
+        :label="t('home.contactButton')"
       />
     </section>
     <div class="about-profile">
@@ -27,10 +27,11 @@
 </template>
 
 <script lang="ts" setup>
-const { locale } = useI18n()
-const { home } = useTranslations().translations.value
+const { locale, t } = useI18n()
 const maskPosition = ref('')
 const maskSize = ref('')
+
+console.log(t('home.contactButton'))
 
 const maskStyles = computed(() =>
   reactive({

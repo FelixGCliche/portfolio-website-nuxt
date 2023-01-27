@@ -44,9 +44,7 @@ onMounted(() => {
 })
 
 const onNavbarClicked = () => {
-  console.log('navbar clicked')
   if (toggled) {
-    console.log('close')
     toggleOff()
   }
 }

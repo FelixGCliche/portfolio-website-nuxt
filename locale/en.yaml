@@ -1,0 +1,11 @@
+home:
+  contactButton: "Drop a line"
+
+emailForm:
+  nameLabel: "Name"
+  namePlaceholder: "Full name"
+  emailLabel: "Email"
+  emailPlaceholder: "email{'@'}example.ca"
+  messageLabel: "Message"
+  messagePlaceholder: "Your message here..."
+  submit: "Send"

@@ -4,4 +4,5 @@ dist
 .output
 static
 coverage
-*.md
+/content/*.md
+/locale/*yaml

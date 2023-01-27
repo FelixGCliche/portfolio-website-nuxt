@@ -10,20 +10,20 @@
     <div class="form-email-inputs">
       <InputTextField
         input-name="from_name"
-        :input-label="emailForm['nameLabel']"
-        :input-placeholder="emailForm['namePlaceholder']"
+        :input-label="t('emailForm.nameLabel')"
+        :input-placeholder="t('emailForm.namePlaceholder')"
         :input-required="true"
       />
       <InputEmailField
         input-name="reply_to"
-        :input-label="emailForm['emailLabel']"
-        :input-placeholder="emailForm['emailPlaceholder']"
+        :input-label="t('emailForm.emailLabel')"
+        :input-placeholder="t('emailForm.emailPlaceholder')"
         :input-required="true"
       />
       <InputTextAreaField
         input-name="message"
-        :input-label="emailForm['messageLabel']"
-        :input-placeholder="emailForm['messagePlaceholder']"
+        :input-label="t('emailForm.messageLabel')"
+        :input-placeholder="t('emailForm.messagePlaceholder')"
         :input-required="true"
       />
     </div>
@@ -39,7 +39,7 @@
         class="label form-email-submit-button"
         type="submit"
       >
-        {{ emailForm['submit'] }}
+        {{ $t('emailForm.submit') }}
       </button>
     </div>
   </form>
@@ -47,11 +47,12 @@
 
 <script lang="ts" setup>
 import { RecaptchaSize, RecaptchaTheme } from '@/types/Recaptcha'
+
+const { t } = useI18n()
 const { toggled, toggleOn, toggleOff } = useToggle()
 const formEmailRef = ref<HTMLFormElement>()
 const grecaptchaContainerId = 'form-email-submit-grecaptcha'
 const grecaptchaSize = ref(RecaptchaSize.Normal)
-const { emailForm } = useTranslations().translations.value
 
 onMounted(() => {
   window.addEventListener('resize', onResize)

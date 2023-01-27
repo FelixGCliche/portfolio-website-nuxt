@@ -24,7 +24,17 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: 'fr',
-    locales: ['fr', 'en']
+    langDir: 'locale',
+    locales: [
+      {
+        code: 'fr',
+        file: 'fr.yaml'
+      },
+      {
+        code: 'en',
+        file: 'en.yaml'
+      }
+    ]
   },
 
   css: ['@/assets/style/reset.css', '@/assets/style/main.scss'],
