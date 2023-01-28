@@ -31,8 +31,6 @@ const { locale, t } = useI18n()
 const maskPosition = ref('')
 const maskSize = ref('')
 
-console.log(t('home.contactButton'))
-
 const maskStyles = computed(() =>
   reactive({
     '--mask-position': maskPosition.value,

@@ -1,6 +1,9 @@
 home:
   contactButton: "Drop a line"
 
+portfolio:
+  projectButton: "See more"
+
 emailForm:
   nameLabel: "Name"
   namePlaceholder: "Full name"

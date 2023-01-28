@@ -1,6 +1,9 @@
 home:
   contactButton: "Contactez-moi"
 
+portfolio:
+  projectButton: "Voir plus"
+
 emailForm:
   nameLabel: "Nom"
   namePlaceholder: "Nom complet"
