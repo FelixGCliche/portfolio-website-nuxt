@@ -17,7 +17,7 @@
 
 <style lang="scss" scoped>
 .footer {
-  @include layout.layout-grid;
+  @include layout.layout-grid($margins: true);
   grid-template-rows: repeat(2, minmax(0, min-content));
   align-self: center;
   z-index: 23;

@@ -3,14 +3,16 @@
 @use '../layout/breakpoints' as breakpoints;
 
 @mixin bevel($color, $size) {
-  background: $color; /*fallback*/
-  background: linear-gradient(0deg, $color, $color),
-    linear-gradient(135deg, transparent $size, $color $size),
-    linear-gradient(180deg, $color, $color),
-    linear-gradient(315deg, transparent $size, $color $size);
-  background-position: bottom left, top left, top right, bottom right;
-  background-size: 65% 65%;
-  background-repeat: no-repeat;
+  background-color: $color;
+  $end-size: calc(100% - $size);
+  clip-path: polygon(
+    $size 0%,
+    100% 0,
+    100% $end-size,
+    $end-size 100%,
+    0 100%,
+    0% $size
+  );
 }
 
 @mixin bevel-border($border, $color, $size) {

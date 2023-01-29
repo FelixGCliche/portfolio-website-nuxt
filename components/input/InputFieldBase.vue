@@ -51,6 +51,7 @@ textarea:focus + .inputfield-label {
 
 <style lang="scss" scoped>
 .inputfield {
+  @include theme.bevel(theme.$background, 0.75rem);
   position: relative;
 
   &-label {

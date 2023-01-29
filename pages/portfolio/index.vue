@@ -13,10 +13,10 @@
         :to="localePath(project._path)"
       >
         <div class="portfolio-project-content">
-          <Http2ServerResponse class="headline">
+          <h2 class="headline">
             {{ project.title }}
-          </Http2ServerResponse>
-          <h1 class="portfolio-project-content-description">
+          </h2>
+          <h1 class="display">
             {{ project.description }}
           </h1>
           <h3 class="title">{{ $t('portfolio.projectButton') }}</h3>
@@ -35,6 +35,15 @@ const localePath = useLocalePath()
 <style lang="scss" scoped>
 @use 'sass:map';
 
+@function get-span($size, $add) {
+  @if $size == 'xsmall' {
+    @return 4;
+  } @else {
+    $half: calc(map.get(layout.$default-columns, $size) / 2);
+    @return $half + $add;
+  }
+}
+
 .portfolio {
   @include layout.layout-grid($margins: true) {
     margin: 25vh 0;
@@ -45,7 +54,11 @@ const localePath = useLocalePath()
     @include layout.layout-grid-cell-full($inner-grid: true);
 
     &-content {
-      @include layout.layout-grid-cell($span: 7);
+      @each $size in map.keys(layout.$breakpoints) {
+        @include layout.media-query($size) {
+          @include layout.layout-grid-cell($span: get-span($size, 1));
+        }
+      }
       @include layout.layout-flex;
       align-self: center;
       margin: 2rem 0;
@@ -56,22 +69,12 @@ const localePath = useLocalePath()
         @include theme.typography-baseline;
       }
 
-      & > .title {
-        color: theme.$secondary;
+      & > .display {
+        color: theme.$on-background;
       }
 
-      &-description {
-        color: theme.$on-background;
-
-        @each $size in map.keys(layout.$breakpoints) {
-          @include layout.media-query($size) {
-            @include theme.typography-display($size);
-
-            @if $size == 'xsmall' {
-              @include theme.typography-headline($size);
-            }
-          }
-        }
+      & > .title {
+        color: theme.$secondary;
       }
     }
 
@@ -80,13 +83,17 @@ const localePath = useLocalePath()
     }
 
     &-img {
-      @include layout.layout-grid-cell($span: 5);
-      min-height: 400px;
-      @include theme.bevel(theme.$surface, 2rem);
-
-      @include layout.media-query('xsmall') {
-        grid-row: 1;
+      @each $size in map.keys(layout.$breakpoints) {
+        @include layout.media-query($size) {
+          @include layout.layout-grid-cell($span: get-span($size, -1));
+          @if $size == 'xsmall' {
+            grid-row: 1;
+            aspect-ratio: 4/3;
+          }
+        }
       }
+      aspect-ratio: 3/4;
+      @include theme.bevel(theme.$surface, 2rem);
     }
   }
 }

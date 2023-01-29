@@ -71,6 +71,14 @@ $default-span: 4 !default;
   @content;
 }
 
+@mixin layout-grid-cell-end($span: $default-span, $inner-grid: false) {
+  grid-column-start: span $span;
+  @if $inner-grid {
+    @include _layout-grid-inner($span);
+  }
+  @content;
+}
+
 @mixin layout-grid-cell-full($margins: true, $inner-grid: false) {
   @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {

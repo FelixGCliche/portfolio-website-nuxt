@@ -44,7 +44,6 @@ button {
     :root {
       --device-size: #{$size};
     }
-
     .display {
       @include theme.typography-display($size);
     }
