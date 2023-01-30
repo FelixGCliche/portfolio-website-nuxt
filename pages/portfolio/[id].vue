@@ -18,7 +18,7 @@
           { hidden: !isProjectValid(prev) },
           'project-navigation-button'
         ]"
-        :url="prev?._path"
+        :url="localePath(prev?._path)"
       >
         <IconBack
           icon-name="previous"
@@ -31,7 +31,7 @@
           { hidden: !isProjectValid(next) },
           'project-navigation-button'
         ]"
-        :url="next?._path"
+        :url="localePath(next?._path)"
       >
         <IconForward
           icon-name="next"
@@ -45,16 +45,17 @@
 <script lang="ts" setup>
 import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 const { locale } = useI18n()
-const route = useRoute()
+const localePath = useLocalePath()
+const { id } = useRoute().params
 
 const { data: project } = await useAsyncData('project', () =>
-  queryContent(`/portfolio/${route.params.id}`).locale(locale.value).findOne()
+  queryContent(`/portfolio/${id}`).locale(locale.value).findOne()
 )
 
 const [prev, next] = await queryContent('/portfolio')
   .only(['_path'])
   .sort({ year: -1 })
-  .findSurround(`/portfolio/${route.params.id}`)
+  .findSurround(`/portfolio/${id}`)
 
 const isProjectValid = (
   project: Pick<ParsedContent, string> | any

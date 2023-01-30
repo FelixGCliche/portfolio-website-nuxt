@@ -15,7 +15,7 @@
       v-if="$slots.title"
     >
       <ContentSlot
-        :use="$slots.headline"
+        :use="$slots.title"
         :unwrap="true"
       />
     </h3>
@@ -47,6 +47,12 @@
 
       & > .title {
         color: theme.$secondary;
+      }
+
+      & > .body:deep(br) {
+        display: block;
+        content: '';
+        margin-bottom: calc(theme.get-line-height('body', $size) / 2);
       }
     }
   }
