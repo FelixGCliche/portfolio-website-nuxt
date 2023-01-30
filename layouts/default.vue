@@ -11,7 +11,7 @@
 
 .layout {
   display: grid;
-  grid-template-rows: 4rem 1fr min-content;
+  grid-template-rows: 4rem minmax(0, 1fr) min-content;
   min-height: 99%;
 }
 </style>

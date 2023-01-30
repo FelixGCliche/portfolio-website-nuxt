@@ -40,11 +40,13 @@ $default-span: 4 !default;
         justify-content: center;
 
         @if $margins {
-          margin: calc(map.get($default-gutter, $size)) 0;
+          padding-top: calc(map.get($default-gutter, $size));
+          padding-bottom: calc(map.get($default-gutter, $size));
         }
 
         @if $size == 'xsmall' or $size == 'small' {
-          padding: 0 map.get($default-margin, $size);
+          padding-left: calc(map.get($default-gutter, $size));
+          padding-right: calc(map.get($default-gutter, $size));
         }
       }
       @content;

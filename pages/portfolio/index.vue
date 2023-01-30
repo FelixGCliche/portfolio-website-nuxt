@@ -21,7 +21,16 @@
           </h1>
           <h3 class="title">{{ $t('portfolio.projectButton') }}</h3>
         </div>
-        <div class="portfolio-project-img"></div>
+        <div class="portfolio-project-img">
+          <NuxtImg
+            class="img-responsive"
+            :src="`/img/${project!._path}-thumbnail.webp`"
+            :alt="`project thumbnail ${project!.title}`"
+            quality="80"
+            width="456"
+            height="608"
+          />
+        </div>
       </NuxtLink>
     </ContentList>
   </div>

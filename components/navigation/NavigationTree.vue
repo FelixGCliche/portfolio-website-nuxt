@@ -15,9 +15,12 @@
 <script lang="ts" setup>
 const { locale } = useI18n()
 const localePath = useLocalePath()
-const { data: navigationTree } = await useAsyncData('navigationTree', () => {
-  return fetchContentNavigation(queryContent().locale(locale.value))
-})
+const { data: navigationTree } = await useLazyAsyncData(
+  'navigationTree',
+  () => {
+    return fetchContentNavigation(queryContent().locale(locale.value))
+  }
+)
 
 watch(locale, () => {
   refreshNuxtData('navigationTree')

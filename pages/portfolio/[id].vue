@@ -12,7 +12,14 @@
       </ul>
     </article>
     <div class="project-img">
-      <NuxtPicture :src="`/img/${project!._path}.webp`" />
+      <NuxtImg
+        class="img-responsive"
+        :src="`/img/${project!._path}.webp`"
+        :alt="`project picture ${project!.title}`"
+        quality="80"
+        width="552"
+        height="981"
+      />
     </div>
     <div class="project-navigation">
       <ButtonIcon
@@ -50,7 +57,7 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 const { id } = useRoute().params
 
-const { data: project } = await useAsyncData('project', () =>
+const { data: project } = await useLazyAsyncData('project', () =>
   queryContent(`/portfolio/${id}`).locale(locale.value).findOne()
 )
 

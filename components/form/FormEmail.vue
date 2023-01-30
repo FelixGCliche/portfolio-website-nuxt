@@ -8,19 +8,19 @@
     action="?"
   >
     <div class="form-email-inputs">
-      <InputTextField
+      <LazyInputTextField
         input-name="from_name"
         :input-label="t('emailForm.nameLabel')"
         :input-placeholder="t('emailForm.namePlaceholder')"
         :input-required="true"
       />
-      <InputEmailField
+      <LazyInputEmailField
         input-name="reply_to"
         :input-label="t('emailForm.emailLabel')"
         :input-placeholder="t('emailForm.emailPlaceholder')"
         :input-required="true"
       />
-      <InputTextAreaField
+      <LazyInputTextAreaField
         input-name="message"
         :input-label="t('emailForm.messageLabel')"
         :input-placeholder="t('emailForm.messagePlaceholder')"
@@ -28,7 +28,7 @@
       />
     </div>
     <div class="form-email-submit">
-      <InputRecaptcha
+      <LazyInputRecaptcha
         v-if="toggled"
         :container-id="grecaptchaContainerId"
         :callback="handleSubmit"
