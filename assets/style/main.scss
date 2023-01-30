@@ -9,12 +9,16 @@ html {
 }
 
 html,
-body,
-#__nuxt,
-#__layout {
-  height: 100%;
-  background-color: theme.$background;
-  color: theme.$text-light;
+body {
+  min-height: 100%;
+}
+
+body {
+  height: 100vh;
+}
+
+#__nuxt {
+  color: theme.$on-background;
 }
 
 input,

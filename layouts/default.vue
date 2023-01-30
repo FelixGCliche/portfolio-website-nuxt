@@ -11,7 +11,9 @@
 
 .layout {
   display: grid;
-  grid-template-rows: 4rem minmax(0, 1fr) min-content;
-  min-height: 99%;
+  background-color: theme.$background;
+  grid-template-rows: min-content minmax(0, 1fr) min-content;
+  min-height: 100%;
+  height: 100%;
 }
 </style>
