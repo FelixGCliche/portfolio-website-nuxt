@@ -11,7 +11,9 @@
         </li>
       </ul>
     </article>
-    <div class="project-img"></div>
+    <div class="project-img">
+      <NuxtPicture :src="`/img/${project!._path}.webp`" />
+    </div>
     <div class="project-navigation">
       <ButtonIcon
         :class="[
@@ -95,12 +97,10 @@ const isProjectValid = (
   }
   &-img {
     @include layout.layout-grid-cell-half;
-    background-color: theme.$surface;
-    margin: 6rem 0;
+    align-self: center;
 
     @include layout.media-query('xsmall') {
       order: 1;
-      margin: 0;
     }
   }
   &-navigation {

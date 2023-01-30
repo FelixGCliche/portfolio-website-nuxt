@@ -13,11 +13,7 @@
       />
     </section>
     <div class="about-profile">
-      <img
-        class="img-responsive"
-        src="~img/profile.webp"
-        alt="profile picture"
-      />
+      <NuxtPicture src="/img/profile.webp" />
     </div>
     <div class="about-logo" />
   </div>

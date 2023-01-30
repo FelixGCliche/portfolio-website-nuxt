@@ -13,7 +13,13 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  modules: ['@nuxt/content', '@nuxtjs/i18n'],
+  css: ['@/assets/style/reset.css', '@/assets/style/main.scss'],
+
+  typescript: {
+    shim: false
+  },
+
+  modules: ['@nuxt/content', '@nuxtjs/i18n', '@nuxt/image-edge'],
 
   content: {
     locales: ['fr', 'en'],
@@ -35,12 +41,6 @@ export default defineNuxtConfig({
         file: 'en.yaml'
       }
     ]
-  },
-
-  css: ['@/assets/style/reset.css', '@/assets/style/main.scss'],
-
-  typescript: {
-    shim: false
   },
 
   runtimeConfig: {
