@@ -2,14 +2,6 @@
   <main class="project">
     <article class="project-section">
       <ContentRenderer :value="project!" />
-      <ul class="project-section-tags">
-        <li
-          class="caption"
-          v-for="tag in project?.tags"
-        >
-          {{ tag }}
-        </li>
-      </ul>
     </article>
     <div class="project-img">
       <NuxtImg
@@ -18,7 +10,7 @@
         :alt="`project picture ${project!.title}`"
         quality="80"
         width="552"
-        height="981"
+        height="736"
       />
     </div>
     <div class="project-navigation">
@@ -77,7 +69,8 @@ const isProjectValid = (
 @use 'sass:map';
 .project {
   @include layout.layout-grid {
-    grid-template-rows: 1fr min-content;
+    grid-template-rows: auto min-content;
+    max-height: 100%;
 
     @each $size in map.keys(layout.$default-columns) {
       @include layout.media-query($size) {
@@ -96,10 +89,6 @@ const isProjectValid = (
 
     @include layout.media-query('xsmall') {
       order: 2;
-    }
-    &-tags {
-      @include layout.layout-flex(-1rem);
-      color: theme.$tertiary;
     }
   }
   &-img {

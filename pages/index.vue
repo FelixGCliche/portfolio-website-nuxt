@@ -62,15 +62,16 @@ const { locale, t } = useI18n()
     grid-row: 1;
     z-index: 1;
 
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    // background-position: center;
-    // background-attachment: fixed;
-    // background-image: url('@/assets/img/bg_image.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url('@/assets/img/bg_image.webp');
 
-    // mask: url('@/assets/img/logo.svg');
-    // mask-repeat: no-repeat;
-    // mask-size: 100% 100%;
+    mask: url('@/assets/img/logo.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 }
 @each $size in map.keys(layout.$breakpoints) {
