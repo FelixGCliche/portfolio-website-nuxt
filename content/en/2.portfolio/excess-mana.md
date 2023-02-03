@@ -1,8 +1,11 @@
 ---
-title: 'Excess Mana'
-tags: ['C#', 'unity']
-description: 'Build your defenses and kill the slimes'
+title: Excess Mana
+description: Build your defenses and kill the slimes
+tags:
+  - C#
+  - Unity
 year: 2020
+url: https://incrediboldstudio.itch.io/excess-mana
 ---
 
 ::ContentSection

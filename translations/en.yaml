@@ -1,0 +1,15 @@
+home:
+  contactButton: 'Drop a line'
+
+portfolio:
+  projectButton: 'See more'
+  projectUrlButton: 'Check on itch.io'
+
+emailForm:
+  nameLabel: 'Name'
+  namePlaceholder: 'Full name'
+  emailLabel: 'Email'
+  emailPlaceholder: "email{'@'}example.ca"
+  messageLabel: 'Message'
+  messagePlaceholder: 'Your message here...'
+  submit: 'Send'

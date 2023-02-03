@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-const { locale, t } = useI18n()
+const { locale } = useI18n()
 const localePath = useLocalePath()
 </script>
 
@@ -55,8 +55,12 @@ const localePath = useLocalePath()
 
 .portfolio {
   @include layout.layout-grid($margins: true) {
-    margin: 25vh 0;
+    margin: 12vh 0;
     grid-row-gap: 50vh;
+
+    @include layout.media-query('xsmall') {
+      margin: 0;
+    }
   }
 
   &-project {
@@ -102,7 +106,7 @@ const localePath = useLocalePath()
         }
       }
       aspect-ratio: 3/4;
-      @include theme.bevel(theme.$surface, 2rem);
+      @include theme.bevel(transparent, 2rem);
     }
   }
 }

@@ -1,7 +1,9 @@
 ---
-title: 'La pause électrique'
-tags: ['java', 'android']
-description: 'Visit new places while charging your car'
+title: La pause électrique
+description: Visit new places while charging your car
+tags:
+  - Java
+  - Android
 year: 2019
 ---
 

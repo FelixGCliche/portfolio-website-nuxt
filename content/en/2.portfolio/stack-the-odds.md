@@ -1,8 +1,12 @@
 ---
-title: 'Stack the Odds'
-tags: ['C#', 'unity']
-description: 'A dice stacking game for GMTK 2022'
+title: Stack the Odds
+description: A dice stacking game for GMTK 2022
+tags:
+  - C#
+  - Unity
 year: 2022
+video: https://www.youtube.com/embed/jmhAQYLX4fc
+url: https://incrediboldstudio.itch.io/stack-the-odds
 ---
 
 ::ContentSection

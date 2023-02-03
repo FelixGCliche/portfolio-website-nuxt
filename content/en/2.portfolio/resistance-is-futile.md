@@ -1,8 +1,11 @@
 ---
-title: 'Resitance is Futile'
-tags: ['C#', 'unity']
-description: 'Turned-based roguelike made with Unity'
+title: Resitance is Futile
+description: Turned-based roguelike made with Unity
+tags:
+  - C#
+  - Unity
 year: 2021
+url: https://incrediboldstudio.itch.io/resistance-is-futile
 ---
 
 ::ContentSection

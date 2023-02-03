@@ -1,7 +1,9 @@
 ---
-title: 'Excess Mana'
-description: 'Construisez vos défenses et tuez les slimes'
-tags: ['C#', 'unity']
+title: Excess Mana
+description: Construisez vos défenses et tuez les slimes
+tags:
+  - C#
+  - Unity
 year: 2020
 ---
 

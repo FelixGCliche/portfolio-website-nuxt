@@ -1,7 +1,9 @@
 ---
-title: 'Alhoa et les 5 artéfacts'
-description: 'Petit plateformeur 2D fait avec Unity'
-tags: ['C#', 'unity']
+title: Alhoa et les 5 artéfacts
+description: Petit plateformeur 2D fait avec Unity
+tags:
+  - C#
+  - Unity
 year: 2020
 ---
 

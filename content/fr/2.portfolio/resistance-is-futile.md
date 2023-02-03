@@ -1,7 +1,9 @@
 ---
 title: 'Resitance is Futile'
-tags: ['C#', 'unity']
 description: 'Roguelike tour par tour fait avec Unity'
+tags:
+  - C#
+  - Unity
 year: 2021
 ---
 

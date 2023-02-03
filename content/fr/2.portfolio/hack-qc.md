@@ -1,7 +1,9 @@
 ---
-title: 'La pause électrique'
-tags: ['java', 'android']
-description: 'Explorez près de lieux de recharge de véhicule électrique'
+title: La pause électrique
+description: Explorez près de lieux de recharge de véhicule électrique
+tags:
+  - Java
+  - Android
 year: 2019
 ---
 

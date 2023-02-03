@@ -68,7 +68,7 @@ const onNavbarClicked = () => {
       padding-top: 2rem;
       padding-bottom: 0;
     }
-    box-shadow: 0 2rem 2rem 0.25rem theme.$background;
+    box-shadow: 0 2rem 1rem 0.25rem theme.$background;
   }
 
   @include layout.media-query('xsmall') {
@@ -104,7 +104,7 @@ const onNavbarClicked = () => {
     height: 100%;
     padding: 1rem map.get(layout.$default-margin, 'xsmall');
     backdrop-filter: blur(1rem);
-    background-color: rgba(theme.$background, 0.5);
+    background-color: rgba(theme.$background, 0.67);
     transition: backdrop-filter 0.66s cubic-bezier(0.6, 0, 0.07, 1);
   }
 

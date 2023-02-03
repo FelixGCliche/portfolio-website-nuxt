@@ -40,13 +40,13 @@ $default-span: 4 !default;
         justify-content: center;
 
         @if $margins {
-          padding-top: calc(map.get($default-gutter, $size));
-          padding-bottom: calc(map.get($default-gutter, $size));
+          padding-top: calc(map.get($default-margin, $size));
+          padding-bottom: calc(map.get($default-margin, $size));
         }
 
         @if $size == 'xsmall' or $size == 'small' {
-          padding-left: calc(map.get($default-gutter, $size));
-          padding-right: calc(map.get($default-gutter, $size));
+          padding-left: calc(map.get($default-margin, $size));
+          padding-right: calc(map.get($default-margin, $size));
         }
       }
       @content;
@@ -87,7 +87,8 @@ $default-span: 4 !default;
       @include layout-grid-cell(map.get($default-columns, $size), $inner-grid);
 
       @if $size == 'xsmall' and not $margins {
-        margin: 0 calc(map.get($default-margin, $size) * -1);
+        margin-left: calc(map.get($default-margin, $size) * -1);
+        margin-right: calc(map.get($default-margin, $size) * -1);
       }
     }
   }

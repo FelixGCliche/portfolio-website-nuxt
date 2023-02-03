@@ -9,7 +9,7 @@
       <ButtonPrimary
         class="about-section-button"
         url="/contact"
-        :label="t('home.contactButton')"
+        :label="$t('home.contactButton')"
       />
     </section>
     <div class="about-profile">
@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-const { locale, t } = useI18n()
+const { locale } = useI18n()
 </script>
 
 <style lang="scss" scoped>

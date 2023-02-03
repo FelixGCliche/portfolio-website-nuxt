@@ -1,8 +1,12 @@
 ---
-title: 'Stack the Odds'
-tags: ['C#', 'unity']
-description: 'Jeu de tour de dés pour le GMTK 2022'
+title: Stack the Odds
+description: Jeu de tour de dés pour le GMTK 2022
+tags:
+  - C#
+  - Unity
 year: 2022
+video: https://www.youtube.com/embed/jmhAQYLX4fc
+url: https://incrediboldstudio.itch.io/stack-the-odds
 ---
 
 ::ContentSection

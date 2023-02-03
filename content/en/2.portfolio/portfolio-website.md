@@ -1,7 +1,11 @@
 ---
-title: 'Portfolio'
-tags: ['Vue.JS', 'Nuxt', 'Typescript', 'Netlify']
-description: 'Made with Nuxt 3, deployed on Netlify'
+title: Portfolio
+description: Made with Nuxt 3, deployed on Netlify
+tags:
+  - Vue.JS
+  - Nuxt
+  - Typescript
+  - Netlify
 year: 2023
 ---
 

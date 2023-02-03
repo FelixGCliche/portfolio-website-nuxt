@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: 'fr',
-    langDir: 'locale',
+    langDir: 'translations',
     locales: [
       {
         code: 'fr',

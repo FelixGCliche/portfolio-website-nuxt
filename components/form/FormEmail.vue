@@ -10,20 +10,20 @@
     <div class="form-email-inputs">
       <LazyInputTextField
         input-name="from_name"
-        :input-label="t('emailForm.nameLabel')"
-        :input-placeholder="t('emailForm.namePlaceholder')"
+        :input-label="$t('emailForm.nameLabel')"
+        :input-placeholder="$t('emailForm.namePlaceholder')"
         :input-required="true"
       />
       <LazyInputEmailField
         input-name="reply_to"
-        :input-label="t('emailForm.emailLabel')"
-        :input-placeholder="t('emailForm.emailPlaceholder')"
+        :input-label="$t('emailForm.emailLabel')"
+        :input-placeholder="$t('emailForm.emailPlaceholder')"
         :input-required="true"
       />
       <LazyInputTextAreaField
         input-name="message"
-        :input-label="t('emailForm.messageLabel')"
-        :input-placeholder="t('emailForm.messagePlaceholder')"
+        :input-label="$t('emailForm.messageLabel')"
+        :input-placeholder="$t('emailForm.messagePlaceholder')"
         :input-required="true"
       />
     </div>
@@ -47,8 +47,6 @@
 
 <script lang="ts" setup>
 import { RecaptchaSize, RecaptchaTheme } from '@/types/Recaptcha'
-
-const { t } = useI18n()
 const { toggled, toggleOn, toggleOff } = useToggle()
 const formEmailRef = ref<HTMLFormElement>()
 const grecaptchaContainerId = 'form-email-submit-grecaptcha'
