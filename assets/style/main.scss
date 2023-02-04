@@ -32,6 +32,7 @@ button {
   text-decoration: none;
   &:focus {
     outline: none;
+    color: theme.$text-light;
   }
   &:visited {
     color: theme.$text-light;
