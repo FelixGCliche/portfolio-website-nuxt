@@ -1,4 +1,4 @@
-export const useBaseButtonProps = () => ({
+export const useButtonProps = () => ({
   url: {
     type: String
   },

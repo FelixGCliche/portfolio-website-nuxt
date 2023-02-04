@@ -1,10 +1,23 @@
 <template>
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-locale-switch">
-        <ButtonLocaleSwitch />
+      <ButtonLocaleSwitch />
+      <div class="footer-content-buttons">
+        <ButtonIcon
+          url="https://www.linkedin.com/in/f%C3%A9lix-gagn%C3%A9-cliche-4298461ba/"
+        >
+          <IconLinkedIn
+            icon-name="LinkedIn"
+            :size="24"
+          />
+        </ButtonIcon>
+        <ButtonIcon url="https://github.com/FelixGCliche">
+          <IconGithub
+            icon-name="github"
+            :size="24"
+          />
+        </ButtonIcon>
       </div>
-      <NavigationSitemap class="footer-sitemap" />
     </div>
     <span class="caption footer-caption"
       >&copy; Copyright Félix Gagné Cliche 2023</span
@@ -14,30 +27,26 @@
 
 <style lang="scss" scoped>
 .footer {
-  padding: 2rem 0;
-  z-index: 2;
-  @include layout.layout-grid;
+  @include layout.layout-grid($margins: true);
+  grid-template-rows: repeat(2, minmax(0, min-content));
+  align-self: center;
+  z-index: 23;
 
   &-content {
+    @include layout.layout-grid-cell-full;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    @include layout.responsive-cell-full;
+    align-items: center;
+
+    &-buttons {
+      display: flex;
+    }
   }
 
   &-caption {
-    @include layout.responsive-cell-full;
+    @include layout.layout-grid-cell-full;
     text-align: center;
     color: theme.$on-surface;
-  }
-
-  &-sitemap {
-    display: flex;
-  }
-
-  &-locale-switch {
-    display: flex;
-    gap: 1rem;
   }
 }
 </style>

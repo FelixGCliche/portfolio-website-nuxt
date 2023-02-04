@@ -1,0 +1,21 @@
+---
+title: La pause électrique
+description: Visit new places while charging your car
+tags:
+  - Java
+  - Android
+year: 2019
+---
+
+::ContentSection
+
+#headline
+{{title}}
+
+#title
+{{year}}
+
+#body
+La pause électrique is an android application that lets you find nearby charging stations for your car along with activities and places to visit while your car charges up.  
+I made this application for the Hack QC hackathon, where my 3 friends and I proceeded to win 3rd place even though it was our first coding event experience.  
+This app was made with Java and I was in charge of the UI and assets.

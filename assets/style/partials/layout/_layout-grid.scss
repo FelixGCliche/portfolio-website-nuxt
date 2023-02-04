@@ -1,0 +1,121 @@
+@use 'sass:map';
+@use '_breakpoints' as layout;
+
+$default-columns: (
+  'large': 12,
+  'medium': 8,
+  'small': 8,
+  'xsmall': 4
+);
+$column-width: 72px;
+$default-margin: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+  'xsmall': 32px
+);
+$default-gutter: (
+  'large': 24px,
+  'medium': 24px,
+  'small': 16px,
+  'xsmall': 16px
+);
+
+$default-span: 4 !default;
+
+@mixin _layout-grid-base($size, $columns) {
+  display: grid;
+  column-gap: map.get($default-gutter, $size);
+  grid-template-columns: repeat($columns, $column-width);
+  @if $size == 'xsmall' or $size == 'small' {
+    grid-template-columns: repeat($columns, 1fr);
+  }
+  @content;
+}
+
+@mixin layout-grid($margins: false) {
+  @each $size in map.keys($default-columns) {
+    @include layout.media-query($size) {
+      @include _layout-grid-base($size, map.get($default-columns, $size)) {
+        justify-content: center;
+
+        @if $margins {
+          padding-top: calc(map.get($default-margin, $size));
+          padding-bottom: calc(map.get($default-margin, $size));
+        }
+
+        @if $size == 'xsmall' or $size == 'small' {
+          padding-left: calc(map.get($default-margin, $size));
+          padding-right: calc(map.get($default-margin, $size));
+        }
+      }
+      @content;
+    }
+  }
+}
+
+@mixin _layout-grid-inner($columns) {
+  @each $size in map.keys($default-columns) {
+    @include layout.media-query($size) {
+      @include _layout-grid-base($size, $columns) {
+        justify-content: center;
+      }
+      @content;
+    }
+  }
+}
+
+@mixin layout-grid-cell($span: $default-span, $inner-grid: false) {
+  grid-column-end: span $span;
+  @if $inner-grid {
+    @include _layout-grid-inner($span);
+  }
+  @content;
+}
+
+@mixin layout-grid-cell-end($span: $default-span, $inner-grid: false) {
+  grid-column-start: span $span;
+  @if $inner-grid {
+    @include _layout-grid-inner($span);
+  }
+  @content;
+}
+
+@mixin layout-grid-cell-full($margins: true, $inner-grid: false) {
+  @each $size in map.keys($default-columns) {
+    @include layout.media-query($size) {
+      @include layout-grid-cell(map.get($default-columns, $size), $inner-grid);
+
+      @if $size == 'xsmall' and not $margins {
+        margin-left: calc(map.get($default-margin, $size) * -1);
+        margin-right: calc(map.get($default-margin, $size) * -1);
+      }
+    }
+  }
+  @content;
+}
+
+@mixin layout-grid-cell-half($margins: true, $inner-grid: false) {
+  @each $size in map.keys($default-columns) {
+    @include layout.media-query($size) {
+      $span: clamp(4, calc(map.get($default-columns, $size) / 2), 6);
+      @include layout-grid-cell($span, $inner-grid);
+
+      @if $size == 'xsmall' and not $margins {
+        margin: 0 calc(map.get($default-margin, $size) * -1);
+      }
+    }
+  }
+  @content;
+}
+
+@mixin layout-flex($gap: 0px, $direction: column) {
+  @each $size in map.keys($default-columns) {
+    @include layout.media-query($size) {
+      display: flex;
+      flex-flow: $direction nowrap;
+      gap: calc(map.get($default-gutter, $size) + $gap);
+    }
+  }
+  @content;
+}

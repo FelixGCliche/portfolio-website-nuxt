@@ -9,12 +9,22 @@ html {
 }
 
 html,
-body,
-#__nuxt,
-#__layout {
-  height: 100%;
-  background-color: theme.$background;
-  color: theme.$text-light;
+body {
+  min-height: 100%;
+}
+
+body {
+  height: 100vh;
+}
+
+#__nuxt {
+  color: theme.$on-background;
+}
+
+input,
+textarea {
+  border: none;
+  outline: none;
 }
 
 a,
@@ -22,16 +32,11 @@ button {
   text-decoration: none;
   &:focus {
     outline: none;
+    color: theme.$text-light;
   }
   &:visited {
     color: theme.$text-light;
   }
-}
-
-input,
-textarea {
-  border: none;
-  outline: none;
 }
 
 .img-responsive {
@@ -44,7 +49,6 @@ textarea {
     :root {
       --device-size: #{$size};
     }
-
     .display {
       @include theme.typography-display($size);
     }
@@ -54,7 +58,8 @@ textarea {
     .title {
       @include theme.typography-title($size);
     }
-    .label {
+    .label,
+    .label > p {
       @include theme.typography-label($size);
     }
     .body {

@@ -6,13 +6,17 @@
     @click="handleClick"
   >
     <slot />
-    <span v-if="label" class="label">{{ label }}</span>
+    <span
+      v-if="label"
+      class="label"
+      >{{ label }}</span
+    >
   </component>
 </template>
 
 <script lang="ts" setup>
 const props = defineProps({
-  ...useBaseButtonProps()
+  ...useButtonProps()
 })
 
 const emit = defineEmits(['button-click'])
@@ -33,6 +37,7 @@ const buttonType = useButtonType(props.url)
   justify-content: center;
   gap: 8px;
   min-width: 4rem;
+  width: fit-content;
   background: none;
   padding: 0.25rem 1rem;
   color: theme.$on-background;

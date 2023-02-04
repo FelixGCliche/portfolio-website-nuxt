@@ -1,0 +1,16 @@
+home:
+  contactButton: Contactez-moi
+  worksHeader: Projets
+
+portfolio:
+  projectButton: Voir plus
+  projectUrlButton: Voir sur itch.io
+
+emailForm:
+  nameLabel: Nom
+  namePlaceholder: Nom complet
+  emailLabel: Courriel
+  emailPlaceholder: "courriel{'@'}exemple.ca"
+  messageLabel: Message
+  messagePlaceholder: Votre message ici...
+  submit: Envoyer

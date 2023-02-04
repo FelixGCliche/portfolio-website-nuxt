@@ -1,5 +1,5 @@
 <template>
-  <div class="page-grid">
+  <div class="layout">
     <LayoutHeader />
     <NuxtPage />
     <LayoutFooter />
@@ -9,9 +9,11 @@
 <style lang="scss" scoped>
 @use 'sass:map';
 
-.page-grid {
+.layout {
   display: grid;
-  grid-template-rows: min-content 1fr min-content;
-  min-height: 100%;
+  background-color: theme.$background;
+  grid-template-rows: min-content minmax(0, 1fr) min-content;
+  min-height: 100vh;
+  height: 100%;
 }
 </style>

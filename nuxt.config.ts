@@ -2,6 +2,10 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
 
 export default defineNuxtConfig({
+  experimental: {
+    payloadExtraction: false
+  },
+
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
     img: fileURLToPath(new URL('./assets/img', import.meta.url)),
@@ -9,21 +13,34 @@ export default defineNuxtConfig({
     types: fileURLToPath(new URL('./types', import.meta.url))
   },
 
-  modules: ['@nuxt/content', '@nuxtjs/i18n'],
+  css: ['@/assets/style/reset.css', '@/assets/style/main.scss'],
+
+  typescript: {
+    shim: false
+  },
+
+  modules: ['@nuxt/content', '@nuxtjs/i18n', '@nuxt/image-edge'],
 
   content: {
-    locales: ['fr', 'en']
+    locales: ['fr', 'en'],
+    markdown: {
+      anchorLinks: false
+    }
   },
 
   i18n: {
     defaultLocale: 'fr',
-    locales: ['fr', 'en']
-  },
-
-  css: ['@/assets/style/main.scss', '@/assets/style/reset.css'],
-
-  typescript: {
-    shim: false
+    langDir: 'translations',
+    locales: [
+      {
+        code: 'fr',
+        file: 'fr.yaml'
+      },
+      {
+        code: 'en',
+        file: 'en.yaml'
+      }
+    ]
   },
 
   runtimeConfig: {
@@ -43,8 +60,8 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           additionalData: `
-          @use './assets/style/global/layout' as layout;
-          @use './assets/style/global/theme' as theme;
+          @use './assets/style/partials/layout' as layout;
+          @use './assets/style/partials/theme' as theme;
           `
         }
       }
