@@ -1,8 +1,16 @@
 <template>
   <div class="inputfield">
-    <slot class="inputfield-slot" :onFocus="onFocus" :onBlur="onBlur" />
+    <slot
+      class="inputfield-slot"
+      :onFocus="onFocus"
+      :onBlur="onBlur"
+    />
     <Transition name="inputfield-focus">
-      <label v-if="toggled" class="caption inputfield-label" :for="inputName">
+      <label
+        v-if="toggled"
+        class="caption inputfield-label"
+        :for="inputName"
+      >
         {{ inputLabel }}
       </label>
     </Transition>
@@ -43,6 +51,7 @@ textarea:focus + .inputfield-label {
 
 <style lang="scss" scoped>
 .inputfield {
+  @include theme.bevel(theme.$background, 0.75rem);
   position: relative;
 
   &-label {

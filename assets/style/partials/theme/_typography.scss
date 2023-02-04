@@ -1,0 +1,212 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@function get-typography-value($style, $size) {
+  @return #{$style} + '-' + #{$size};
+}
+
+@function px-to-rem($px) {
+  @if $px == null {
+    @error 'px value is null';
+  } @else {
+    @return math.div($px, 16px) * 1rem;
+  }
+}
+
+@function get-font-size($style, $size, $px: false) {
+  $key: get-typography-value($style, $size);
+
+  @if not map-has-key($font-size, $key) {
+    @error 'The typography style #{$key} is invalid';
+  }
+
+  $value: map.get($font-size, $key);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
+}
+
+@function get-line-height($style, $size, $px: false) {
+  $key: get-typography-value($style, $size);
+
+  @if not map-has-key($line-height, $key) {
+    @error 'The typography style #{$key} is invalid';
+  }
+
+  $value: map.get($line-height, $key);
+
+  @if $px {
+    @return $value;
+  } @else {
+    @return px-to-rem($value);
+  }
+}
+
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  src: url('fonts/PPNeueMachina/PPNeueMachina-Ultrabold.otf') format('opentype');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lekton';
+  src: url('fonts/Lekton/Lekton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Lekton';
+  src: url('fonts/Lekton/Lekton-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+$font-size: (
+  'display-large': 57px,
+  'display-medium': 45px,
+  'display-small': 45px,
+  'display-xsmall': 36px,
+
+  'headline-large': 32px,
+  'headline-medium': 28px,
+  'headline-small': 28px,
+  'headline-xsmall': 24px,
+
+  'title-large': 22px,
+  'title-medium': 16px,
+  'title-small': 16px,
+  'title-xsmall': 14px,
+
+  'label-large': 14px,
+  'label-medium': 12px,
+  'label-small': 12px,
+  'label-xsmall': 11px,
+
+  'body-large': 16px,
+  'body-medium': 14px,
+  'body-small': 14px,
+  'body-xsmall': 12px,
+
+  'caption-large': 14px,
+  'caption-medium': 12px,
+  'caption-small': 12px,
+  'caption-xsmall': 11px
+);
+
+$line-height: (
+  'display-large': 62px,
+  'display-medium': 52px,
+  'display-small': 52px,
+  'display-xsmall': 36px,
+
+  'headline-large': 40px,
+  'headline-medium': 36px,
+  'headline-small': 36px,
+  'headline-xsmall': 32px,
+
+  'title-large': 28px,
+  'title-medium': 24px,
+  'title-small': 24px,
+  'title-xsmall': 20px,
+
+  'label-large': 20px,
+  'label-medium': 16px,
+  'label-small': 16px,
+  'label-xsmall': 16px,
+
+  'body-large': 24px,
+  'body-medium': 20px,
+  'body-small': 20px,
+  'body-xsmall': 16px,
+
+  'caption-large': 14px,
+  'caption-medium': 12px,
+  'caption-small': 12px,
+  'caption-xsmall': 11px
+);
+
+@mixin typography-display($size) {
+  font-family: PP Neue Machina, sans-serif;
+  font-size: get-font-size('display', $size);
+  line-height: get-line-height('display', $size);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@mixin typography-headline($size) {
+  font-family: PP Neue Machina, sans-serif;
+  font-size: get-font-size('headline', $size);
+  line-height: get-line-height('headline', $size);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@mixin typography-title($size) {
+  font-family: Lekton, sans-serif;
+  font-size: get-font-size('title', $size);
+  line-height: get-line-height('title', $size);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@mixin typography-label($size) {
+  font-family: PP Neue Machina, sans-serif;
+  font-size: get-font-size('label', $size);
+  line-height: get-line-height('label', $size);
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@mixin typography-body($size) {
+  font-family: Lekton, sans-serif;
+  font-size: get-font-size('body', $size);
+  line-height: get-line-height('body', $size);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@mixin typography-caption($size) {
+  font-family: Lekton, sans-serif;
+  font-size: get-font-size('caption', $size);
+  line-height: get-line-height('caption', $size);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+@mixin typography-baseline($size: 0.25rem) {
+  overflow: hidden;
+  display: flex;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    vertical-align: baseline;
+    min-width: 100%;
+    margin-bottom: calc($size + 0.25rem);
+    margin-right: -100%;
+    margin-left: calc($size * 4);
+    border-bottom: $size solid;
+  }
+}

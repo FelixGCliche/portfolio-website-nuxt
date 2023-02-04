@@ -7,7 +7,12 @@
     :aria-labelledby="iconName"
     viewBox="0 0 24 24"
   >
-    <title :id="iconName" lang="en">{{ iconName }}</title>
+    <title
+      :id="iconName"
+      lang="en"
+    >
+      {{ iconName }}
+    </title>
     <g fill="currentColor">
       <slot />
     </g>

@@ -1,17 +1,45 @@
 <template>
-  <div class="page-contact">
-    <div class="section section-contact">
-      <ContentDoc path="/contact" :locale="locale" />
-    </div>
+  <main class="contact">
+    <section class="contact-section">
+      <ContentDoc
+        path="/contact"
+        :locale="locale"
+      />
+      <div class="contact-buttons">
+        <ButtonIcon
+          class="section-buttons-email"
+          url="mailto: felix@gagnecliche.dev"
+          label="felix@gagnecliche.dev"
+        >
+          <IconEmail
+            icon-name="email"
+            :size="32"
+          />
+        </ButtonIcon>
+        <ButtonIcon
+          class="section-buttons-sms"
+          url="tel: 418-805-6251"
+          label="(418) 805-6251"
+        >
+          <IconSMS
+            icon-name="sms"
+            :size="32"
+          />
+        </ButtonIcon>
+      </div>
+    </section>
 
-    <div class="section section-form" id="contact-email">
+    <div
+      class="contact-form"
+      id="contact-email"
+    >
       <div class="bevel bevel-container">
         <div class="bevel bevel-inner">
-          <SectionEmailForm />
+          <FormEmail />
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script lang="ts" setup>
@@ -19,39 +47,32 @@ const { locale } = useI18n()
 </script>
 
 <style lang="scss" scoped>
-.page-contact {
-  @include layout.layout-grid {
-    grid-row-gap: 4rem;
+@use 'sass:map';
+.contact {
+  @include layout.layout-grid($margins: true);
+
+  &-section {
+    @include layout.layout-grid-cell-half;
+    @include layout.layout-flex;
+    align-self: center;
   }
 
-  @include layout.media-query-min('small') {
-  }
-}
+  &-buttons {
+    @include layout.layout-flex;
 
-.section {
-  @include layout.responsive-cell-full;
-  place-self: center;
-
-  @include layout.media-query-min('small') {
-    @include layout.responsive-cell-half;
+    & > a {
+      padding: 0;
+    }
   }
 
   &-form {
+    @include layout.layout-grid-cell-half;
+    place-self: center;
     width: 100%;
-    @include layout.media-query-min('small') {
-      @include layout.responsive-cell-half;
-    }
   }
 }
 
 .bevel {
-  &-container {
-    @include theme.bevel(theme.$surface, 16px);
-    padding: 4px;
-  }
-  &-inner {
-    @include theme.bevel(theme.$background, 16 - 1px);
-    padding: 2rem;
-  }
+  @include theme.bevel-border(0.25rem, theme.$surface, 1rem);
 }
 </style>
