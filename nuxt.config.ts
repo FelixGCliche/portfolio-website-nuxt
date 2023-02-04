@@ -43,6 +43,10 @@ export default defineNuxtConfig({
     ]
   },
 
+  image: {
+    provider: "ipx"
+  }
+
   runtimeConfig: {
     public: {
       emailJSServiceID: process.env.EMAILJS_SERVICEID,
