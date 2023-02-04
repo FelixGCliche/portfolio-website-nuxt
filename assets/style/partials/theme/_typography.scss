@@ -197,14 +197,16 @@ $line-height: (
 
 @mixin typography-baseline {
   overflow: hidden;
+  display: flex;
 
   &:after {
     content: '';
     display: inline-block;
     vertical-align: baseline;
-    width: 100%;
+    min-width: 100%;
+    margin-bottom: 0.5rem;
     margin-right: -100%;
     margin-left: 1rem;
-    border-top: 4px solid;
+    border-bottom: 0.25rem solid;
   }
 }

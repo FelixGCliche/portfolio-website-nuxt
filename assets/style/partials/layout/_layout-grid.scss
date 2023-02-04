@@ -25,7 +25,7 @@ $default-span: 4 !default;
 
 @mixin _layout-grid-base($size, $columns) {
   display: grid;
-  grid-gap: map.get($default-gutter, $size);
+  column-gap: map.get($default-gutter, $size);
   grid-template-columns: repeat($columns, $column-width);
   @if $size == 'xsmall' or $size == 'small' {
     grid-template-columns: repeat($columns, 1fr);
@@ -57,7 +57,7 @@ $default-span: 4 !default;
 @mixin _layout-grid-inner($columns) {
   @each $size in map.keys($default-columns) {
     @include layout.media-query($size) {
-      @include _layout-grid-base($size, map.get($default-columns, $size)) {
+      @include _layout-grid-base($size, $columns) {
         justify-content: center;
       }
       @content;

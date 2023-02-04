@@ -2,6 +2,18 @@
 @use '_state' as state;
 @use '../layout/breakpoints' as breakpoints;
 
+@mixin bevel-clip-path($size) {
+  $end-size: calc(100% - $size);
+  clip-path: polygon(
+    $size 0%,
+    100% 0,
+    100% $end-size,
+    $end-size 100%,
+    0 100%,
+    0% $size
+  );
+}
+
 @mixin bevel($color, $size) {
   background-color: $color;
   $end-size: calc(100% - $size);
