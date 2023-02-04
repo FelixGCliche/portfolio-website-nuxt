@@ -1,5 +1,5 @@
 ---
-title: Alhoa et les 5 artéfacts
+title: Aloha et les 5 artéfacts
 description: Petit plateformeur 2D fait avec Unity
 tags:
   - C#

@@ -1,5 +1,5 @@
 ---
-title: Alhoa et les 5 artéfacts
+title: Aloha and the 5 Artifacts
 description: A small 2D platformer built with Unity
 tags:
   - C#

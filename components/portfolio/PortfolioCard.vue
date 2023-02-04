@@ -10,6 +10,14 @@
       <div class="portfolio-card-content">
         <h3 class="title">{{ project.title }}</h3>
         <p class="body">{{ project.description }}</p>
+        <div class="portfolio-card-tags">
+          <p
+            class="caption"
+            v-for="tag in project.tags"
+          >
+            {{ tag }}
+          </p>
+        </div>
       </div>
     </div>
   </NuxtLink>
@@ -44,7 +52,7 @@ $gradient-content: linear-gradient(
   width: 100%;
   aspect-ratio: 3 / 4;
   padding: 0.25rem;
-
+  @include theme.pressed(theme.$on-background);
   &:hover {
     transition: background ease-in 0.2s;
     @include theme.bevel(theme.$secondary, 2rem);
@@ -88,7 +96,18 @@ $gradient-content: linear-gradient(
 
     & > .title {
       display: block;
-      @include theme.typography-baseline;
+      @include theme.typography-baseline(2px);
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.5rem;
+
+    & > .caption {
+      @include theme.bevel(theme.$tertiary, 0.5rem);
+      padding: 0.5rem;
     }
   }
 }

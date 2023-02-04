@@ -195,7 +195,7 @@ $line-height: (
   text-decoration: none;
 }
 
-@mixin typography-baseline {
+@mixin typography-baseline($size: 0.25rem) {
   overflow: hidden;
   display: flex;
 
@@ -204,9 +204,9 @@ $line-height: (
     display: inline-block;
     vertical-align: baseline;
     min-width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: calc($size + 0.25rem);
     margin-right: -100%;
-    margin-left: 1rem;
-    border-bottom: 0.25rem solid;
+    margin-left: calc($size * 4);
+    border-bottom: $size solid;
   }
 }
