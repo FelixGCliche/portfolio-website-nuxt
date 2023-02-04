@@ -52,6 +52,7 @@ $gradient-content: linear-gradient(
   width: 100%;
   aspect-ratio: 3 / 4;
   padding: 0.25rem;
+  color: theme.$on-background;
 
   @include theme.pressed(theme.$on-background);
 
