@@ -30,7 +30,8 @@ textarea {
 a,
 button {
   text-decoration: none;
-  &:focus {
+  &:focus,
+  &:any-link {
     outline: none;
     color: theme.$text-light;
   }
