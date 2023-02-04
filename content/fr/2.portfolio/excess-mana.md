@@ -5,6 +5,7 @@ tags:
   - C#
   - Unity
 year: 2020
+url: https://incrediboldstudio.itch.io/excess-mana
 ---
 
 ::ContentSection

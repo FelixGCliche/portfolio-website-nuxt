@@ -5,6 +5,7 @@ tags:
   - C#
   - Unity
 year: 2021
+url: https://incrediboldstudio.itch.io/resistance-is-futile
 ---
 
 ::ContentSection
