@@ -79,7 +79,6 @@ const { id } = useRoute().params
 const { data: project } = await useLazyAsyncData('project', () =>
   queryContent(`/portfolio/${id}`).locale(locale.value).findOne()
 )
-console.log(project.value)
 
 const [prev, next] = await queryContent('/portfolio')
   .only(['_path'])
@@ -130,7 +129,7 @@ const isProjectValid = (
 
   &-video {
     @include layout.layout-grid-cell-full {
-      margin-top: 4rem;
+      margin: 4rem 0;
     }
     aspect-ratio: 16 / 9;
 

@@ -11,6 +11,8 @@ const { locale } = useI18n()
 
 <style lang="scss" scoped>
 .home {
-  @include layout.layout-grid($margins: true);
+  @include layout.layout-grid($margins: true) {
+    row-gap: 10rem;
+  }
 }
 </style>

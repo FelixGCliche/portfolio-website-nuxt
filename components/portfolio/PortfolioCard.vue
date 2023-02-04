@@ -52,7 +52,9 @@ $gradient-content: linear-gradient(
   width: 100%;
   aspect-ratio: 3 / 4;
   padding: 0.25rem;
+
   @include theme.pressed(theme.$on-background);
+
   &:hover {
     transition: background ease-in 0.2s;
     @include theme.bevel(theme.$secondary, 2rem);
@@ -74,7 +76,8 @@ $gradient-content: linear-gradient(
       background-color: theme.$background;
       transition: background 0.66s cubic-bezier(0.6, 0, 0.07, 1);
       & > .portfolio-card-content {
-        transition: all 0.66s cubic-bezier(0.6, 0, 0.07, 1);
+        transition: opacity 0.66s cubic-bezier(0.6, 0, 0.07, 1),
+          transform 0.66s cubic-bezier(0.6, 0, 0.07, 1);
         opacity: 1;
         transform: translateY(0);
       }
