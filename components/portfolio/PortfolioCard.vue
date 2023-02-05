@@ -94,7 +94,6 @@ $gradient-content: linear-gradient(
     @include theme.bevel-clip-path(2rem);
     padding: 2rem;
     background: $gradient-content;
-    backdrop-filter: blur(1rem);
     opacity: 0;
     transform: translateY(50%);
 
