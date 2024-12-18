@@ -11,19 +11,20 @@
     "format": "prettier --config .prettierrc --write ."
   },
   "devDependencies": {
-    "@nuxt/content": "^2.3.0",
-    "@nuxt/image-edge": "^1.0.0-27913696.5d122a3",
-    "@nuxtjs/eslint-config-typescript": "latest",
-    "@nuxtjs/i18n": "^8.0.0-beta.7",
-    "@types/node": "^18.11.18",
-    "eslint": "^8.12.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "nuxt": "^3.1.1",
-    "prettier": "^2.6.2",
-    "sass": "^1.49.7"
+    "@nuxt/content": "^2.13.4",
+    "@nuxt/image": "^1.8.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/i18n": "^9.1.1",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "nuxt": "^3.14.1592",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.0"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.2.0"
-  }
+    "@emailjs/browser": "^4.4.1"
+  },
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }

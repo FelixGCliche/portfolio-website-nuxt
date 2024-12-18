@@ -16,7 +16,7 @@
 @function get-font-size($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
-  @if not map-has-key($font-size, $key) {
+  @if not map.has-key($font-size, $key) {
     @error 'The typography style #{$key} is invalid';
   }
 
@@ -32,7 +32,7 @@
 @function get-line-height($style, $size, $px: false) {
   $key: get-typography-value($style, $size);
 
-  @if not map-has-key($line-height, $key) {
+  @if not map.has-key($line-height, $key) {
     @error 'The typography style #{$key} is invalid';
   }
 

@@ -2,10 +2,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 import { fileURLToPath } from 'url'
 
 export default defineNuxtConfig({
-  experimental: {
-    payloadExtraction: false
-  },
-
+  devtools: { enabled: true },
   alias: {
     fonts: fileURLToPath(new URL('./assets/fonts', import.meta.url)),
     img: fileURLToPath(new URL('./assets/img', import.meta.url)),
@@ -19,7 +16,7 @@ export default defineNuxtConfig({
     shim: false
   },
 
-  modules: ['@nuxt/content', '@nuxtjs/i18n', '@nuxt/image-edge'],
+  modules: ['@nuxt/content', '@nuxtjs/i18n', '@nuxt/image'],
 
   content: {
     locales: ['fr', 'en'],
@@ -30,7 +27,6 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: 'fr',
-    langDir: 'translations',
     locales: [
       {
         code: 'fr',
