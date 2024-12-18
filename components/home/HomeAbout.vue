@@ -21,12 +21,18 @@
         fit="cover"
       />
     </div>
-    <div class="about-logo" />
+    <div class="about-logo" :style="logoImgStyle" />
   </article>
 </template>
 
 <script lang="ts" setup>
 const { locale } = useI18n()
+const img = useImage()
+
+const logoImgStyle = reactive({
+  '--background-image-url': `url('${img('img/bg_image.webp')}')`,
+  'mask': `url('${img('img/logo.svg')}')` 
+})
 </script>
 
 <style lang="scss" scoped>
@@ -65,9 +71,9 @@ const { locale } = useI18n()
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-image: url('@/assets/img/bg_image.webp');
+    // background-image: url('@/assets/img/bg_image.webp');
 
-    mask: url('@/assets/img/logo.svg');
+    // mask: url('@/assets/img/logo.svg');
     mask-size: cover;
     mask-repeat: no-repeat;
     mask-size: 100% 100%;

@@ -26,6 +26,7 @@
 <script lang="ts" setup>
 import { Project } from '@/types/Project'
 
+const img = useImage()
 const localePath = useLocalePath()
 const { project } = defineProps<{ project: Project }>()
 
@@ -37,7 +38,8 @@ const backgroundImageStyle = computed(() =>
 )
 
 onMounted(() => {
-  backgroundImageUrl.value = `url('img${project._path}-thumbnail.webp')`
+  const imgUrl = img(`img${project._path}-thumbnail.webp`)
+  backgroundImageUrl.value = `url('${imgUrl}')`
 })
 </script>
 
