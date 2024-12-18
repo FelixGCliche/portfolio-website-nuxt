@@ -30,17 +30,11 @@ const img = useImage()
 const localePath = useLocalePath()
 const { project } = defineProps<{ project: Project }>()
 
-const backgroundImageUrl = ref('')
 const backgroundImageStyle = computed(() =>
   reactive({
-    '--background-image-url': backgroundImageUrl.value
+    '--background-image-url': `url('${img(`img${project._path}-thumbnail.webp`)}')`
   })
 )
-
-onMounted(() => {
-  const imgUrl = img(`img${project._path}-thumbnail.webp`)
-  backgroundImageUrl.value = `url('${imgUrl}')`
-})
 </script>
 
 <style lang="scss" scoped>

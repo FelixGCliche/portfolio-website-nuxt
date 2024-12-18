@@ -29,10 +29,13 @@
 const { locale } = useI18n()
 const img = useImage()
 
-const logoImgStyle = reactive({
-  '--background-image-url': `url('${img('img/bg_image.webp')}')`,
-  'mask': `url('${img('img/logo.svg')}')` 
-})
+
+const logoImgStyle = computed(() =>
+  reactive({
+    '--background-image-url': `url('${img(`img/bg_image.webp`)}')`,
+    '--mask-url': `url('${img(`img/logo.svg`)}')`
+  })
+)
 </script>
 
 <style lang="scss" scoped>
@@ -52,6 +55,11 @@ const logoImgStyle = reactive({
 
     grid-row: 2;
     z-index: 3;
+
+    &-button {
+      display: block;
+      max-height: min-content;
+    }
   }
 
   &-profile {
@@ -66,14 +74,16 @@ const logoImgStyle = reactive({
   &-logo {
     grid-row: 1;
     z-index: 1;
-
+    
+    // background-image: var(--background-image-url);
+    background-image: url('@/assets/img/bg_image.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    // background-image: url('@/assets/img/bg_image.webp');
-
-    // mask: url('@/assets/img/logo.svg');
+    
+    // mask: var(--mask-url);
+    mask: url('@/assets/img/logo.svg');
     mask-size: cover;
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
@@ -93,12 +103,14 @@ const logoImgStyle = reactive({
     .about {
       &-section,
       &-logo {
+        display: grid;
         @include layout.layout-grid-cell($span: $content-span) {
           grid-column-start: 1;
         }
       }
 
       &-profile {
+        display: grid;
         @include layout.layout-grid-cell-end($span: $profile-span) {
           grid-column-end: -1;
         }
