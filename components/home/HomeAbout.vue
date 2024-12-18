@@ -75,15 +75,15 @@ const logoImgStyle = computed(() =>
     grid-row: 1;
     z-index: 1;
     
-    // background-image: var(--background-image-url);
-    background-image: url('@/assets/img/bg_image.webp');
+    background-image: var(--background-image-url);
+    // background-image: url('@/assets/img/bg_image.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     
-    // mask: var(--mask-url);
-    mask: url('@/assets/img/logo.svg');
+    mask: var(--mask-url);
+    // mask: url('@/assets/img/logo.svg');
     mask-size: cover;
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
